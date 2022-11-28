@@ -7,20 +7,22 @@ namespace EMS
 {
     public partial class Login : Form
     {
+        public static string username;
+
         public Login()
         {
             InitializeComponent();
         }
 
-        private void signinButton_Click(object sender, EventArgs e)
+        private async void signinButton_Click(object sender, EventArgs e)
         {
-            string username = usernameTextBox.Text;
+            username = usernameTextBox.Text;
             string password = passwordTextBox.Text;
             string hash;
             string pass;
             if (username == "" || password == "")
             {
-                errorLabel.Text = "Please enter username and password.";
+                statusLabel.Text = "Please enter username and password.";
             }
             else
             {
@@ -44,17 +46,27 @@ namespace EMS
                         pass = command.ExecuteScalar().ToString();
                         if (hash == pass)
                         {
-                            MessageBox.Show("Welcome Back Admin");
+                            statusLabel.ForeColor = Color.Green;
+                            statusLabel.Text = "Successfully Login";
+                            signinButton.Enabled = false;
+                            resetButton.Enabled = false;
+                            await Task.Delay(1500);
+                            statusLabel.Text = "Welcome back admin";
+                            await Task.Delay(1500);
+                            AdminDashboard admindashboard = new AdminDashboard();
+                            this.Hide();
+                            admindashboard.ShowDialog();
+                            this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Invalid Password");
+                            statusLabel.Text = "Invalid Username or Password";
                         }
                         connection.Close();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Can not open connection!");
+                        statusLabel.Text = "Error Connecting to Database";
                     }
                 }
                 else
@@ -69,19 +81,24 @@ namespace EMS
                             pass = command.ExecuteScalar().ToString();
                             if (hash == pass)
                             {
-                                errorLabel.ForeColor = Color.Green;
-                                errorLabel.Text = "Successfully Login.";
-                                MessageBox.Show("Welcome back " + username);
+                                statusLabel.ForeColor = Color.Green;
+                                statusLabel.Text = "Successfully Login";
+                                await Task.Delay(1500);
+                                statusLabel.Text = "Welcome back " + username;
                             }
                             else
                             {
-                                errorLabel.Text = "Invalid Password";
+                                statusLabel.Text = "Invalid Username or Password";
                             }
+                        }
+                        else
+                        {
+                            statusLabel.Text = "Invalid Username or Password";
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Possible Empty Table or Connection Error.");
+                        statusLabel.Text = "Error Connecting to Database";
                     }
                 }
                 
@@ -93,7 +110,13 @@ namespace EMS
         {
             usernameTextBox.Text = "";
             passwordTextBox.Text = "";
-            errorLabel.Text = "";
+            statusLabel.Text = "";
+            statusLabel.ForeColor = Color.Red;
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
