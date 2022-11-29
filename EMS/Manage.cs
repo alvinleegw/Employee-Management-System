@@ -43,12 +43,8 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
-                MySqlCommand command2 = connection.CreateCommand();
                 command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
-                command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE ";
                 command.ExecuteNonQuery();
-                string rows = command2.ExecuteScalar().ToString();
-                resultLabel.Text = rows + " rows returned";
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
                 {
@@ -80,19 +76,19 @@ namespace EMS
             || positionTextBox.Text == String.Empty || emailTextBox.Text == String.Empty 
             || departmentTextBox.Text == String.Empty)
             {
-                statusLabel.Text = "Fields must not be empty";
+                statusLabel.Text = "Fields Must Not Be Empty";
             }
             else if (employeeidTextBox.Text.Length != 5)
             {
-                statusLabel.Text = "Employee ID length must be 5 characters only";
+                statusLabel.Text = "Employee ID Length Must Be 5 Characters Only";
             }
             else if (passwordTextBox.Text.Length < 8)
             {
-                statusLabel.Text = "Password length must be at least 8 characters";
+                statusLabel.Text = "Password Length Must Be At Least 8 Characters";
             }
             else if (!isValidEmail)
             {
-                statusLabel.Text = "Please enter a valid email address";
+                statusLabel.Text = "Please Enter A Valid Email Address";
             }
             else
             {
@@ -418,6 +414,25 @@ namespace EMS
         private void minimizeButton_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void badgeButton_Click(object sender, EventArgs e)
+        {
+            if (employeeidTextBox.Text == String.Empty || nameTextBox.Text == String.Empty
+            || positionTextBox.Text == String.Empty || departmentTextBox.Text == String.Empty)
+            {
+                statusLabel.Text = "Employee ID, Name, Position and Department Field Must Not Be Empty";
+            }
+            else
+            {
+                statusLabel.Text = String.Empty;
+                employeeid = employeeidTextBox.Text;
+                name = nameTextBox.Text;
+                position = positionTextBox.Text;
+                department = departmentTextBox.Text;
+                Badge badge = new Badge();
+                badge.ShowDialog();
+            } 
         }
     }
 }

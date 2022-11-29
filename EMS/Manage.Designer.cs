@@ -65,6 +65,7 @@
             this.resultLabel = new System.Windows.Forms.Label();
             this.exportButton = new System.Windows.Forms.Button();
             this.minimizeButton = new System.Windows.Forms.Button();
+            this.badgeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -496,12 +497,26 @@
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
+            // badgeButton
+            // 
+            this.badgeButton.BackColor = System.Drawing.Color.Crimson;
+            this.badgeButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.badgeButton.ForeColor = System.Drawing.Color.White;
+            this.badgeButton.Location = new System.Drawing.Point(60, 1235);
+            this.badgeButton.Name = "badgeButton";
+            this.badgeButton.Size = new System.Drawing.Size(433, 69);
+            this.badgeButton.TabIndex = 35;
+            this.badgeButton.Text = "Generate Badge";
+            this.badgeButton.UseVisualStyleBackColor = false;
+            this.badgeButton.Click += new System.EventHandler(this.badgeButton_Click);
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(3032, 1345);
+            this.Controls.Add(this.badgeButton);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.resultLabel);
@@ -588,5 +603,6 @@
         private Label resultLabel;
         private Button exportButton;
         private Button minimizeButton;
+        private Button badgeButton;
     }
 }
