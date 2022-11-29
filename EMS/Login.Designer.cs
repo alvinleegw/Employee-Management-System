@@ -37,6 +37,7 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
+            this.minimiseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginLabel
@@ -132,12 +133,26 @@
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // minimiseButton
+            // 
+            this.minimiseButton.BackColor = System.Drawing.Color.Gold;
+            this.minimiseButton.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.minimiseButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.minimiseButton.Location = new System.Drawing.Point(632, 12);
+            this.minimiseButton.Name = "minimiseButton";
+            this.minimiseButton.Size = new System.Drawing.Size(73, 69);
+            this.minimiseButton.TabIndex = 10;
+            this.minimiseButton.Text = "-";
+            this.minimiseButton.UseVisualStyleBackColor = false;
+            this.minimiseButton.Click += new System.EventHandler(this.minimiseButton_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BurlyWood;
             this.ClientSize = new System.Drawing.Size(807, 548);
+            this.Controls.Add(this.minimiseButton);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.resetButton);
@@ -151,6 +166,9 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Login_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +185,6 @@
         private Button resetButton;
         private Label statusLabel;
         private Button closeButton;
+        private Button minimiseButton;
     }
 }

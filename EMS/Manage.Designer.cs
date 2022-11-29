@@ -64,6 +64,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.resultLabel = new System.Windows.Forms.Label();
             this.exportButton = new System.Windows.Forms.Button();
+            this.minimizeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -483,12 +484,25 @@
             this.exportButton.UseVisualStyleBackColor = false;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
+            // minimizeButton
+            // 
+            this.minimizeButton.BackColor = System.Drawing.Color.Gold;
+            this.minimizeButton.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.minimizeButton.Location = new System.Drawing.Point(2839, 12);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Size = new System.Drawing.Size(81, 69);
+            this.minimizeButton.TabIndex = 34;
+            this.minimizeButton.Text = " -";
+            this.minimizeButton.UseVisualStyleBackColor = false;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(3032, 1345);
+            this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.filterLabel);
@@ -523,6 +537,9 @@
             this.Name = "Manage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Manage_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Manage_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Manage_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -570,5 +587,6 @@
         private RadioButton allRadioButton;
         private Label resultLabel;
         private Button exportButton;
+        private Button minimizeButton;
     }
 }

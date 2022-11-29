@@ -7,6 +7,9 @@ namespace EMS
 {
     public partial class Login : Form
     {
+        private bool _dragging;
+        private Point _startPoint = new Point(0, 0);
+        private int _row;
         public static string username;
 
         public Login()
@@ -117,6 +120,29 @@ namespace EMS
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Login_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_dragging) return;
+            var p = PointToScreen(e.Location);
+            Location = new Point(p.X - this._startPoint.X, p.Y - this._startPoint.Y);
+        }
+
+        private void Login_MouseUp(object sender, MouseEventArgs e)
+        {
+            _dragging = false;
+        }
+
+        private void Login_MouseDown(object sender, MouseEventArgs e)
+        {
+            _dragging = true;
+            _startPoint = new Point(e.X, e.Y);
+        }
+
+        private void minimiseButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

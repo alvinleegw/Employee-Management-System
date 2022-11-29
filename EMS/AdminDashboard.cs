@@ -12,6 +12,9 @@ namespace EMS
 {
     public partial class AdminDashboard : Form
     {
+        private bool _dragging;
+        private Point _startPoint = new Point(0, 0);
+        private int _row;
 
         public AdminDashboard()
         {
@@ -78,6 +81,29 @@ namespace EMS
                 userLabel.Text = "";
                 Login.username = "";
             }
+        }
+
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void AdminDashboard_MouseUp(object sender, MouseEventArgs e)
+        {
+            _dragging = false;
+        }
+
+        private void AdminDashboard_MouseDown(object sender, MouseEventArgs e)
+        {
+            _dragging = true;
+            _startPoint = new Point(e.X, e.Y);
+        }
+
+        private void AdminDashboard_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_dragging) return;
+            var p = PointToScreen(e.Location);
+            Location = new Point(p.X - this._startPoint.X, p.Y - this._startPoint.Y);
         }
     }
 }

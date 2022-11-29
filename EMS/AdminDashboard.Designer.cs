@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.logoutButton = new System.Windows.Forms.Button();
             this.manageButton = new System.Windows.Forms.Button();
+            this.minimizeButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,11 +115,24 @@
             this.manageButton.UseVisualStyleBackColor = false;
             this.manageButton.Click += new System.EventHandler(this.manageButton_Click);
             // 
+            // minimizeButton
+            // 
+            this.minimizeButton.BackColor = System.Drawing.Color.Gold;
+            this.minimizeButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.minimizeButton.Location = new System.Drawing.Point(1452, 13);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Size = new System.Drawing.Size(78, 69);
+            this.minimizeButton.TabIndex = 6;
+            this.minimizeButton.Text = "-";
+            this.minimizeButton.UseVisualStyleBackColor = false;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1626, 800);
+            this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.menuStrip1);
@@ -126,6 +140,9 @@
             this.Name = "AdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminDashboard_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AdminDashboard_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AdminDashboard_MouseUp);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -142,5 +159,6 @@
         private Panel panel1;
         private Button logoutButton;
         private Button manageButton;
+        private Button minimizeButton;
     }
 }
