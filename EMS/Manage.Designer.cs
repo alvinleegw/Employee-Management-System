@@ -80,6 +80,7 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(81, 69);
             this.closeButton.TabIndex = 0;
+            this.closeButton.TabStop = false;
             this.closeButton.Text = "X";
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -194,7 +195,7 @@
             this.nameTextBox.Location = new System.Drawing.Point(325, 480);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(640, 61);
-            this.nameTextBox.TabIndex = 11;
+            this.nameTextBox.TabIndex = 12;
             // 
             // positionTextBox
             // 
@@ -202,7 +203,7 @@
             this.positionTextBox.Location = new System.Drawing.Point(325, 595);
             this.positionTextBox.Name = "positionTextBox";
             this.positionTextBox.Size = new System.Drawing.Size(640, 61);
-            this.positionTextBox.TabIndex = 12;
+            this.positionTextBox.TabIndex = 13;
             // 
             // emailTextBox
             // 
@@ -210,7 +211,7 @@
             this.emailTextBox.Location = new System.Drawing.Point(325, 706);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(640, 61);
-            this.emailTextBox.TabIndex = 13;
+            this.emailTextBox.TabIndex = 14;
             // 
             // departmentTextBox
             // 
@@ -218,7 +219,7 @@
             this.departmentTextBox.Location = new System.Drawing.Point(325, 810);
             this.departmentTextBox.Name = "departmentTextBox";
             this.departmentTextBox.Size = new System.Drawing.Size(640, 61);
-            this.departmentTextBox.TabIndex = 14;
+            this.departmentTextBox.TabIndex = 15;
             // 
             // dataGridView1
             // 
@@ -235,6 +236,7 @@
             this.dataGridView1.RowTemplate.Height = 57;
             this.dataGridView1.Size = new System.Drawing.Size(1957, 731);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.TabStop = false;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
             // addButton
@@ -246,6 +248,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(195, 69);
             this.addButton.TabIndex = 17;
+            this.addButton.TabStop = false;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -259,6 +262,7 @@
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(202, 69);
             this.updateButton.TabIndex = 18;
+            this.updateButton.TabStop = false;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = false;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
@@ -272,6 +276,7 @@
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(203, 69);
             this.deleteButton.TabIndex = 19;
+            this.deleteButton.TabStop = false;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -285,6 +290,7 @@
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(203, 69);
             this.clearButton.TabIndex = 20;
+            this.clearButton.TabStop = false;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -316,7 +322,7 @@
             this.passwordTextBox.Location = new System.Drawing.Point(325, 374);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(640, 61);
-            this.passwordTextBox.TabIndex = 23;
+            this.passwordTextBox.TabIndex = 11;
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // numericUpDown1
@@ -335,7 +341,7 @@
             0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(641, 61);
-            this.numericUpDown1.TabIndex = 24;
+            this.numericUpDown1.TabIndex = 16;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
             0,
@@ -448,7 +454,7 @@
             this.filterTextBox.Location = new System.Drawing.Point(1950, 146);
             this.filterTextBox.Name = "filterTextBox";
             this.filterTextBox.Size = new System.Drawing.Size(507, 55);
-            this.filterTextBox.TabIndex = 30;
+            this.filterTextBox.TabIndex = 17;
             // 
             // searchButton
             // 
@@ -459,6 +465,7 @@
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(203, 69);
             this.searchButton.TabIndex = 27;
+            this.searchButton.TabStop = false;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
@@ -482,6 +489,7 @@
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(293, 69);
             this.exportButton.TabIndex = 33;
+            this.exportButton.TabStop = false;
             this.exportButton.Text = "Export Data";
             this.exportButton.UseVisualStyleBackColor = false;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
@@ -494,6 +502,7 @@
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(81, 69);
             this.minimizeButton.TabIndex = 34;
+            this.minimizeButton.TabStop = false;
             this.minimizeButton.Text = " -";
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
@@ -507,6 +516,7 @@
             this.badgeButton.Name = "badgeButton";
             this.badgeButton.Size = new System.Drawing.Size(433, 69);
             this.badgeButton.TabIndex = 35;
+            this.badgeButton.TabStop = false;
             this.badgeButton.Text = "Generate Badge";
             this.badgeButton.UseVisualStyleBackColor = false;
             this.badgeButton.Click += new System.EventHandler(this.badgeButton_Click);
@@ -520,6 +530,7 @@
             this.qrButton.Name = "qrButton";
             this.qrButton.Size = new System.Drawing.Size(440, 69);
             this.qrButton.TabIndex = 36;
+            this.qrButton.TabStop = false;
             this.qrButton.Text = "Generate QR Code";
             this.qrButton.UseVisualStyleBackColor = false;
             this.qrButton.Click += new System.EventHandler(this.qrButton_Click);

@@ -86,8 +86,15 @@ namespace EMS
                             {
                                 statusLabel.ForeColor = Color.Green;
                                 statusLabel.Text = "Successfully Login";
+                                signinButton.Enabled = false;
+                                resetButton.Enabled = false;
                                 await Task.Delay(1500);
                                 statusLabel.Text = "Welcome back " + username;
+                                await Task.Delay(1500);
+                                EmployeeDashboard employeedashboard = new EmployeeDashboard();
+                                this.Hide();
+                                employeedashboard.ShowDialog();
+                                this.Close();
                             }
                             else
                             {

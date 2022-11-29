@@ -31,7 +31,6 @@
             this.userLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel1 = new System.Windows.Forms.Panel();
             this.logoutButton = new System.Windows.Forms.Button();
             this.manageButton = new System.Windows.Forms.Button();
@@ -41,13 +40,13 @@
             // 
             // userLabel
             // 
-            this.userLabel.AutoSize = true;
             this.userLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.userLabel.ForeColor = System.Drawing.Color.White;
-            this.userLabel.Location = new System.Drawing.Point(76, 24);
+            this.userLabel.Location = new System.Drawing.Point(3, 20);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(0, 54);
+            this.userLabel.Size = new System.Drawing.Size(283, 54);
             this.userLabel.TabIndex = 0;
+            this.userLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // closeButton
             // 
@@ -68,19 +67,9 @@
             this.mySqlCommand1.EnableCaching = false;
             this.mySqlCommand1.Transaction = null;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
-            this.menuStrip1.Location = new System.Drawing.Point(-5, -1);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(202, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.manageButton);
             this.panel1.Controls.Add(this.userLabel);
@@ -131,11 +120,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1626, 800);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -144,9 +133,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AdminDashboard_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AdminDashboard_MouseUp);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -155,7 +142,6 @@
         private Label userLabel;
         private Button closeButton;
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
-        private MenuStrip menuStrip1;
         private Panel panel1;
         private Button logoutButton;
         private Button manageButton;

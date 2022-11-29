@@ -42,26 +42,6 @@ namespace EMS
             this.Close();
         }
 
-        private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                this.Hide();
-                Login login = new Login();
-                login.ShowDialog();
-                this.Close();
-            }
-        }
-
-        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Manage manage = new Manage();
-            this.Hide();
-            manage.ShowDialog();
-            this.Close();
-        }
-
         private void manageButton_Click(object sender, EventArgs e)
         { 
             Manage manage = new Manage();
@@ -77,9 +57,9 @@ namespace EMS
                 this.Hide();
                 Login login = new Login();
                 login.ShowDialog();
-                this.Close();
                 userLabel.Text = "";
                 Login.username = "";
+                this.Close();
             }
         }
 
