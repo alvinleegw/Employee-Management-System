@@ -62,6 +62,7 @@
             this.filterLabel = new System.Windows.Forms.Label();
             this.filterTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.resultLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -223,12 +224,12 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(995, 264);
+            this.dataGridView1.Location = new System.Drawing.Point(1035, 264);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 123;
             this.dataGridView1.RowTemplate.Height = 57;
-            this.dataGridView1.Size = new System.Drawing.Size(1978, 833);
+            this.dataGridView1.Size = new System.Drawing.Size(1938, 735);
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
@@ -358,7 +359,7 @@
             this.panel1.Controls.Add(this.searchLabel);
             this.panel1.Controls.Add(this.nameRadioButton);
             this.panel1.Controls.Add(this.employeeidRadioButton);
-            this.panel1.Location = new System.Drawing.Point(995, 76);
+            this.panel1.Location = new System.Drawing.Point(1026, 92);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(906, 166);
             this.panel1.TabIndex = 26;
@@ -432,7 +433,7 @@
             this.filterLabel.AutoSize = true;
             this.filterLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.filterLabel.ForeColor = System.Drawing.Color.White;
-            this.filterLabel.Location = new System.Drawing.Point(1907, 73);
+            this.filterLabel.Location = new System.Drawing.Point(1947, 89);
             this.filterLabel.Name = "filterLabel";
             this.filterLabel.Size = new System.Drawing.Size(472, 54);
             this.filterLabel.TabIndex = 31;
@@ -440,7 +441,7 @@
             // 
             // filterTextBox
             // 
-            this.filterTextBox.Location = new System.Drawing.Point(1910, 130);
+            this.filterTextBox.Location = new System.Drawing.Point(1950, 146);
             this.filterTextBox.Name = "filterTextBox";
             this.filterTextBox.Size = new System.Drawing.Size(545, 55);
             this.filterTextBox.TabIndex = 30;
@@ -450,7 +451,7 @@
             this.searchButton.BackColor = System.Drawing.Color.Crimson;
             this.searchButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.searchButton.ForeColor = System.Drawing.Color.White;
-            this.searchButton.Location = new System.Drawing.Point(2474, 122);
+            this.searchButton.Location = new System.Drawing.Point(2514, 138);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(203, 69);
             this.searchButton.TabIndex = 27;
@@ -458,12 +459,23 @@
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // resultLabel
+            // 
+            this.resultLabel.AutoSize = true;
+            this.resultLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.resultLabel.ForeColor = System.Drawing.Color.Salmon;
+            this.resultLabel.Location = new System.Drawing.Point(1838, 1002);
+            this.resultLabel.Name = "resultLabel";
+            this.resultLabel.Size = new System.Drawing.Size(0, 54);
+            this.resultLabel.TabIndex = 32;
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(3004, 1345);
+            this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.filterLabel);
             this.Controls.Add(this.filterTextBox);
             this.Controls.Add(this.searchButton);
@@ -541,5 +553,6 @@
         private Label filterLabel;
         private Button searchButton;
         private RadioButton allRadioButton;
+        private Label resultLabel;
     }
 }

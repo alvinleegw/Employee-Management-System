@@ -39,8 +39,12 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
+                MySqlCommand command2 = connection.CreateCommand();
                 command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
+                command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE ";
                 command.ExecuteNonQuery();
+                string rows = command2.ExecuteScalar().ToString();
+                resultLabel.Text = rows + " rows returned";
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
                 {
@@ -157,6 +161,7 @@ namespace EMS
             departmentTextBox.Text = String.Empty;
             numericUpDown1.Value = 1;
             statusLabel.Text = String.Empty;
+            resultLabel.Text = String.Empty;
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -183,81 +188,97 @@ namespace EMS
             email = emailTextBox.Text;
             department = departmentTextBox.Text;
             hourlyrate = (int)numericUpDown1.Value;
-            try
+            if (employeeidTextBox.Text == String.Empty || usernameTextBox.Text == String.Empty
+            || nameTextBox.Text == String.Empty || positionTextBox.Text == String.Empty 
+            || emailTextBox.Text == String.Empty || departmentTextBox.Text == String.Empty)
             {
-
-                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "UPDATE EMPLOYEE SET employeeid = '" + employeeid + "', username = '" + username 
-                + "', name = '" + name + "', position = '" + position + "', email = '" + email + "', department = '" 
-                + department + "', hourlyrate = '" + hourlyrate + "' WHERE employeeid = '" + employeeid + "'";
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    statusLabel.Text = "Data Updated Successfully";
-                }
-                else
-                {
-                    statusLabel.Text = "Failed to Update Data";
-                }
-                command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
-                command.ExecuteNonQuery();
-                DataTable dataTable = new DataTable();
-                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
-                {
-                    dataAdapter.Fill(dataTable);
-                }
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.DataMember = dataTable.TableName;
-                connection.Close();
+                statusLabel.Text = "Fields Except Password Field Must Not Be Empty";
             }
-            catch (Exception ex)
+            else
             {
-                statusLabel.Text = ex.Message;
+                try
+                {
+
+                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                    connection = new MySqlConnection(connectionString);
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = "UPDATE EMPLOYEE SET employeeid = '" + employeeid + "', username = '" + username
+                    + "', name = '" + name + "', position = '" + position + "', email = '" + email + "', department = '"
+                    + department + "', hourlyrate = '" + hourlyrate + "' WHERE employeeid = '" + employeeid + "'";
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        statusLabel.Text = "Data Updated Successfully";
+                    }
+                    else
+                    {
+                        statusLabel.Text = "Failed to Update Data";
+                    }
+                    command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.DataMember = dataTable.TableName;
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    statusLabel.Text = ex.Message;
+                }
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             employeeid = employeeidTextBox.Text;
-            try
+            if (employeeid == String.Empty)
             {
-                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "DELETE FROM EMPLOYEE WHERE employeeid = '" + employeeid + "'";
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    statusLabel.Text = "Data Deleted Successfully";
-                    employeeidTextBox.Text = String.Empty;
-                    usernameTextBox.Text = String.Empty;
-                    passwordTextBox.Text = String.Empty;
-                    nameTextBox.Text = String.Empty;
-                    positionTextBox.Text = String.Empty;
-                    emailTextBox.Text = String.Empty;
-                    departmentTextBox.Text = String.Empty;
-                    numericUpDown1.Value = 1;
-                }
-                else
-                {
-                    statusLabel.Text = "Failed to Delete Data";
-                }
-                command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
-                command.ExecuteNonQuery();
-                DataTable dataTable = new DataTable();
-                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
-                {
-                    dataAdapter.Fill(dataTable);
-                }
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.DataMember = dataTable.TableName;
-                connection.Close();
+                statusLabel.Text = "Please Fill In Employee ID";
             }
-            catch (Exception ex)
+            else
             {
-                statusLabel.Text = ex.Message;
+                try
+                {
+                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                    connection = new MySqlConnection(connectionString);
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = "DELETE FROM EMPLOYEE WHERE employeeid = '" + employeeid + "'";
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        statusLabel.Text = "Data Deleted Successfully";
+                        employeeidTextBox.Text = String.Empty;
+                        usernameTextBox.Text = String.Empty;
+                        passwordTextBox.Text = String.Empty;
+                        nameTextBox.Text = String.Empty;
+                        positionTextBox.Text = String.Empty;
+                        emailTextBox.Text = String.Empty;
+                        departmentTextBox.Text = String.Empty;
+                        numericUpDown1.Value = 1;
+                    }
+                    else
+                    {
+                        statusLabel.Text = "Failed to Delete Data";
+                    }
+                    command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.DataMember = dataTable.TableName;
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    statusLabel.Text = ex.Message;
+                }
             }
         }
 
@@ -269,27 +290,34 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
+                MySqlCommand command2 = connection.CreateCommand();
                 if (employeeidRadioButton.Checked)
                 {
                     command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE " +
                     "WHERE employeeid LIKE '" + filterTextBox.Text + "%'";
+                    command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE " + "WHERE employeeid LIKE '" + filterTextBox.Text + "%'";
                 }
                 if (nameRadioButton.Checked)
                 {
                     command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE " +
                     "WHERE name LIKE '" + filterTextBox.Text + "%'";
+                    command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE " + "WHERE name LIKE '" + filterTextBox.Text + "%'";
                 }
                 if (positionRadioButton.Checked)
                 {
                     command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE " +
                     "WHERE position LIKE '" + filterTextBox.Text + "%'";
+                    command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE " + "WHERE position LIKE '" + filterTextBox.Text + "%'";
                 }
                 if (departmentRadioButton.Checked)
                 {
                     command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE " +
-                    "WHERE department='" + filterTextBox.Text + "'";
+                    "WHERE department LIKE '" + filterTextBox.Text + "%'";
+                    command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE " + "WHERE department LIKE '" + filterTextBox.Text + "%'";
                 }
                 command.ExecuteNonQuery();
+                string rows = command2.ExecuteScalar().ToString();
+                resultLabel.Text = rows + " rows returned";
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
                 {
@@ -301,7 +329,7 @@ namespace EMS
             }
             catch (Exception ex)
             {
-
+                statusLabel.Text = ex.Message;
             }
         }
 
@@ -313,11 +341,15 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
+                MySqlCommand command2 = connection.CreateCommand();
                 if (allRadioButton.Checked)
                 {
                     command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
+                    command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE ";
                 }
                 command.ExecuteNonQuery();
+                string rows = command2.ExecuteScalar().ToString();
+                resultLabel.Text = rows + " rows returned";
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
                 {
@@ -329,7 +361,7 @@ namespace EMS
             }
             catch (Exception ex)
             {
-
+                statusLabel.Text = ex.Message;
             }
         }
     }
