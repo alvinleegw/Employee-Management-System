@@ -47,6 +47,10 @@ namespace EMS
 
         private void closeButton_Click(object sender, EventArgs e)
         {
+            Manage.employeeid = String.Empty;
+            Manage.name = String.Empty;
+            Manage.position = String.Empty;
+            Manage.department = String.Empty;
             this.Close();
         }
 
@@ -93,6 +97,14 @@ namespace EMS
                 printButton.Visible = true;
                 closeButton.Visible = true;
                 pictureBox1.Image = null;
+                employeeidLabel.Text = String.Empty;
+                nameLabel.Text = String.Empty;
+                positionLabel.Text = String.Empty;
+                departmentLabel.Text = String.Empty;
+                Manage.employeeid = String.Empty;
+                Manage.name = String.Empty;
+                Manage.position = String.Empty;
+                Manage.department = String.Empty;
             }
         }
 

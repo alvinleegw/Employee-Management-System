@@ -66,6 +66,7 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.minimizeButton = new System.Windows.Forms.Button();
             this.badgeButton = new System.Windows.Forms.Button();
+            this.qrButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -510,12 +511,26 @@
             this.badgeButton.UseVisualStyleBackColor = false;
             this.badgeButton.Click += new System.EventHandler(this.badgeButton_Click);
             // 
+            // qrButton
+            // 
+            this.qrButton.BackColor = System.Drawing.Color.Crimson;
+            this.qrButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.qrButton.ForeColor = System.Drawing.Color.White;
+            this.qrButton.Location = new System.Drawing.Point(525, 1235);
+            this.qrButton.Name = "qrButton";
+            this.qrButton.Size = new System.Drawing.Size(440, 69);
+            this.qrButton.TabIndex = 36;
+            this.qrButton.Text = "Generate QR Code";
+            this.qrButton.UseVisualStyleBackColor = false;
+            this.qrButton.Click += new System.EventHandler(this.qrButton_Click);
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(3032, 1345);
+            this.Controls.Add(this.qrButton);
             this.Controls.Add(this.badgeButton);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exportButton);
@@ -604,5 +619,6 @@
         private Button exportButton;
         private Button minimizeButton;
         private Button badgeButton;
+        private Button qrButton;
     }
 }

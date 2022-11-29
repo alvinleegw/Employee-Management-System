@@ -60,7 +60,6 @@
             this.employeeidLabel.Name = "employeeidLabel";
             this.employeeidLabel.Size = new System.Drawing.Size(633, 33);
             this.employeeidLabel.TabIndex = 1;
-            this.employeeidLabel.Text = "label1";
             this.employeeidLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // nameLabel
@@ -70,7 +69,6 @@
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(633, 33);
             this.nameLabel.TabIndex = 2;
-            this.nameLabel.Text = "label2";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // positionLabel
@@ -80,7 +78,6 @@
             this.positionLabel.Name = "positionLabel";
             this.positionLabel.Size = new System.Drawing.Size(633, 33);
             this.positionLabel.TabIndex = 3;
-            this.positionLabel.Text = "label2";
             this.positionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // departmentLabel
@@ -90,7 +87,6 @@
             this.departmentLabel.Name = "departmentLabel";
             this.departmentLabel.Size = new System.Drawing.Size(625, 33);
             this.departmentLabel.TabIndex = 4;
-            this.departmentLabel.Text = "label2";
             this.departmentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // printButton
@@ -135,7 +131,6 @@
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(633, 33);
             this.errorLabel.TabIndex = 8;
-            this.errorLabel.Text = "label1";
             this.errorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Badge

@@ -434,5 +434,20 @@ namespace EMS
                 badge.ShowDialog();
             } 
         }
+
+        private void qrButton_Click(object sender, EventArgs e)
+        {
+            if (employeeidTextBox.Text == String.Empty)
+            {
+                statusLabel.Text = "Employee ID Must Not Be Empty";
+            }
+            else
+            {
+                statusLabel.Text = String.Empty;
+                employeeid = employeeidTextBox.Text;
+                QR qr = new QR();
+                qr.ShowDialog();
+            }
+        }
     }
 }
