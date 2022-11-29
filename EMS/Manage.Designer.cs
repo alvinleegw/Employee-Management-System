@@ -63,6 +63,7 @@
             this.filterTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.resultLabel = new System.Windows.Forms.Label();
+            this.exportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,7 +73,7 @@
             // 
             this.closeButton.BackColor = System.Drawing.Color.Tomato;
             this.closeButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.Location = new System.Drawing.Point(2911, 10);
+            this.closeButton.Location = new System.Drawing.Point(2939, 10);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(81, 69);
             this.closeButton.TabIndex = 0;
@@ -229,7 +230,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 123;
             this.dataGridView1.RowTemplate.Height = 57;
-            this.dataGridView1.Size = new System.Drawing.Size(1938, 735);
+            this.dataGridView1.Size = new System.Drawing.Size(1957, 731);
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
@@ -290,7 +291,7 @@
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.statusLabel.ForeColor = System.Drawing.Color.Salmon;
-            this.statusLabel.Location = new System.Drawing.Point(47, 1013);
+            this.statusLabel.Location = new System.Drawing.Point(60, 1051);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 54);
             this.statusLabel.TabIndex = 21;
@@ -443,7 +444,7 @@
             // 
             this.filterTextBox.Location = new System.Drawing.Point(1950, 146);
             this.filterTextBox.Name = "filterTextBox";
-            this.filterTextBox.Size = new System.Drawing.Size(545, 55);
+            this.filterTextBox.Size = new System.Drawing.Size(507, 55);
             this.filterTextBox.TabIndex = 30;
             // 
             // searchButton
@@ -451,7 +452,7 @@
             this.searchButton.BackColor = System.Drawing.Color.Crimson;
             this.searchButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.searchButton.ForeColor = System.Drawing.Color.White;
-            this.searchButton.Location = new System.Drawing.Point(2514, 138);
+            this.searchButton.Location = new System.Drawing.Point(2476, 138);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(203, 69);
             this.searchButton.TabIndex = 27;
@@ -464,17 +465,31 @@
             this.resultLabel.AutoSize = true;
             this.resultLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.resultLabel.ForeColor = System.Drawing.Color.Salmon;
-            this.resultLabel.Location = new System.Drawing.Point(1838, 1002);
+            this.resultLabel.Location = new System.Drawing.Point(1842, 998);
             this.resultLabel.Name = "resultLabel";
             this.resultLabel.Size = new System.Drawing.Size(0, 54);
             this.resultLabel.TabIndex = 32;
+            // 
+            // exportButton
+            // 
+            this.exportButton.BackColor = System.Drawing.Color.Crimson;
+            this.exportButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.exportButton.ForeColor = System.Drawing.Color.White;
+            this.exportButton.Location = new System.Drawing.Point(2699, 138);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(293, 69);
+            this.exportButton.TabIndex = 33;
+            this.exportButton.Text = "Export Data";
+            this.exportButton.UseVisualStyleBackColor = false;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(3004, 1345);
+            this.ClientSize = new System.Drawing.Size(3032, 1345);
+            this.Controls.Add(this.exportButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.filterLabel);
             this.Controls.Add(this.filterTextBox);
@@ -554,5 +569,6 @@
         private Button searchButton;
         private RadioButton allRadioButton;
         private Label resultLabel;
+        private Button exportButton;
     }
 }

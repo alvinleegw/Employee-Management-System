@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using MySqlX.XDevAPI.Relational;
 
 namespace EMS
 {
@@ -358,6 +359,34 @@ namespace EMS
                 dataGridView1.DataSource = dataTable;
                 dataGridView1.DataMember = dataTable.TableName;
                 connection.Close();
+            }
+            catch (Exception ex)
+            {
+                statusLabel.Text = ex.Message;
+            }
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                var csv = new System.Text.StringBuilder();
+                var header = string.Format("{0},{1},{2},{3},{4},{5},{6}", "Employee ID", "Username", "Name", "Position", "Email", "Department", "Hourly Rate");
+                csv.AppendLine(header);
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6}", row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value, row.Cells[4].Value, row.Cells[5].Value, row.Cells[6].Value);
+                    csv.AppendLine(newLine);
+                }
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Title = "Export Data";
+                saveFileDialog.Filter = "CSV file(*.csv)|*.csv";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(saveFileDialog.FileName, csv.ToString());
+                    statusLabel.Text = "Data Successfully Exported";
+                }
             }
             catch (Exception ex)
             {
