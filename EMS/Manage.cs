@@ -45,6 +45,7 @@ namespace EMS
                 MySqlCommand command = connection.CreateCommand();
                 command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
                 command.ExecuteNonQuery();
+                connection.Close();
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
                 {

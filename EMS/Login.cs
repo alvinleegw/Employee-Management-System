@@ -105,6 +105,7 @@ namespace EMS
                         {
                             statusLabel.Text = "Invalid Username or Password";
                         }
+                        connection.Close();
                     }
                     catch (Exception ex)
                     {
