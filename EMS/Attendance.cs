@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QRCoder;
 using MySql.Data.MySqlClient;
+using System.Drawing.Drawing2D;
 
 namespace EMS
 {
@@ -25,8 +26,7 @@ namespace EMS
         MySqlConnection connection;
         FilterInfoCollection filterinfocollection;
         VideoCaptureDevice capturedevice;
-        //remember set to null later
-        public static string username = "alvinleegw";
+        public static string username;
         public static string employeeid;
         public static string clockin;
         public static string clockout;
@@ -38,45 +38,72 @@ namespace EMS
         public Attendance()
         {
             InitializeComponent();
-            //remember to uncomment later
-            //username = EmployeeDashboard.username;
-            try
+            username = EmployeeDashboard.username;
+            DayOfWeek day = DateTime.Now.DayOfWeek;
+            TimeSpan start = new TimeSpan(07, 30, 00);
+            TimeSpan end = new TimeSpan(17, 31, 00);
+            TimeSpan now = DateTime.Now.TimeOfDay;
+            if (day.ToString() == "Saturday" || day.ToString() == "Sunday")
             {
-                date = DateTime.Now.ToString("d");
-                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                MySqlCommand command2 = connection.CreateCommand();
-                command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
-                employeeid = command.ExecuteScalar().ToString();
-                command2.CommandText = "SELECT counter FROM ATTENDANCE WHERE employeeid = '" + employeeid + "' AND date = '" +
-                date + "'";
-                counter = (int)command2.ExecuteScalar();
-                connection.Close();
-            }
-            catch (NullReferenceException e)
-            {
-                statusLabel.ForeColor = Color.SpringGreen;
-                statusLabel.Text = "Please Scan Employee Badge to Clock In / Out";
-            }
-            catch (Exception ex)
-            {
-                statusLabel.ForeColor = Color.Red;
-                statusLabel.Text = ex.Message;
-            }
-            if (counter == 0 || counter == null)
-            {
-                clockinButton.Enabled = true;
+                displayLabel.ForeColor = Color.MistyRose;
+                displayLabel.Text = "Clock In / Out Enabled on Weekdays Only";
+                clockinButton.Enabled = false;
                 clockoutButton.Enabled = false;
             }
-            else if (counter == 1)
+            else if (now >= start && now <= end)
             {
-                clockinButton.Enabled = false;
-                clockoutButton.Enabled = true;
+                try
+                {
+                    date = DateTime.Now.ToString("d");
+                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                    connection = new MySqlConnection(connectionString);
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    MySqlCommand command2 = connection.CreateCommand();
+                    command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
+                    employeeid = command.ExecuteScalar().ToString();
+                    command2.CommandText = "SELECT counter FROM ATTENDANCE WHERE employeeid = '" + employeeid + "' AND date = '" +
+                    date + "'";
+                    counter = (int)command2.ExecuteScalar();
+                    connection.Close();
+                }
+                catch (NullReferenceException e)
+                {
+                    counter = 0;
+                    statusLabel.ForeColor = Color.SpringGreen;
+                    statusLabel.Text = "Please Scan Employee Badge to Clock In / Out";
+                }
+                catch (Exception ex)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = ex.Message;
+                }
+                if (counter == 0 || counter == null)
+                {
+                    statusLabel.ForeColor = Color.SpringGreen;
+                    statusLabel.Text = "Please Scan Employee Badge to Clock In / Out";
+                    clockinButton.Enabled = true;
+                    clockoutButton.Enabled = false;
+                }
+                else if (counter == 1)
+                {
+                    statusLabel.ForeColor = Color.SpringGreen;
+                    statusLabel.Text = "You Have 1 Scan Attempt Remaining for Today";
+                    clockinButton.Enabled = false;
+                    clockoutButton.Enabled = true;
+                }
+                else if (counter == 2)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "You Have Reached Maximum Scanning Attempt for Today";
+                    clockinButton.Enabled = false;
+                    clockoutButton.Enabled = false;
+                }
             }
-            else if (counter == 2)
+            else
             {
+                displayLabel.ForeColor = Color.MistyRose;
+                displayLabel.Text = "Clock In / Out Enabled Between 0730 to 1730 Only";
                 clockinButton.Enabled = false;
                 clockoutButton.Enabled = false;
             }
@@ -84,7 +111,6 @@ namespace EMS
             foreach (FilterInfo filterInfo in filterinfocollection)
             {
                 cameraComboBox.Items.Add(filterInfo.Name);
-
             }
             cameraComboBox.SelectedIndex = 0; 
         }
@@ -165,7 +191,7 @@ namespace EMS
                         }
                         catch (Exception ex)
                         {
-                            statusLabel.ForeColor = Color.Red;
+                            statusLabel.ForeColor = Color.MistyRose;
                             statusLabel.Text = "Error Connecting to Database";
                         }
                         if (counter == 0)
@@ -191,7 +217,7 @@ namespace EMS
                                 }
                                 else
                                 {
-                                    statusLabel.ForeColor = Color.Red;
+                                    statusLabel.ForeColor = Color.MistyRose;
                                     statusLabel.Text = "Failed to Clock In Please Try Again";
                                     counter = 0;
                                 }
@@ -205,7 +231,7 @@ namespace EMS
                     }
                     else
                     {
-                        statusLabel.ForeColor = Color.Red;
+                        statusLabel.ForeColor = Color.MistyRose;
                         statusLabel.Text = "Please Use Your Own Employee Badge to Clock In";
                     }
                     timer1.Stop();
@@ -251,7 +277,7 @@ namespace EMS
                         }
                         catch (Exception ex)
                         {
-                            statusLabel.ForeColor = Color.Red;
+                            statusLabel.ForeColor = Color.MistyRose;
                             statusLabel.Text = "Error Connecting to Database";
                         }
                         if (counter == 1)
@@ -285,7 +311,7 @@ namespace EMS
                                 }
                                 else
                                 {
-                                    statusLabel.ForeColor = Color.Red;
+                                    statusLabel.ForeColor = Color.MistyRose;
                                     statusLabel.Text = "Failed to Clock Out Please Try Again";
                                 }
                                 connection.Close();
@@ -298,7 +324,7 @@ namespace EMS
                     }
                     else
                     {
-                        statusLabel.ForeColor = Color.Red;
+                        statusLabel.ForeColor = Color.MistyRose;
                         statusLabel.Text = "Please Use Your Own Employee Badge to Clock Out";
                     }
                     timer2.Stop();

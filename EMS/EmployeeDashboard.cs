@@ -81,5 +81,13 @@ namespace EMS
             attendance.ShowDialog();
             this.Close();
         }
+
+        private void historyButton_Click(object sender, EventArgs e)
+        {
+            EmployeeHistory employeehistory = new EmployeeHistory();
+            this.Hide();
+            employeehistory.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -36,6 +36,7 @@
             this.clockoutButton = new System.Windows.Forms.Button();
             this.clockinButton = new System.Windows.Forms.Button();
             this.userLabel = new System.Windows.Forms.Label();
+            this.historyButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel1.Controls.Add(this.historyButton);
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.payrollButton);
             this.panel1.Controls.Add(this.clockoutButton);
@@ -81,7 +83,7 @@
             this.logoutButton.BackColor = System.Drawing.Color.Black;
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.logoutButton.ForeColor = System.Drawing.Color.White;
-            this.logoutButton.Location = new System.Drawing.Point(45, 463);
+            this.logoutButton.Location = new System.Drawing.Point(45, 576);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(225, 69);
             this.logoutButton.TabIndex = 6;
@@ -94,7 +96,7 @@
             this.payrollButton.BackColor = System.Drawing.Color.Black;
             this.payrollButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.payrollButton.ForeColor = System.Drawing.Color.White;
-            this.payrollButton.Location = new System.Drawing.Point(45, 349);
+            this.payrollButton.Location = new System.Drawing.Point(45, 462);
             this.payrollButton.Name = "payrollButton";
             this.payrollButton.Size = new System.Drawing.Size(225, 69);
             this.payrollButton.TabIndex = 5;
@@ -135,8 +137,20 @@
             this.userLabel.Name = "userLabel";
             this.userLabel.Size = new System.Drawing.Size(340, 48);
             this.userLabel.TabIndex = 0;
-            this.userLabel.Text = "label1";
             this.userLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // historyButton
+            // 
+            this.historyButton.BackColor = System.Drawing.Color.Black;
+            this.historyButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.historyButton.ForeColor = System.Drawing.Color.White;
+            this.historyButton.Location = new System.Drawing.Point(45, 351);
+            this.historyButton.Name = "historyButton";
+            this.historyButton.Size = new System.Drawing.Size(225, 69);
+            this.historyButton.TabIndex = 7;
+            this.historyButton.Text = "History";
+            this.historyButton.UseVisualStyleBackColor = false;
+            this.historyButton.Click += new System.EventHandler(this.historyButton_Click);
             // 
             // EmployeeDashboard
             // 
@@ -169,5 +183,6 @@
         private Button logoutButton;
         private Button payrollButton;
         private Button clockoutButton;
+        private Button historyButton;
     }
 }
