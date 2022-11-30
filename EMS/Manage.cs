@@ -52,6 +52,13 @@ namespace EMS
                     dataAdapter.Fill(dataTable);
                 }
                 dataGridView1.DataSource = dataTable;
+                dataGridView1.Columns[0].HeaderText = "Employee ID";
+                dataGridView1.Columns[1].HeaderText = "Username";
+                dataGridView1.Columns[2].HeaderText = "Name";
+                dataGridView1.Columns[3].HeaderText = "Position";
+                dataGridView1.Columns[4].HeaderText = "Email";
+                dataGridView1.Columns[5].HeaderText = "Department";
+                dataGridView1.Columns[6].HeaderText = "Hourly Rate";
                 dataGridView1.DataMember = dataTable.TableName;
             }
             catch (Exception ex)
@@ -141,6 +148,13 @@ namespace EMS
                         dataAdapter.Fill(dataTable);
                     }
                     dataGridView1.DataSource = dataTable;
+                    dataGridView1.Columns[0].HeaderText = "Employee ID";
+                    dataGridView1.Columns[1].HeaderText = "Username";
+                    dataGridView1.Columns[2].HeaderText = "Name";
+                    dataGridView1.Columns[3].HeaderText = "Position";
+                    dataGridView1.Columns[4].HeaderText = "Email";
+                    dataGridView1.Columns[5].HeaderText = "Department";
+                    dataGridView1.Columns[6].HeaderText = "Hourly Rate";
                     dataGridView1.DataMember = dataTable.TableName;
                     connection.Close();
                 }
@@ -223,6 +237,13 @@ namespace EMS
                         dataAdapter.Fill(dataTable);
                     }
                     dataGridView1.DataSource = dataTable;
+                    dataGridView1.Columns[0].HeaderText = "Employee ID";
+                    dataGridView1.Columns[1].HeaderText = "Username";
+                    dataGridView1.Columns[2].HeaderText = "Name";
+                    dataGridView1.Columns[3].HeaderText = "Position";
+                    dataGridView1.Columns[4].HeaderText = "Email";
+                    dataGridView1.Columns[5].HeaderText = "Department";
+                    dataGridView1.Columns[6].HeaderText = "Hourly Rate";
                     dataGridView1.DataMember = dataTable.TableName;
                     connection.Close();
                 }
@@ -273,6 +294,13 @@ namespace EMS
                         dataAdapter.Fill(dataTable);
                     }
                     dataGridView1.DataSource = dataTable;
+                    dataGridView1.Columns[0].HeaderText = "Employee ID";
+                    dataGridView1.Columns[1].HeaderText = "Username";
+                    dataGridView1.Columns[2].HeaderText = "Name";
+                    dataGridView1.Columns[3].HeaderText = "Position";
+                    dataGridView1.Columns[4].HeaderText = "Email";
+                    dataGridView1.Columns[5].HeaderText = "Department";
+                    dataGridView1.Columns[6].HeaderText = "Hourly Rate";
                     dataGridView1.DataMember = dataTable.TableName;
                     connection.Close();
                 }
@@ -325,6 +353,13 @@ namespace EMS
                     dataAdapter.Fill(dataTable);
                 }
                 dataGridView1.DataSource = dataTable;
+                dataGridView1.Columns[0].HeaderText = "Employee ID";
+                dataGridView1.Columns[1].HeaderText = "Username";
+                dataGridView1.Columns[2].HeaderText = "Name";
+                dataGridView1.Columns[3].HeaderText = "Position";
+                dataGridView1.Columns[4].HeaderText = "Email";
+                dataGridView1.Columns[5].HeaderText = "Department";
+                dataGridView1.Columns[6].HeaderText = "Hourly Rate";
                 dataGridView1.DataMember = dataTable.TableName;
                 connection.Close();
             }
@@ -336,33 +371,43 @@ namespace EMS
 
         private void allRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            try
+            if (allRadioButton.Checked)
             {
-                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                MySqlCommand command2 = connection.CreateCommand();
-                if (allRadioButton.Checked)
+                try
                 {
-                    command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
-                    command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE ";
+                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                    connection = new MySqlConnection(connectionString);
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    MySqlCommand command2 = connection.CreateCommand();
+                    if (allRadioButton.Checked)
+                    {
+                        command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
+                        command2.CommandText = "SELECT COUNT(*) FROM EMPLOYEE ";
+                    }
+                    command.ExecuteNonQuery();
+                    string rows = command2.ExecuteScalar().ToString();
+                    resultLabel.Text = rows + " rows returned";
+                    DataTable dataTable = new DataTable();
+                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.Columns[0].HeaderText = "Employee ID";
+                    dataGridView1.Columns[1].HeaderText = "Username";
+                    dataGridView1.Columns[2].HeaderText = "Name";
+                    dataGridView1.Columns[3].HeaderText = "Position";
+                    dataGridView1.Columns[4].HeaderText = "Email";
+                    dataGridView1.Columns[5].HeaderText = "Department";
+                    dataGridView1.Columns[6].HeaderText = "Hourly Rate";
+                    dataGridView1.DataMember = dataTable.TableName;
+                    connection.Close();
                 }
-                command.ExecuteNonQuery();
-                string rows = command2.ExecuteScalar().ToString();
-                resultLabel.Text = rows + " rows returned";
-                DataTable dataTable = new DataTable();
-                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
+                catch (Exception ex)
                 {
-                    dataAdapter.Fill(dataTable);
+                    statusLabel.Text = ex.Message;
                 }
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.DataMember = dataTable.TableName;
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                statusLabel.Text = ex.Message;
             }
         }
 

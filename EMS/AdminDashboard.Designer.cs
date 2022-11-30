@@ -35,6 +35,7 @@
             this.logoutButton = new System.Windows.Forms.Button();
             this.manageButton = new System.Windows.Forms.Button();
             this.minimizeButton = new System.Windows.Forms.Button();
+            this.historyButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +71,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.historyButton);
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.manageButton);
             this.panel1.Controls.Add(this.userLabel);
@@ -83,7 +85,7 @@
             this.logoutButton.BackColor = System.Drawing.Color.Firebrick;
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.logoutButton.ForeColor = System.Drawing.Color.White;
-            this.logoutButton.Location = new System.Drawing.Point(38, 225);
+            this.logoutButton.Location = new System.Drawing.Point(38, 339);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(225, 69);
             this.logoutButton.TabIndex = 2;
@@ -116,6 +118,19 @@
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
+            // historyButton
+            // 
+            this.historyButton.BackColor = System.Drawing.Color.Firebrick;
+            this.historyButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.historyButton.ForeColor = System.Drawing.Color.White;
+            this.historyButton.Location = new System.Drawing.Point(38, 223);
+            this.historyButton.Name = "historyButton";
+            this.historyButton.Size = new System.Drawing.Size(225, 69);
+            this.historyButton.TabIndex = 3;
+            this.historyButton.Text = "History";
+            this.historyButton.UseVisualStyleBackColor = false;
+            this.historyButton.Click += new System.EventHandler(this.historyButton_Click);
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
@@ -146,5 +161,6 @@
         private Button logoutButton;
         private Button manageButton;
         private Button minimizeButton;
+        private Button historyButton;
     }
 }

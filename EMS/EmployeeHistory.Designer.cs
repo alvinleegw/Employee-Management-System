@@ -38,7 +38,7 @@
             this.monthComboBox = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.allRadioButton = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.displayLabel = new System.Windows.Forms.Label();
             this.monthRadioButton = new System.Windows.Forms.RadioButton();
             this.dateRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -102,7 +102,6 @@
             this.resultLabel.Name = "resultLabel";
             this.resultLabel.Size = new System.Drawing.Size(1471, 60);
             this.resultLabel.TabIndex = 4;
-            this.resultLabel.Text = "label1";
             this.resultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
@@ -111,7 +110,7 @@
             this.panel1.Controls.Add(this.monthComboBox);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.allRadioButton);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.displayLabel);
             this.panel1.Controls.Add(this.monthRadioButton);
             this.panel1.Controls.Add(this.dateRadioButton);
             this.panel1.Location = new System.Drawing.Point(121, 141);
@@ -125,9 +124,8 @@
             this.selectLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.selectLabel.Location = new System.Drawing.Point(596, 12);
             this.selectLabel.Name = "selectLabel";
-            this.selectLabel.Size = new System.Drawing.Size(125, 48);
+            this.selectLabel.Size = new System.Drawing.Size(0, 48);
             this.selectLabel.TabIndex = 6;
-            this.selectLabel.Text = "Please";
             // 
             // monthComboBox
             // 
@@ -147,7 +145,7 @@
             "10",
             "11",
             "12"});
-            this.monthComboBox.Location = new System.Drawing.Point(915, 69);
+            this.monthComboBox.Location = new System.Drawing.Point(606, 73);
             this.monthComboBox.Name = "monthComboBox";
             this.monthComboBox.Size = new System.Drawing.Size(286, 56);
             this.monthComboBox.TabIndex = 5;
@@ -156,10 +154,11 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(606, 70);
+            this.dateTimePicker1.Location = new System.Drawing.Point(606, 71);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(286, 55);
             this.dateTimePicker1.TabIndex = 4;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // allRadioButton
             // 
@@ -172,16 +171,17 @@
             this.allRadioButton.TabStop = true;
             this.allRadioButton.Text = "Display All";
             this.allRadioButton.UseVisualStyleBackColor = true;
+            this.allRadioButton.CheckedChanged += new System.EventHandler(this.allRadioButton_CheckedChanged);
             // 
-            // label1
+            // displayLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(414, 48);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Filter Results Based On:";
+            this.displayLabel.AutoSize = true;
+            this.displayLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.displayLabel.Location = new System.Drawing.Point(3, 12);
+            this.displayLabel.Name = "displayLabel";
+            this.displayLabel.Size = new System.Drawing.Size(414, 48);
+            this.displayLabel.TabIndex = 2;
+            this.displayLabel.Text = "Filter Results Based On:";
             // 
             // monthRadioButton
             // 
@@ -194,6 +194,7 @@
             this.monthRadioButton.TabStop = true;
             this.monthRadioButton.Text = "Month";
             this.monthRadioButton.UseVisualStyleBackColor = true;
+            this.monthRadioButton.CheckedChanged += new System.EventHandler(this.monthRadioButton_CheckedChanged);
             // 
             // dateRadioButton
             // 
@@ -206,12 +207,13 @@
             this.dateRadioButton.TabStop = true;
             this.dateRadioButton.Text = "Date";
             this.dateRadioButton.UseVisualStyleBackColor = true;
+            this.dateRadioButton.CheckedChanged += new System.EventHandler(this.dateRadioButton_CheckedChanged);
             // 
             // EmployeeHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PapayaWhip;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1470, 1111);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.resultLabel);
@@ -245,7 +247,7 @@
         private RadioButton monthRadioButton;
         private RadioButton dateRadioButton;
         private RadioButton allRadioButton;
-        private Label label1;
+        private Label displayLabel;
         private DateTimePicker dateTimePicker1;
         private ComboBox monthComboBox;
         private Label selectLabel;

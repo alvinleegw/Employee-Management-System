@@ -85,5 +85,13 @@ namespace EMS
             var p = PointToScreen(e.Location);
             Location = new Point(p.X - this._startPoint.X, p.Y - this._startPoint.Y);
         }
+
+        private void historyButton_Click(object sender, EventArgs e)
+        {
+            History history = new History();
+            this.Hide();
+            history.ShowDialog();
+            this.Close();
+        }
     }
 }

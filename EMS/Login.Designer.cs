@@ -43,9 +43,10 @@
             // loginLabel
             // 
             this.loginLabel.AutoSize = true;
-            this.loginLabel.BackColor = System.Drawing.Color.BurlyWood;
+            this.loginLabel.BackColor = System.Drawing.Color.Black;
             this.loginLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.loginLabel.Location = new System.Drawing.Point(350, 46);
+            this.loginLabel.ForeColor = System.Drawing.Color.White;
+            this.loginLabel.Location = new System.Drawing.Point(341, 9);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(155, 65);
             this.loginLabel.TabIndex = 0;
@@ -55,7 +56,8 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.usernameLabel.Location = new System.Drawing.Point(57, 146);
+            this.usernameLabel.ForeColor = System.Drawing.Color.White;
+            this.usernameLabel.Location = new System.Drawing.Point(76, 116);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(198, 48);
             this.usernameLabel.TabIndex = 1;
@@ -65,7 +67,8 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordLabel.Location = new System.Drawing.Point(66, 223);
+            this.passwordLabel.ForeColor = System.Drawing.Color.White;
+            this.passwordLabel.Location = new System.Drawing.Point(85, 193);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(189, 48);
             this.passwordLabel.TabIndex = 2;
@@ -74,7 +77,7 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.usernameTextBox.Location = new System.Drawing.Point(261, 146);
+            this.usernameTextBox.Location = new System.Drawing.Point(280, 116);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(457, 55);
             this.usernameTextBox.TabIndex = 3;
@@ -82,7 +85,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordTextBox.Location = new System.Drawing.Point(261, 223);
+            this.passwordTextBox.Location = new System.Drawing.Point(280, 193);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(457, 55);
             this.passwordTextBox.TabIndex = 4;
@@ -91,7 +94,7 @@
             // signinButton
             // 
             this.signinButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.signinButton.Location = new System.Drawing.Point(374, 356);
+            this.signinButton.Location = new System.Drawing.Point(393, 326);
             this.signinButton.Name = "signinButton";
             this.signinButton.Size = new System.Drawing.Size(164, 69);
             this.signinButton.TabIndex = 5;
@@ -102,7 +105,7 @@
             // resetButton
             // 
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.resetButton.Location = new System.Drawing.Point(554, 356);
+            this.resetButton.Location = new System.Drawing.Point(573, 326);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(164, 69);
             this.resetButton.TabIndex = 6;
@@ -115,7 +118,7 @@
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.statusLabel.ForeColor = System.Drawing.Color.Red;
-            this.statusLabel.Location = new System.Drawing.Point(66, 291);
+            this.statusLabel.Location = new System.Drawing.Point(85, 261);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 48);
             this.statusLabel.TabIndex = 7;
@@ -150,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.BurlyWood;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(807, 548);
             this.Controls.Add(this.minimiseButton);
             this.Controls.Add(this.closeButton);
