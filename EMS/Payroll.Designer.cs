@@ -28,197 +28,263 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.closeButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.payslipidLabel = new System.Windows.Forms.Label();
+            this.employeeidLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.positionLabel = new System.Windows.Forms.Label();
+            this.departmentLabel = new System.Windows.Forms.Label();
+            this.totalworkingdaysLabel = new System.Windows.Forms.Label();
+            this.hourlysalaryLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.totalsalaryLabel = new System.Windows.Forms.Label();
+            this.monthLabel = new System.Windows.Forms.Label();
+            this.dateissuedLabel = new System.Windows.Forms.Label();
             this.printButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.selectLabel = new System.Windows.Forms.Label();
+            this.yearLabel = new System.Windows.Forms.Label();
+            this.totalworkinghoursLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.Tomato;
-            this.closeButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.Location = new System.Drawing.Point(2395, 14);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(73, 69);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.Text = "X";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Gold;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(2307, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 69);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "-";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(1062, 9);
+            this.label1.Location = new System.Drawing.Point(914, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(526, 86);
             this.label1.TabIndex = 2;
             this.label1.Text = "Employee Payslip";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // payslipidLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(293, 128);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(203, 54);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Payslip ID:";
+            this.payslipidLabel.AutoSize = true;
+            this.payslipidLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.payslipidLabel.Location = new System.Drawing.Point(456, 133);
+            this.payslipidLabel.Name = "payslipidLabel";
+            this.payslipidLabel.Size = new System.Drawing.Size(203, 54);
+            this.payslipidLabel.TabIndex = 3;
+            this.payslipidLabel.Text = "Payslip ID:";
             // 
-            // label3
+            // employeeidLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(293, 226);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(254, 54);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Employee ID:";
+            this.employeeidLabel.AutoSize = true;
+            this.employeeidLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.employeeidLabel.Location = new System.Drawing.Point(456, 231);
+            this.employeeidLabel.Name = "employeeidLabel";
+            this.employeeidLabel.Size = new System.Drawing.Size(254, 54);
+            this.employeeidLabel.TabIndex = 4;
+            this.employeeidLabel.Text = "Employee ID:";
             // 
-            // label4
+            // nameLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(293, 337);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 54);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Name:";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nameLabel.Location = new System.Drawing.Point(456, 325);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(137, 54);
+            this.nameLabel.TabIndex = 5;
+            this.nameLabel.Text = "Name:";
             // 
-            // label5
+            // positionLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(293, 432);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(173, 54);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Position:";
+            this.positionLabel.AutoSize = true;
+            this.positionLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.positionLabel.Location = new System.Drawing.Point(456, 414);
+            this.positionLabel.Name = "positionLabel";
+            this.positionLabel.Size = new System.Drawing.Size(173, 54);
+            this.positionLabel.TabIndex = 6;
+            this.positionLabel.Text = "Position:";
             // 
-            // label6
+            // departmentLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(293, 539);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(245, 54);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Department:";
+            this.departmentLabel.AutoSize = true;
+            this.departmentLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.departmentLabel.Location = new System.Drawing.Point(456, 492);
+            this.departmentLabel.Name = "departmentLabel";
+            this.departmentLabel.Size = new System.Drawing.Size(245, 54);
+            this.departmentLabel.TabIndex = 7;
+            this.departmentLabel.Text = "Department:";
             // 
-            // label7
+            // totalworkingdaysLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(1157, 337);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(371, 54);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Total Working Days:";
+            this.totalworkingdaysLabel.AutoSize = true;
+            this.totalworkingdaysLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.totalworkingdaysLabel.Location = new System.Drawing.Point(1393, 492);
+            this.totalworkingdaysLabel.Name = "totalworkingdaysLabel";
+            this.totalworkingdaysLabel.Size = new System.Drawing.Size(371, 54);
+            this.totalworkingdaysLabel.TabIndex = 8;
+            this.totalworkingdaysLabel.Text = "Total Working Days:";
             // 
-            // label9
+            // hourlysalaryLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(1157, 432);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(264, 54);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Hourly Salary:";
+            this.hourlysalaryLabel.AutoSize = true;
+            this.hourlysalaryLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hourlysalaryLabel.Location = new System.Drawing.Point(456, 576);
+            this.hourlysalaryLabel.Name = "hourlysalaryLabel";
+            this.hourlysalaryLabel.Size = new System.Drawing.Size(264, 54);
+            this.hourlysalaryLabel.TabIndex = 10;
+            this.hourlysalaryLabel.Text = "Hourly Salary:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(1192, 432);
+            this.label10.Location = new System.Drawing.Point(1436, 437);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(0, 54);
             this.label10.TabIndex = 11;
             // 
-            // label11
+            // totalsalaryLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(1157, 539);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(231, 54);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Total Salary:";
+            this.totalsalaryLabel.AutoSize = true;
+            this.totalsalaryLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.totalsalaryLabel.Location = new System.Drawing.Point(1393, 576);
+            this.totalsalaryLabel.Name = "totalsalaryLabel";
+            this.totalsalaryLabel.Size = new System.Drawing.Size(231, 54);
+            this.totalsalaryLabel.TabIndex = 12;
+            this.totalsalaryLabel.Text = "Total Salary:";
             // 
-            // label12
+            // monthLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(1157, 239);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(151, 54);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Month:";
+            this.monthLabel.AutoSize = true;
+            this.monthLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.monthLabel.Location = new System.Drawing.Point(1393, 231);
+            this.monthLabel.Name = "monthLabel";
+            this.monthLabel.Size = new System.Drawing.Size(151, 54);
+            this.monthLabel.TabIndex = 13;
+            this.monthLabel.Text = "Month:";
             // 
-            // label8
+            // dateissuedLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(1157, 150);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(239, 54);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Date Issued:";
+            this.dateissuedLabel.AutoSize = true;
+            this.dateissuedLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateissuedLabel.Location = new System.Drawing.Point(1393, 133);
+            this.dateissuedLabel.Name = "dateissuedLabel";
+            this.dateissuedLabel.Size = new System.Drawing.Size(239, 54);
+            this.dateissuedLabel.TabIndex = 14;
+            this.dateissuedLabel.Text = "Date Issued:";
             // 
             // printButton
             // 
+            this.printButton.BackColor = System.Drawing.Color.DimGray;
             this.printButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.printButton.Location = new System.Drawing.Point(2272, 699);
+            this.printButton.ForeColor = System.Drawing.Color.White;
+            this.printButton.Location = new System.Drawing.Point(2092, 880);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(178, 69);
             this.printButton.TabIndex = 15;
             this.printButton.Text = "Print";
-            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.UseVisualStyleBackColor = false;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // closeButton
+            // 
+            this.closeButton.BackColor = System.Drawing.Color.DimGray;
+            this.closeButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.closeButton.ForeColor = System.Drawing.Color.White;
+            this.closeButton.Location = new System.Drawing.Point(2290, 880);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(178, 69);
+            this.closeButton.TabIndex = 16;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click_1);
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.statusLabel.ForeColor = System.Drawing.Color.Green;
+            this.statusLabel.Location = new System.Drawing.Point(2, 778);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(2474, 76);
+            this.statusLabel.TabIndex = 17;
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 60);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(290, 55);
+            this.dateTimePicker1.TabIndex = 18;
+            this.dateTimePicker1.Value = new System.DateTime(2022, 12, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // selectLabel
+            // 
+            this.selectLabel.AutoSize = true;
+            this.selectLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.selectLabel.Location = new System.Drawing.Point(12, 9);
+            this.selectLabel.Name = "selectLabel";
+            this.selectLabel.Size = new System.Drawing.Size(618, 48);
+            this.selectLabel.TabIndex = 19;
+            this.selectLabel.Text = "View Previous Payslips (MM/YYYY):";
+            // 
+            // yearLabel
+            // 
+            this.yearLabel.AutoSize = true;
+            this.yearLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.yearLabel.Location = new System.Drawing.Point(1393, 325);
+            this.yearLabel.Name = "yearLabel";
+            this.yearLabel.Size = new System.Drawing.Size(116, 54);
+            this.yearLabel.TabIndex = 20;
+            this.yearLabel.Text = "Year: ";
+            // 
+            // totalworkinghoursLabel
+            // 
+            this.totalworkinghoursLabel.AutoSize = true;
+            this.totalworkinghoursLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.totalworkinghoursLabel.Location = new System.Drawing.Point(1393, 414);
+            this.totalworkinghoursLabel.Name = "totalworkinghoursLabel";
+            this.totalworkinghoursLabel.Size = new System.Drawing.Size(392, 54);
+            this.totalworkinghoursLabel.TabIndex = 21;
+            this.totalworkinghoursLabel.Text = "Total Working Hours:";
             // 
             // Payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(2480, 794);
-            this.Controls.Add(this.printButton);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(2480, 989);
+            this.Controls.Add(this.totalworkinghoursLabel);
+            this.Controls.Add(this.yearLabel);
+            this.Controls.Add(this.selectLabel);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.printButton);
+            this.Controls.Add(this.dateissuedLabel);
+            this.Controls.Add(this.monthLabel);
+            this.Controls.Add(this.totalsalaryLabel);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.hourlysalaryLabel);
+            this.Controls.Add(this.totalworkingdaysLabel);
+            this.Controls.Add(this.departmentLabel);
+            this.Controls.Add(this.positionLabel);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.employeeidLabel);
+            this.Controls.Add(this.payslipidLabel);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Payroll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -232,21 +298,27 @@
         }
 
         #endregion
-
-        private Button closeButton;
-        private Button button1;
         private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label9;
+        private Label payslipidLabel;
+        private Label employeeidLabel;
+        private Label nameLabel;
+        private Label positionLabel;
+        private Label departmentLabel;
+        private Label totalworkingdaysLabel;
+        private Label hourlysalaryLabel;
         private Label label10;
-        private Label label11;
-        private Label label12;
-        private Label label8;
+        private Label totalsalaryLabel;
+        private Label monthLabel;
+        private Label dateissuedLabel;
         private Button printButton;
+        private OpenFileDialog openFileDialog1;
+        private PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private Button closeButton;
+        private Label statusLabel;
+        private DateTimePicker dateTimePicker1;
+        private Label selectLabel;
+        private Label yearLabel;
+        private Label totalworkinghoursLabel;
     }
 }
