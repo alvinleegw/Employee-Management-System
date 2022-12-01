@@ -89,5 +89,13 @@ namespace EMS
             employeehistory.ShowDialog();
             this.Close();
         }
+
+        private void payrollButton_Click(object sender, EventArgs e)
+        {
+            Payroll payroll = new Payroll();
+            this.Hide();
+            payroll.ShowDialog();
+            this.Close();
+        }
     }
 }

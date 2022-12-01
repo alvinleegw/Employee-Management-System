@@ -12,7 +12,7 @@ namespace EMS
 {
     public partial class Loading : Form
     {
-        int num = 100;
+        int num = 50;
 
         public Loading()
         {
