@@ -33,16 +33,16 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.monthcomboBox = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.searchButton = new System.Windows.Forms.Button();
             this.selectLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.allRadioButton = new System.Windows.Forms.RadioButton();
             this.departmentRadioButton = new System.Windows.Forms.RadioButton();
-            this.monthRadioButton = new System.Windows.Forms.RadioButton();
-            this.dateRadioButton = new System.Windows.Forms.RadioButton();
+            this.monthyearRadioButton = new System.Windows.Forms.RadioButton();
             this.employeenameRadioButton = new System.Windows.Forms.RadioButton();
+            this.dateRadioButton = new System.Windows.Forms.RadioButton();
             this.employeeidRadioButton = new System.Windows.Forms.RadioButton();
             this.filterLabel = new System.Windows.Forms.Label();
             this.exportButton = new System.Windows.Forms.Button();
@@ -104,16 +104,16 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.monthcomboBox);
+            this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.searchButton);
             this.panel1.Controls.Add(this.selectLabel);
             this.panel1.Controls.Add(this.searchTextBox);
             this.panel1.Controls.Add(this.allRadioButton);
             this.panel1.Controls.Add(this.departmentRadioButton);
-            this.panel1.Controls.Add(this.monthRadioButton);
-            this.panel1.Controls.Add(this.dateRadioButton);
+            this.panel1.Controls.Add(this.monthyearRadioButton);
             this.panel1.Controls.Add(this.employeenameRadioButton);
+            this.panel1.Controls.Add(this.dateRadioButton);
             this.panel1.Controls.Add(this.employeeidRadioButton);
             this.panel1.Controls.Add(this.filterLabel);
             this.panel1.Location = new System.Drawing.Point(66, 107);
@@ -121,29 +121,15 @@
             this.panel1.Size = new System.Drawing.Size(1704, 174);
             this.panel1.TabIndex = 4;
             // 
-            // monthcomboBox
+            // dateTimePicker2
             // 
-            this.monthcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.monthcomboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.monthcomboBox.FormattingEnabled = true;
-            this.monthcomboBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.monthcomboBox.Location = new System.Drawing.Point(853, 91);
-            this.monthcomboBox.Name = "monthcomboBox";
-            this.monthcomboBox.Size = new System.Drawing.Size(363, 56);
-            this.monthcomboBox.TabIndex = 9;
-            this.monthcomboBox.SelectedIndexChanged += new System.EventHandler(this.monthcomboBox_SelectedIndexChanged);
+            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(853, 86);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(316, 61);
+            this.dateTimePicker2.TabIndex = 9;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
@@ -213,19 +199,33 @@
             this.departmentRadioButton.UseVisualStyleBackColor = true;
             this.departmentRadioButton.CheckedChanged += new System.EventHandler(this.departmentRadioButton_CheckedChanged);
             // 
-            // monthRadioButton
+            // monthyearRadioButton
             // 
-            this.monthRadioButton.AutoSize = true;
-            this.monthRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.monthRadioButton.ForeColor = System.Drawing.Color.White;
-            this.monthRadioButton.Location = new System.Drawing.Point(366, 109);
-            this.monthRadioButton.Name = "monthRadioButton";
-            this.monthRadioButton.Size = new System.Drawing.Size(178, 52);
-            this.monthRadioButton.TabIndex = 4;
-            this.monthRadioButton.TabStop = true;
-            this.monthRadioButton.Text = "Month";
-            this.monthRadioButton.UseVisualStyleBackColor = true;
-            this.monthRadioButton.CheckedChanged += new System.EventHandler(this.monthRadioButton_CheckedChanged);
+            this.monthyearRadioButton.AutoSize = true;
+            this.monthyearRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.monthyearRadioButton.ForeColor = System.Drawing.Color.White;
+            this.monthyearRadioButton.Location = new System.Drawing.Point(12, 109);
+            this.monthyearRadioButton.Name = "monthyearRadioButton";
+            this.monthyearRadioButton.Size = new System.Drawing.Size(265, 52);
+            this.monthyearRadioButton.TabIndex = 4;
+            this.monthyearRadioButton.TabStop = true;
+            this.monthyearRadioButton.Text = "Month/Year";
+            this.monthyearRadioButton.UseVisualStyleBackColor = true;
+            this.monthyearRadioButton.CheckedChanged += new System.EventHandler(this.monthyearRadioButton_CheckedChanged);
+            // 
+            // employeenameRadioButton
+            // 
+            this.employeenameRadioButton.AutoSize = true;
+            this.employeenameRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.employeenameRadioButton.ForeColor = System.Drawing.Color.White;
+            this.employeenameRadioButton.Location = new System.Drawing.Point(366, 109);
+            this.employeenameRadioButton.Name = "employeenameRadioButton";
+            this.employeenameRadioButton.Size = new System.Drawing.Size(163, 52);
+            this.employeenameRadioButton.TabIndex = 2;
+            this.employeenameRadioButton.TabStop = true;
+            this.employeenameRadioButton.Text = "Name";
+            this.employeenameRadioButton.UseVisualStyleBackColor = true;
+            this.employeenameRadioButton.CheckedChanged += new System.EventHandler(this.employeenameRadioButton_CheckedChanged);
             // 
             // dateRadioButton
             // 
@@ -240,20 +240,6 @@
             this.dateRadioButton.Text = "Date";
             this.dateRadioButton.UseVisualStyleBackColor = true;
             this.dateRadioButton.CheckedChanged += new System.EventHandler(this.dateRadioButton_CheckedChanged);
-            // 
-            // employeenameRadioButton
-            // 
-            this.employeenameRadioButton.AutoSize = true;
-            this.employeenameRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.employeenameRadioButton.ForeColor = System.Drawing.Color.White;
-            this.employeenameRadioButton.Location = new System.Drawing.Point(12, 109);
-            this.employeenameRadioButton.Name = "employeenameRadioButton";
-            this.employeenameRadioButton.Size = new System.Drawing.Size(163, 52);
-            this.employeenameRadioButton.TabIndex = 2;
-            this.employeenameRadioButton.TabStop = true;
-            this.employeenameRadioButton.Text = "Name";
-            this.employeenameRadioButton.UseVisualStyleBackColor = true;
-            this.employeenameRadioButton.CheckedChanged += new System.EventHandler(this.employeenameRadioButton_CheckedChanged);
             // 
             // employeeidRadioButton
             // 
@@ -345,12 +331,12 @@
         private Label selectLabel;
         private RadioButton allRadioButton;
         private RadioButton departmentRadioButton;
-        private RadioButton monthRadioButton;
+        private RadioButton monthyearRadioButton;
         private RadioButton dateRadioButton;
         private Button exportButton;
-        private ComboBox monthcomboBox;
         private TextBox searchTextBox;
         private Button searchButton;
         private Label resultLabel;
+        private DateTimePicker dateTimePicker2;
     }
 }

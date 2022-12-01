@@ -81,13 +81,14 @@ namespace EMS
                 }
                 reader.Close();
                 command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
-                "' AND month ='" + month + "'";
+                "' AND month ='" + month + "' AND year ='" + year + "'";
                 totalworkingdays = Convert.ToInt32(command2.ExecuteScalar());
-                command3.CommandText = "SELECT COUNT(*) FROM PAYSLIP WHERE employeeid ='" + employeeid + "' AND month ='" + month + "'";
+                command3.CommandText = "SELECT COUNT(*) FROM PAYSLIP WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                 if (Convert.ToInt32(command3.ExecuteScalar()) == 0)
                 {
                     month = DateTime.Now.Month.ToString();
-                    command4.CommandText = "SELECT SUM(workinghours) FROM ATTENDANCE WHERE employeeid ='" + employeeid + "' AND month ='" + month + "'";
+                    year = DateTime.Now.Year.ToString();
+                    command4.CommandText = "SELECT SUM(workinghours) FROM ATTENDANCE WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                     string temp = command4.ExecuteScalar().ToString();
                     if (temp == String.Empty)
                     {
@@ -105,17 +106,17 @@ namespace EMS
                         command4.CommandText = "INSERT INTO PAYSLIP (salary, totalworkinghours, totalworkingdays, dateissued, month, year, employeeid) VALUES ('"
                         + salary + "', '" + totalworkinghours + "', '" + totalworkingdays + "', '" + dateissued + "', '" + month + "', '" + year + "', '" + employeeid + "')";
                         command4.ExecuteNonQuery();
-                        command4.CommandText = "SELECT payslipno FROM PAYSLIP WHERE employeeid ='" + employeeid + "' AND month ='" + month + "'";
+                        command4.CommandText = "SELECT payslipno FROM PAYSLIP WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                         payslipno = (int)command4.ExecuteScalar();
                         payslipid = "PS" + DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("D2") + payslipno.ToString("D8");
-                        command4.CommandText = "UPDATE PAYSLIP SET payslipid='" + payslipid + "' WHERE employeeid ='" + employeeid + "' AND month ='" + month + "'";
+                        command4.CommandText = "UPDATE PAYSLIP SET payslipid='" + payslipid + "' WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                         command4.ExecuteNonQuery();
                     }
                 }
                 else
                 {
                     command5.CommandText = "SELECT payslipid, salary, totalworkinghours, totalworkingdays, dateissued, month, year FROM PAYSLIP WHERE employeeid ='"
-                    + employeeid + "' AND month = '" + month + "'";
+                    + employeeid + "' AND month = '" + month + "' AND year = '" + year + "'";
                     MySqlDataReader reader2 = command5.ExecuteReader();
                     while (reader2.Read())
                     {
@@ -255,9 +256,9 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     month = DateTime.Now.Month.ToString();
-                    command.CommandText = "SELECT SUM(workinghours) FROM ATTENDANCE WHERE employeeid ='" + employeeid + "' AND month ='" + month + "'";
+                    command.CommandText = "SELECT SUM(workinghours) FROM ATTENDANCE WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                     command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
-                    "' AND month ='" + month + "'";
+                    "' AND month ='" + month + "' AND year ='" + year + "'";
                     totalworkingdays = Convert.ToInt32(command2.ExecuteScalar());
                     string temp = command.ExecuteScalar().ToString();
                     if (temp == String.Empty)
@@ -296,9 +297,9 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     command.CommandText = "SELECT COUNT(*) FROM PAYSLIP WHERE employeeid ='"
-                    + employeeid + "' AND month = '" + month + "'";
+                    + employeeid + "' AND month = '" + month + "' AND year ='" + year + "'";
                     command2.CommandText = "SELECT payslipid, salary, totalworkinghours, totalworkingdays, dateissued, "
-                    + "month, year FROM PAYSLIP WHERE employeeid ='" + employeeid + "' AND month ='" + month + "'";
+                    + "month, year FROM PAYSLIP WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                     if (Convert.ToInt32(command.ExecuteScalar()) == 0)
                     {
                         payslipidLabel.Text = "Payslip ID: ";

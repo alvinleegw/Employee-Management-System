@@ -36,7 +36,7 @@ namespace EMS
                 MySqlCommand command3 = connection.CreateCommand();
                 command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
                 employeeid = command.ExecuteScalar().ToString();
-                command2.CommandText = "SELECT clockin, clockout, workinghours, date, month FROM ATTENDANCE WHERE employeeid = '" 
+                command2.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE employeeid = '" 
                 + employeeid + "'";
                 command2.ExecuteNonQuery();
                 command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid = '" + employeeid + "'";
@@ -51,7 +51,6 @@ namespace EMS
                 dataGridView1.Columns[1].HeaderText = "Clock Out";
                 dataGridView1.Columns[2].HeaderText = "Working Hours";
                 dataGridView1.Columns[3].HeaderText = "Date";
-                dataGridView1.Columns[4].HeaderText = "Month";
                 dataGridView1.DataMember = dataTable.TableName;
                 resultLabel.ForeColor = Color.Black;
                 resultLabel.Text = result + " rows returned";
@@ -95,46 +94,6 @@ namespace EMS
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void monthComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string month = monthComboBox.SelectedItem.ToString();
-            string result;
-            try
-            {
-                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                MySqlCommand command2 = connection.CreateCommand();
-                command.CommandText = "SELECT clockin, clockout, workinghours, date, month FROM ATTENDANCE WHERE month = '"
-                + month + "' AND employeeid = '" + employeeid + "'";
-                command.ExecuteNonQuery();
-                command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE month = '"
-                + month + "' AND employeeid = '" + employeeid + "'";
-                result = command2.ExecuteScalar().ToString();
-                DataTable dataTable = new DataTable();
-                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
-                {
-                    dataAdapter.Fill(dataTable);
-                }
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].HeaderText = "Clock In";
-                dataGridView1.Columns[1].HeaderText = "Clock Out";
-                dataGridView1.Columns[2].HeaderText = "Working Hours";
-                dataGridView1.Columns[3].HeaderText = "Date";
-                dataGridView1.Columns[4].HeaderText = "Month";
-                dataGridView1.DataMember = dataTable.TableName;
-                resultLabel.ForeColor = Color.Black;
-                resultLabel.Text = result + " rows returned";
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                resultLabel.ForeColor = Color.Red;
-                resultLabel.Text = ex.Message;
-            }
-        }
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             string date = dateTimePicker1.Value.ToString("d");
@@ -146,7 +105,7 @@ namespace EMS
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
-                command.CommandText = "SELECT clockin, clockout, workinghours, date, month FROM ATTENDANCE WHERE date = '"
+                command.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE date = '"
                 + date + "' AND employeeid = '" + employeeid + "'";
                 command.ExecuteNonQuery();
                 command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE date = '"
@@ -162,7 +121,6 @@ namespace EMS
                 dataGridView1.Columns[1].HeaderText = "Clock Out";
                 dataGridView1.Columns[2].HeaderText = "Working Hours";
                 dataGridView1.Columns[3].HeaderText = "Date";
-                dataGridView1.Columns[4].HeaderText = "Month";
                 dataGridView1.DataMember = dataTable.TableName;
                 resultLabel.ForeColor = Color.Black;
                 resultLabel.Text = result.ToString() + " rows returned";
@@ -181,7 +139,7 @@ namespace EMS
             {
                 selectLabel.Text = "Please Select a Date:";
                 dateTimePicker1.Visible = true;
-                monthComboBox.Visible = false;
+                dateTimePicker2.Visible = false;
                 string date = DateTime.Now.ToString("d");
                 string result;
                 try
@@ -191,7 +149,7 @@ namespace EMS
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
-                    command.CommandText = "SELECT clockin, clockout, workinghours, date, month FROM ATTENDANCE WHERE date = '"
+                    command.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE date = '"
                     + date + "' AND employeeid = '" + employeeid + "'";
                     command.ExecuteNonQuery();
                     command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE date = '"
@@ -207,7 +165,6 @@ namespace EMS
                     dataGridView1.Columns[1].HeaderText = "Clock Out";
                     dataGridView1.Columns[2].HeaderText = "Working Hours";
                     dataGridView1.Columns[3].HeaderText = "Date";
-                    dataGridView1.Columns[4].HeaderText = "Month";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.Black;
                     resultLabel.Text = result.ToString() + " rows returned";
@@ -221,22 +178,14 @@ namespace EMS
             }
         }
 
-        private void monthRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            if (monthRadioButton.Checked)
-            {
-                selectLabel.Text = "Please Select Month:";
-                monthComboBox.Visible = true;
-                dateTimePicker1.Visible = false;
-            }
-        }
+        
 
         private void allRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (allRadioButton.Checked)
             {
                 selectLabel.Text = String.Empty;
-                monthComboBox.Visible = false;
+                dateTimePicker2.Visible = false;
                 dateTimePicker1.Visible = false;
                 try
                 {
@@ -249,7 +198,7 @@ namespace EMS
                     MySqlCommand command3 = connection.CreateCommand();
                     command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
                     employeeid = command.ExecuteScalar().ToString();
-                    command2.CommandText = "SELECT clockin, clockout, workinghours, date, month FROM ATTENDANCE WHERE employeeid = '"
+                    command2.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE employeeid = '"
                     + employeeid + "'";
                     command2.ExecuteNonQuery();
                     command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid = '" + employeeid + "'";
@@ -264,7 +213,6 @@ namespace EMS
                     dataGridView1.Columns[1].HeaderText = "Clock Out";
                     dataGridView1.Columns[2].HeaderText = "Working Hours";
                     dataGridView1.Columns[3].HeaderText = "Date";
-                    dataGridView1.Columns[4].HeaderText = "Month";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.Black;
                     resultLabel.Text = result + " rows returned";
@@ -275,6 +223,57 @@ namespace EMS
                     resultLabel.ForeColor = Color.Red;
                     resultLabel.Text = ex.Message;
                 }
+            }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime time = dateTimePicker2.Value;
+            string month = time.Month.ToString();
+            string year = time.Year.ToString();
+            string result;
+            try
+            {
+                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                MySqlCommand command2 = connection.CreateCommand();
+                command.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE employeeid ='"
+                    + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
+                command.ExecuteNonQuery();
+                command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
+                "' AND month='" + month + "' AND year ='" + year + "'";
+                result = command2.ExecuteScalar().ToString();
+                DataTable dataTable = new DataTable();
+                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
+                {
+                    dataAdapter.Fill(dataTable);
+                }
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.Columns[0].HeaderText = "Clock In";
+                dataGridView1.Columns[1].HeaderText = "Clock Out";
+                dataGridView1.Columns[2].HeaderText = "Working Hours";
+                dataGridView1.Columns[3].HeaderText = "Date";
+                dataGridView1.DataMember = dataTable.TableName;
+                resultLabel.ForeColor = Color.Black;
+                resultLabel.Text = result + " rows returned";
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                resultLabel.ForeColor = Color.Brown;
+                resultLabel.Text = ex.Message;
+            }
+        }
+
+        private void monthyearRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (monthyearRadioButton.Checked)
+            {
+                selectLabel.Text = "Please Select Month and Year:";
+                dateTimePicker2.Visible = true;
+                dateTimePicker1.Visible = false;
             }
         }
     }

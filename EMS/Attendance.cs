@@ -34,6 +34,7 @@ namespace EMS
         public static int counter;
         public static string date;
         public static string month;
+        public static string year;
 
         public Attendance()
         {
@@ -200,14 +201,15 @@ namespace EMS
                             counter = 1;
                             date = DateTime.Now.ToString("d");
                             month = DateTime.Now.Month.ToString();
+                            year = DateTime.Now.Year.ToString();
                             try
                             {
                                 connectionString = "server=localhost;database=ems;uid=root;pwd=;";
                                 connection = new MySqlConnection(connectionString);
                                 connection.Open();
                                 MySqlCommand command = connection.CreateCommand();
-                                command.CommandText = "INSERT INTO ATTENDANCE (clockin, counter, date, month, employeeid) VALUES ('" + clockin
-                                + "', " + "'" + counter + "', " + "'" + date + "', " + "'" + month + "', " + "'" + employeeid + "')";
+                                command.CommandText = "INSERT INTO ATTENDANCE (clockin, counter, date, month, year, employeeid) VALUES ('" + clockin
+                                + "', " + "'" + counter + "', " + "'" + date + "', " + "'" + month + "', " + "'" + year + "', " + "'" + employeeid + "')";
                                 if (command.ExecuteNonQuery() == 1)
                                 {
                                     statusLabel.ForeColor = Color.SpringGreen;
