@@ -242,9 +242,6 @@ namespace EMS
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            //DateTime now = DateTime.Now;
-            //DateTime firstDayCurrentMonth = new DateTime(now.Year, now.Month, 1);
-            //DateTime lastDayLastMonth = firstDayCurrentMonth.AddDays(-1);
             DateTime time = dateTimePicker1.Value;
             month = time.Month.ToString();
             year = time.Year.ToString();
