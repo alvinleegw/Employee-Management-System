@@ -22,7 +22,7 @@ namespace EMS
         Bitmap bitmap;
         public static string connectionString = null;
         MySqlConnection connection;
-        public static string username = "alvinleegw";
+        public static string username;
         public static int payslipno;
         public static string payslipid;
         public static string employeeid;
@@ -45,7 +45,7 @@ namespace EMS
             DateTime lastdayofmonth = now.AddDays(1 - now.Day).AddMonths(1).AddDays(-1).Date;
             dateTimePicker1.MaxDate = lastdayofmonth;
 
-            //username = EmployeeDashboard.username;
+            username = EmployeeDashboard.username;
             if (checkLastDayOfMonth())
             {
                 printButton.Enabled = true;
