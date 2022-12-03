@@ -32,10 +32,11 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.historyButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.manageButton = new System.Windows.Forms.Button();
             this.minimizeButton = new System.Windows.Forms.Button();
-            this.historyButton = new System.Windows.Forms.Button();
+            this.changepasswordButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             this.userLabel.ForeColor = System.Drawing.Color.White;
             this.userLabel.Location = new System.Drawing.Point(3, 20);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(283, 54);
+            this.userLabel.Size = new System.Drawing.Size(456, 54);
             this.userLabel.TabIndex = 0;
             this.userLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -71,23 +72,37 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.changepasswordButton);
             this.panel1.Controls.Add(this.historyButton);
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.manageButton);
             this.panel1.Controls.Add(this.userLabel);
             this.panel1.Location = new System.Drawing.Point(-5, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(289, 800);
+            this.panel1.Size = new System.Drawing.Size(462, 800);
             this.panel1.TabIndex = 4;
+            // 
+            // historyButton
+            // 
+            this.historyButton.BackColor = System.Drawing.Color.Firebrick;
+            this.historyButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.historyButton.ForeColor = System.Drawing.Color.White;
+            this.historyButton.Location = new System.Drawing.Point(38, 317);
+            this.historyButton.Name = "historyButton";
+            this.historyButton.Size = new System.Drawing.Size(387, 69);
+            this.historyButton.TabIndex = 3;
+            this.historyButton.Text = "View History";
+            this.historyButton.UseVisualStyleBackColor = false;
+            this.historyButton.Click += new System.EventHandler(this.historyButton_Click);
             // 
             // logoutButton
             // 
             this.logoutButton.BackColor = System.Drawing.Color.Firebrick;
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.logoutButton.ForeColor = System.Drawing.Color.White;
-            this.logoutButton.Location = new System.Drawing.Point(38, 339);
+            this.logoutButton.Location = new System.Drawing.Point(38, 422);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(225, 69);
+            this.logoutButton.Size = new System.Drawing.Size(387, 69);
             this.logoutButton.TabIndex = 2;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = false;
@@ -100,9 +115,9 @@
             this.manageButton.ForeColor = System.Drawing.Color.White;
             this.manageButton.Location = new System.Drawing.Point(38, 101);
             this.manageButton.Name = "manageButton";
-            this.manageButton.Size = new System.Drawing.Size(225, 69);
+            this.manageButton.Size = new System.Drawing.Size(387, 69);
             this.manageButton.TabIndex = 0;
-            this.manageButton.Text = "Manage";
+            this.manageButton.Text = "Manage Employee";
             this.manageButton.UseVisualStyleBackColor = false;
             this.manageButton.Click += new System.EventHandler(this.manageButton_Click);
             // 
@@ -118,18 +133,18 @@
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
-            // historyButton
+            // changepasswordButton
             // 
-            this.historyButton.BackColor = System.Drawing.Color.Firebrick;
-            this.historyButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.historyButton.ForeColor = System.Drawing.Color.White;
-            this.historyButton.Location = new System.Drawing.Point(38, 223);
-            this.historyButton.Name = "historyButton";
-            this.historyButton.Size = new System.Drawing.Size(225, 69);
-            this.historyButton.TabIndex = 3;
-            this.historyButton.Text = "History";
-            this.historyButton.UseVisualStyleBackColor = false;
-            this.historyButton.Click += new System.EventHandler(this.historyButton_Click);
+            this.changepasswordButton.BackColor = System.Drawing.Color.Firebrick;
+            this.changepasswordButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.changepasswordButton.ForeColor = System.Drawing.Color.White;
+            this.changepasswordButton.Location = new System.Drawing.Point(38, 210);
+            this.changepasswordButton.Name = "changepasswordButton";
+            this.changepasswordButton.Size = new System.Drawing.Size(387, 69);
+            this.changepasswordButton.TabIndex = 4;
+            this.changepasswordButton.Text = "Change Password";
+            this.changepasswordButton.UseVisualStyleBackColor = false;
+            this.changepasswordButton.Click += new System.EventHandler(this.changepasswordButton_Click);
             // 
             // AdminDashboard
             // 
@@ -162,5 +177,6 @@
         private Button manageButton;
         private Button minimizeButton;
         private Button historyButton;
+        private Button changepasswordButton;
     }
 }

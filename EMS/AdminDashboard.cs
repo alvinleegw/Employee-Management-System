@@ -93,5 +93,13 @@ namespace EMS
             history.ShowDialog();
             this.Close();
         }
+
+        private void changepasswordButton_Click(object sender, EventArgs e)
+        {
+            ChangePassword changepassword = new ChangePassword();
+            this.Hide();
+            changepassword.ShowDialog();
+            this.Close();
+        }
     }
 }

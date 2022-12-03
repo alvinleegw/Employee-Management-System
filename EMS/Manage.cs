@@ -197,30 +197,27 @@ namespace EMS
         private void updateButton_Click(object sender, EventArgs e)
         {
             employeeid = employeeidTextBox.Text;
-            username = usernameTextBox.Text;
             name = nameTextBox.Text;
             position = positionTextBox.Text;
             email = emailTextBox.Text;
             department = departmentTextBox.Text;
             hourlyrate = (int)numericUpDown1.Value;
-            if (employeeidTextBox.Text == String.Empty || usernameTextBox.Text == String.Empty
-            || nameTextBox.Text == String.Empty || positionTextBox.Text == String.Empty 
-            || emailTextBox.Text == String.Empty || departmentTextBox.Text == String.Empty)
+            if (employeeidTextBox.Text == String.Empty || nameTextBox.Text == String.Empty 
+            || positionTextBox.Text == String.Empty || emailTextBox.Text == String.Empty 
+            || departmentTextBox.Text == String.Empty)
             {
-                statusLabel.Text = "Fields Except Password Field Must Not Be Empty";
+                statusLabel.Text = "Fields Except Username And Password Field Must Not Be Empty";
             }
             else
             {
                 try
                 {
-
                     connectionString = "server=localhost;database=ems;uid=root;pwd=;";
                     connection = new MySqlConnection(connectionString);
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
-                    command.CommandText = "UPDATE EMPLOYEE SET employeeid = '" + employeeid + "', username = '" + username
-                    + "', name = '" + name + "', position = '" + position + "', email = '" + email + "', department = '"
-                    + department + "', hourlyrate = '" + hourlyrate + "' WHERE employeeid = '" + employeeid + "'";
+                    command.CommandText = "UPDATE EMPLOYEE SET employeeid = '" + employeeid + "', name = '" + name + "', position = '" + position
+                    + "', email = '" + email + "', department = '" + department + "', hourlyrate = '" + hourlyrate + "' WHERE employeeid = '" + employeeid + "'";
                     if (command.ExecuteNonQuery() == 1)
                     {
                         statusLabel.Text = "Data Updated Successfully";
