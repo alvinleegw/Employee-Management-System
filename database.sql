@@ -7,7 +7,7 @@ USE EMS;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2022 at 08:41 AM
+-- Generation Time: Dec 04, 2022 at 05:45 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.5
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminid`, `username`, `password`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3');
+(1, 'admin', '21232F297A57A5A743894A0E4A801FC3');
 
 -- --------------------------------------------------------
 
@@ -52,12 +52,13 @@ INSERT INTO `admin` (`adminid`, `username`, `password`) VALUES
 
 CREATE TABLE `attendance` (
   `attendanceid` int(1) NOT NULL,
-  `clockin` varchar(50) DEFAULT NULL,
-  `clockout` varchar(50) DEFAULT NULL,
-  `workinghours` int(1) DEFAULT NULL,
+  `clockin` varchar(5) DEFAULT NULL,
+  `clockout` varchar(5) DEFAULT NULL,
+  `workinghours` decimal(3,2) DEFAULT NULL,
   `counter` int(1) DEFAULT 0,
-  `date` varchar(50) DEFAULT NULL,
-  `month` varchar(1) DEFAULT NULL,
+  `date` varchar(10) DEFAULT NULL,
+  `month` varchar(2) DEFAULT NULL,
+  `year` varchar(4) NOT NULL,
   `employeeid` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -69,15 +70,23 @@ CREATE TABLE `attendance` (
 
 CREATE TABLE `employee` (
   `employeeid` varchar(5) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `password` varchar(32) NOT NULL,
   `name` varchar(50) NOT NULL,
   `position` varchar(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `department` varchar(25) NOT NULL,
-  `hourlyrate` int(2) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `department` varchar(30) NOT NULL,
+  `hourlyrate` int(4) NOT NULL,
   `adminid` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`employeeid`, `username`, `password`, `name`, `position`, `email`, `department`, `hourlyrate`, `adminid`) VALUES
+('IT001', 'alvinleegw', 'E3966108CD0BD2E11817487A1AA9538B', 'ALVIN LEE GUO WEI', 'INDUSTRIAL TRAINEE', 'alvinleegw@hotmail.com', 'IT', 15, 1),
+('ME001', 'yeekeong', 'B491E0C88EED89813356EE35F220FC39', 'TEH YEE KEONG', 'INDUSTRIAL TRAINEE', 'yeekeong@gmail.com', 'Engineering', 20, 1);
 
 -- --------------------------------------------------------
 
@@ -86,10 +95,14 @@ CREATE TABLE `employee` (
 --
 
 CREATE TABLE `payslip` (
-  `payslipid` int(1) NOT NULL,
-  `salary` int(5) NOT NULL,
+  `payslipno` int(8) NOT NULL,
+  `payslipid` varchar(16) DEFAULT NULL,
+  `totalworkinghours` decimal(5,2) NOT NULL,
   `totalworkingdays` int(2) NOT NULL,
-  `dateissued` varchar(50) NOT NULL,
+  `salary` decimal(8,2) NOT NULL,
+  `dateissued` varchar(10) NOT NULL,
+  `month` varchar(2) NOT NULL,
+  `year` varchar(4) NOT NULL,
   `employeeid` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -115,13 +128,16 @@ ALTER TABLE `attendance`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`employeeid`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `adminid` (`adminid`);
 
 --
 -- Indexes for table `payslip`
 --
 ALTER TABLE `payslip`
-  ADD PRIMARY KEY (`payslipid`),
+  ADD PRIMARY KEY (`payslipno`),
+  ADD UNIQUE KEY `payslipid` (`payslipid`),
   ADD KEY `employeeid` (`employeeid`);
 
 --
@@ -138,7 +154,7 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `payslip`
 --
 ALTER TABLE `payslip`
-  MODIFY `payslipid` int(1) NOT NULL AUTO_INCREMENT;
+  MODIFY `payslipno` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

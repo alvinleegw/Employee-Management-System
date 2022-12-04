@@ -134,7 +134,7 @@ namespace EMS
                         positionTextBox.Text = String.Empty;
                         emailTextBox.Text = String.Empty;
                         departmentTextBox.Text = String.Empty;
-                        numericUpDown1.Value = 1;
+                        numericUpDown1.Value = 10;
                     }
                     else
                     {
@@ -174,24 +174,32 @@ namespace EMS
             positionTextBox.Text = String.Empty;
             emailTextBox.Text = String.Empty;
             departmentTextBox.Text = String.Empty;
-            numericUpDown1.Value = 1;
+            numericUpDown1.Value = 10;
             statusLabel.Text = String.Empty;
             resultLabel.Text = String.Empty;
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                employeeidTextBox.Text = row.Cells[0].Value.ToString();
-                usernameTextBox.Text = row.Cells[1].Value.ToString();
-                nameTextBox.Text = row.Cells[2].Value.ToString();
-                positionTextBox.Text = row.Cells[3].Value.ToString();
-                emailTextBox.Text = row.Cells[4].Value.ToString();
-                departmentTextBox.Text = row.Cells[5].Value.ToString();
-                numericUpDown1.Value = (int)row.Cells[6].Value;
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                    employeeidTextBox.Text = row.Cells[0].Value.ToString();
+                    usernameTextBox.Text = row.Cells[1].Value.ToString();
+                    nameTextBox.Text = row.Cells[2].Value.ToString();
+                    positionTextBox.Text = row.Cells[3].Value.ToString();
+                    emailTextBox.Text = row.Cells[4].Value.ToString();
+                    departmentTextBox.Text = row.Cells[5].Value.ToString();
+                    numericUpDown1.Value = (int)row.Cells[6].Value;
+                }
             }
+            catch (Exception ex)
+            {
+                statusLabel.Text = ex.Message;
+            }
+            
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -277,7 +285,7 @@ namespace EMS
                         positionTextBox.Text = String.Empty;
                         emailTextBox.Text = String.Empty;
                         departmentTextBox.Text = String.Empty;
-                        numericUpDown1.Value = 1;
+                        numericUpDown1.Value = 10;
                     }
                     else
                     {
@@ -490,6 +498,62 @@ namespace EMS
                 employeeid = employeeidTextBox.Text;
                 QR qr = new QR();
                 qr.ShowDialog();
+            }
+        }
+
+        private void importButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Select CSV File";
+            openFileDialog1.Filter = "CSV Files(*.csv)|*.csv";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = openFileDialog1.FileName;
+                try
+                {
+                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                    connection = new MySqlConnection(connectionString);
+                    connection.Open();
+                    using (var conn = new MySqlConnection(connectionString))
+                    {
+                        var bulk = new MySqlBulkLoader(conn)
+                        {
+                            TableName = "Employee",
+                            FieldTerminator = ",",
+                            LineTerminator = "\n",
+                            FileName = path,
+                            NumberOfLinesToSkip = 1,
+                            Columns = {"employeeid", "username", "password", "name", "position", "email", "department", "hourlyrate"}
+                        };
+                        var inserted = bulk.Load();
+                        if (inserted > 0)
+                        {
+                            statusLabel.Text = "Data Successfully Imported";
+                            resultLabel.Text = inserted.ToString() + " rows returned";
+                            MySqlCommand command = connection.CreateCommand();
+                            command.CommandText = "SELECT employeeid, username, name, position, email, department, hourlyrate FROM EMPLOYEE";
+                            command.ExecuteNonQuery();
+                            DataTable dataTable = new DataTable();
+                            using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
+                            {
+                                dataAdapter.Fill(dataTable);
+                            }
+                            dataGridView1.DataSource = dataTable;
+                            dataGridView1.Columns[0].HeaderText = "Employee ID";
+                            dataGridView1.Columns[1].HeaderText = "Username";
+                            dataGridView1.Columns[2].HeaderText = "Name";
+                            dataGridView1.Columns[3].HeaderText = "Position";
+                            dataGridView1.Columns[4].HeaderText = "Email";
+                            dataGridView1.Columns[5].HeaderText = "Department";
+                            dataGridView1.Columns[6].HeaderText = "Hourly Rate";
+                            dataGridView1.DataMember = dataTable.TableName;
+                        }
+                        connection.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    statusLabel.Text = ex.Message;
+                }
             }
         }
     }

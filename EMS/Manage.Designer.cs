@@ -67,6 +67,8 @@
             this.minimizeButton = new System.Windows.Forms.Button();
             this.badgeButton = new System.Windows.Forms.Button();
             this.qrButton = new System.Windows.Forms.Button();
+            this.importButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -297,13 +299,13 @@
             // 
             // statusLabel
             // 
-            this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.statusLabel.ForeColor = System.Drawing.Color.Salmon;
-            this.statusLabel.Location = new System.Drawing.Point(60, 1051);
+            this.statusLabel.Location = new System.Drawing.Point(50, 1051);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 54);
+            this.statusLabel.Size = new System.Drawing.Size(2978, 54);
             this.statusLabel.TabIndex = 21;
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // passwordLabel
             // 
@@ -330,12 +332,12 @@
             this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.numericUpDown1.Location = new System.Drawing.Point(324, 928);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            10000,
+            1000,
             0,
             0,
             0});
             this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -343,7 +345,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(641, 61);
             this.numericUpDown1.TabIndex = 16;
             this.numericUpDown1.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -443,7 +445,7 @@
             this.filterLabel.AutoSize = true;
             this.filterLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.filterLabel.ForeColor = System.Drawing.Color.White;
-            this.filterLabel.Location = new System.Drawing.Point(1947, 89);
+            this.filterLabel.Location = new System.Drawing.Point(1947, 125);
             this.filterLabel.Name = "filterLabel";
             this.filterLabel.Size = new System.Drawing.Size(472, 54);
             this.filterLabel.TabIndex = 31;
@@ -451,7 +453,7 @@
             // 
             // filterTextBox
             // 
-            this.filterTextBox.Location = new System.Drawing.Point(1950, 146);
+            this.filterTextBox.Location = new System.Drawing.Point(1950, 182);
             this.filterTextBox.Name = "filterTextBox";
             this.filterTextBox.Size = new System.Drawing.Size(507, 55);
             this.filterTextBox.TabIndex = 17;
@@ -461,7 +463,7 @@
             this.searchButton.BackColor = System.Drawing.Color.Crimson;
             this.searchButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.searchButton.ForeColor = System.Drawing.Color.White;
-            this.searchButton.Location = new System.Drawing.Point(2476, 138);
+            this.searchButton.Location = new System.Drawing.Point(2476, 174);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(203, 69);
             this.searchButton.TabIndex = 27;
@@ -485,7 +487,7 @@
             this.exportButton.BackColor = System.Drawing.Color.Crimson;
             this.exportButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.exportButton.ForeColor = System.Drawing.Color.White;
-            this.exportButton.Location = new System.Drawing.Point(2699, 138);
+            this.exportButton.Location = new System.Drawing.Point(2699, 174);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(293, 69);
             this.exportButton.TabIndex = 33;
@@ -535,12 +537,31 @@
             this.qrButton.UseVisualStyleBackColor = false;
             this.qrButton.Click += new System.EventHandler(this.qrButton_Click);
             // 
+            // importButton
+            // 
+            this.importButton.BackColor = System.Drawing.Color.Crimson;
+            this.importButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.importButton.ForeColor = System.Drawing.Color.White;
+            this.importButton.Location = new System.Drawing.Point(2699, 99);
+            this.importButton.Name = "importButton";
+            this.importButton.Size = new System.Drawing.Size(293, 69);
+            this.importButton.TabIndex = 37;
+            this.importButton.TabStop = false;
+            this.importButton.Text = "Import Data";
+            this.importButton.UseVisualStyleBackColor = false;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(3032, 1345);
+            this.Controls.Add(this.importButton);
             this.Controls.Add(this.qrButton);
             this.Controls.Add(this.badgeButton);
             this.Controls.Add(this.minimizeButton);
@@ -631,5 +652,7 @@
         private Button minimizeButton;
         private Button badgeButton;
         private Button qrButton;
+        private Button importButton;
+        private OpenFileDialog openFileDialog1;
     }
 }
