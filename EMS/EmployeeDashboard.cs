@@ -97,5 +97,13 @@ namespace EMS
             payroll.ShowDialog();
             this.Close();
         }
+
+        private void changepasswordButton_Click(object sender, EventArgs e)
+        {
+            EmployeeChangePassword employeechangepassword = new EmployeeChangePassword();
+            this.Hide();
+            employeechangepassword.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -75,7 +75,7 @@
             this.loadingLabel.Name = "loadingLabel";
             this.loadingLabel.Size = new System.Drawing.Size(996, 56);
             this.loadingLabel.TabIndex = 2;
-            this.loadingLabel.Text = "Loading... 10%";
+            this.loadingLabel.Text = "Loading... 5%";
             this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1

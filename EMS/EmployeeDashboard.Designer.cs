@@ -31,12 +31,13 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.minimiseButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.userLabel = new System.Windows.Forms.Label();
+            this.changepasswordButton = new System.Windows.Forms.Button();
             this.historyButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.payrollButton = new System.Windows.Forms.Button();
             this.clockoutButton = new System.Windows.Forms.Button();
             this.clockinButton = new System.Windows.Forms.Button();
-            this.userLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,25 +68,49 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel1.Controls.Add(this.userLabel);
+            this.panel1.Controls.Add(this.changepasswordButton);
             this.panel1.Controls.Add(this.historyButton);
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.payrollButton);
             this.panel1.Controls.Add(this.clockoutButton);
             this.panel1.Controls.Add(this.clockinButton);
-            this.panel1.Controls.Add(this.userLabel);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 800);
+            this.panel1.Size = new System.Drawing.Size(463, 800);
             this.panel1.TabIndex = 2;
+            // 
+            // userLabel
+            // 
+            this.userLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.userLabel.ForeColor = System.Drawing.Color.Black;
+            this.userLabel.Location = new System.Drawing.Point(3, 34);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(457, 48);
+            this.userLabel.TabIndex = 0;
+            this.userLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // changepasswordButton
+            // 
+            this.changepasswordButton.BackColor = System.Drawing.Color.Black;
+            this.changepasswordButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.changepasswordButton.ForeColor = System.Drawing.Color.White;
+            this.changepasswordButton.Location = new System.Drawing.Point(32, 126);
+            this.changepasswordButton.Name = "changepasswordButton";
+            this.changepasswordButton.Size = new System.Drawing.Size(405, 69);
+            this.changepasswordButton.TabIndex = 8;
+            this.changepasswordButton.Text = "Change Password";
+            this.changepasswordButton.UseVisualStyleBackColor = false;
+            this.changepasswordButton.Click += new System.EventHandler(this.changepasswordButton_Click);
             // 
             // historyButton
             // 
             this.historyButton.BackColor = System.Drawing.Color.Black;
             this.historyButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.historyButton.ForeColor = System.Drawing.Color.White;
-            this.historyButton.Location = new System.Drawing.Point(60, 351);
+            this.historyButton.Location = new System.Drawing.Point(32, 468);
             this.historyButton.Name = "historyButton";
-            this.historyButton.Size = new System.Drawing.Size(225, 69);
+            this.historyButton.Size = new System.Drawing.Size(405, 69);
             this.historyButton.TabIndex = 7;
             this.historyButton.Text = "History";
             this.historyButton.UseVisualStyleBackColor = false;
@@ -96,9 +121,9 @@
             this.logoutButton.BackColor = System.Drawing.Color.Black;
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.logoutButton.ForeColor = System.Drawing.Color.White;
-            this.logoutButton.Location = new System.Drawing.Point(60, 576);
+            this.logoutButton.Location = new System.Drawing.Point(32, 693);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(225, 69);
+            this.logoutButton.Size = new System.Drawing.Size(405, 69);
             this.logoutButton.TabIndex = 6;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = false;
@@ -109,9 +134,9 @@
             this.payrollButton.BackColor = System.Drawing.Color.Black;
             this.payrollButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.payrollButton.ForeColor = System.Drawing.Color.White;
-            this.payrollButton.Location = new System.Drawing.Point(60, 462);
+            this.payrollButton.Location = new System.Drawing.Point(32, 579);
             this.payrollButton.Name = "payrollButton";
-            this.payrollButton.Size = new System.Drawing.Size(225, 69);
+            this.payrollButton.Size = new System.Drawing.Size(405, 69);
             this.payrollButton.TabIndex = 5;
             this.payrollButton.Text = "Payroll";
             this.payrollButton.UseVisualStyleBackColor = false;
@@ -122,9 +147,9 @@
             this.clockoutButton.BackColor = System.Drawing.Color.Black;
             this.clockoutButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.clockoutButton.ForeColor = System.Drawing.Color.White;
-            this.clockoutButton.Location = new System.Drawing.Point(60, 237);
+            this.clockoutButton.Location = new System.Drawing.Point(32, 354);
             this.clockoutButton.Name = "clockoutButton";
-            this.clockoutButton.Size = new System.Drawing.Size(225, 69);
+            this.clockoutButton.Size = new System.Drawing.Size(405, 69);
             this.clockoutButton.TabIndex = 4;
             this.clockoutButton.Text = "Clock Out";
             this.clockoutButton.UseVisualStyleBackColor = false;
@@ -135,23 +160,13 @@
             this.clockinButton.BackColor = System.Drawing.Color.Black;
             this.clockinButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.clockinButton.ForeColor = System.Drawing.Color.White;
-            this.clockinButton.Location = new System.Drawing.Point(60, 125);
+            this.clockinButton.Location = new System.Drawing.Point(32, 242);
             this.clockinButton.Name = "clockinButton";
-            this.clockinButton.Size = new System.Drawing.Size(225, 69);
+            this.clockinButton.Size = new System.Drawing.Size(405, 69);
             this.clockinButton.TabIndex = 3;
             this.clockinButton.Text = "Clock In";
             this.clockinButton.UseVisualStyleBackColor = false;
             this.clockinButton.Click += new System.EventHandler(this.clockinButton_Click);
-            // 
-            // userLabel
-            // 
-            this.userLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.userLabel.ForeColor = System.Drawing.Color.Black;
-            this.userLabel.Location = new System.Drawing.Point(0, 23);
-            this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(337, 48);
-            this.userLabel.TabIndex = 0;
-            this.userLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // EmployeeDashboard
             // 
@@ -185,5 +200,6 @@
         private Button payrollButton;
         private Button clockoutButton;
         private Button historyButton;
+        private Button changepasswordButton;
     }
 }
