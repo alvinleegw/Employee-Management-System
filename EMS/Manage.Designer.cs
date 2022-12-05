@@ -362,6 +362,7 @@
             this.employeeidRadioButton.TabStop = true;
             this.employeeidRadioButton.Text = "Employee ID";
             this.employeeidRadioButton.UseVisualStyleBackColor = true;
+            this.employeeidRadioButton.CheckedChanged += new System.EventHandler(this.employeeidRadioButton_CheckedChanged);
             // 
             // panel1
             // 
@@ -402,6 +403,7 @@
             this.departmentRadioButton.TabStop = true;
             this.departmentRadioButton.Text = "Department";
             this.departmentRadioButton.UseVisualStyleBackColor = true;
+            this.departmentRadioButton.CheckedChanged += new System.EventHandler(this.departmentRadioButton_CheckedChanged);
             // 
             // positionRadioButton
             // 
@@ -415,6 +417,7 @@
             this.positionRadioButton.TabStop = true;
             this.positionRadioButton.Text = "Position";
             this.positionRadioButton.UseVisualStyleBackColor = true;
+            this.positionRadioButton.CheckedChanged += new System.EventHandler(this.positionRadioButton_CheckedChanged);
             // 
             // searchLabel
             // 
@@ -439,6 +442,7 @@
             this.nameRadioButton.TabStop = true;
             this.nameRadioButton.Text = "Name";
             this.nameRadioButton.UseVisualStyleBackColor = true;
+            this.nameRadioButton.CheckedChanged += new System.EventHandler(this.nameRadioButton_CheckedChanged);
             // 
             // filterLabel
             // 

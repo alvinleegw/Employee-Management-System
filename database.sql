@@ -7,7 +7,7 @@ USE EMS;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2022 at 05:45 AM
+-- Generation Time: Dec 05, 2022 at 04:13 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.5
 
@@ -72,9 +72,9 @@ CREATE TABLE `employee` (
   `employeeid` varchar(5) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(37) NOT NULL,
   `position` varchar(30) NOT NULL,
-  `email` varchar(40) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `department` varchar(30) NOT NULL,
   `hourlyrate` int(4) NOT NULL,
   `adminid` int(1) NOT NULL DEFAULT 1
@@ -86,7 +86,8 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`employeeid`, `username`, `password`, `name`, `position`, `email`, `department`, `hourlyrate`, `adminid`) VALUES
 ('IT001', 'alvinleegw', 'E3966108CD0BD2E11817487A1AA9538B', 'ALVIN LEE GUO WEI', 'INDUSTRIAL TRAINEE', 'alvinleegw@hotmail.com', 'IT', 15, 1),
-('ME001', 'yeekeong', 'B491E0C88EED89813356EE35F220FC39', 'TEH YEE KEONG', 'INDUSTRIAL TRAINEE', 'yeekeong@gmail.com', 'Engineering', 20, 1);
+('IT002', 'dannytay', '21BD20843CB6EDFF216F185366B87DC6', 'DANNY TAY LI MUK', 'DESIGN MANAGER', 'dannytay360@hotmail.com', 'IT', 20, 1),
+('ME001', 'yeekeong', 'B491E0C88EED89813356EE35F220FC39', 'TEH YEE KEONG', 'INDUSTRIAL TRAINEE', 'yeekeong@gmail.com', 'ENGINEERING', 20, 1);
 
 -- --------------------------------------------------------
 
@@ -164,19 +165,19 @@ ALTER TABLE `payslip`
 -- Constraints for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`);
+  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
-  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`);
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payslip`
 --
 ALTER TABLE `payslip`
-  ADD CONSTRAINT `payslip_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`);
+  ADD CONSTRAINT `payslip_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

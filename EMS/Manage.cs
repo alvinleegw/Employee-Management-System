@@ -90,13 +90,33 @@ namespace EMS
             {
                 statusLabel.Text = "Employee ID Length Must Be 5 Characters Only";
             }
+            else if (usernameTextBox.Text.Length < 3 || usernameTextBox.Text.Length > 20)
+            {
+                statusLabel.Text = "Username Length Must Be Between 3 to 20 Characters Only";
+            }
             else if (passwordTextBox.Text.Length < 8)
             {
                 statusLabel.Text = "Password Length Must Be At Least 8 Characters";
             }
+            else if (nameTextBox.Text.Length < 3 || nameTextBox.Text.Length > 37)
+            {
+                statusLabel.Text = "Name Length Must Be Between 3 to 37 Characters Only";
+            }
+            else if (positionTextBox.Text.Length < 5 || positionTextBox.Text.Length > 30)
+            {
+                statusLabel.Text = "Position Length Must Be Between 5 to 30 Characters Only";
+            }
             else if (!isValidEmail)
             {
                 statusLabel.Text = "Please Enter A Valid Email Address";
+            }
+            else if (emailTextBox.Text.Length > 30)
+            {
+                statusLabel.Text = "Maximum Email Length is 30 Characters Only";
+            }
+            else if (departmentTextBox.Text.Length < 2 || departmentTextBox.Text.Length > 30)
+            {
+                statusLabel.Text = "Department Length Must Be Between 2 to 30 Characters Only";
             }
             else
             {
@@ -204,6 +224,8 @@ namespace EMS
 
         private void updateButton_Click(object sender, EventArgs e)
         {
+            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+            bool isValidEmail = regex.IsMatch(emailTextBox.Text);
             employeeid = employeeidTextBox.Text;
             name = nameTextBox.Text;
             position = positionTextBox.Text;
@@ -216,6 +238,26 @@ namespace EMS
             {
                 statusLabel.Text = "Fields Except Username And Password Field Must Not Be Empty";
             }
+            else if (nameTextBox.Text.Length < 3 || nameTextBox.Text.Length > 37)
+            {
+                statusLabel.Text = "Name Length Must Be Between 3 to 37 Characters Only";
+            }
+            else if (positionTextBox.Text.Length < 5 || positionTextBox.Text.Length > 30)
+            {
+                statusLabel.Text = "Position Length Must Be Between 5 to 30 Characters Only";
+            }
+            else if (!isValidEmail)
+            {
+                statusLabel.Text = "Please Enter A Valid Email Address";
+            }
+            else if (emailTextBox.Text.Length > 30)
+            {
+                statusLabel.Text = "Maximum Email Length is 30 Characters Only";
+            }
+            else if (departmentTextBox.Text.Length < 2 || departmentTextBox.Text.Length > 30)
+            {
+                statusLabel.Text = "Department Length Must Be Between 2 to 30 Characters Only";
+            }
             else
             {
                 try
@@ -224,7 +266,7 @@ namespace EMS
                     connection = new MySqlConnection(connectionString);
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
-                    command.CommandText = "UPDATE EMPLOYEE SET employeeid = '" + employeeid + "', name = '" + name + "', position = '" + position
+                    command.CommandText = "UPDATE EMPLOYEE SET name = '" + name + "', position = '" + position
                     + "', email = '" + email + "', department = '" + department + "', hourlyrate = '" + hourlyrate + "' WHERE employeeid = '" + employeeid + "'";
                     if (command.ExecuteNonQuery() == 1)
                     {
@@ -378,6 +420,9 @@ namespace EMS
         {
             if (allRadioButton.Checked)
             {
+                filterLabel.Enabled = false;
+                filterTextBox.Enabled = false;
+                searchButton.Enabled = false;
                 try
                 {
                     connectionString = "server=localhost;database=ems;uid=root;pwd=;";
@@ -554,6 +599,46 @@ namespace EMS
                 {
                     statusLabel.Text = ex.Message;
                 }
+            }
+        }
+
+        private void employeeidRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (employeeidRadioButton.Checked)
+            {
+                filterLabel.Enabled = true;
+                filterTextBox.Enabled = true;
+                searchButton.Enabled = true;
+            }
+        }
+
+        private void nameRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (nameRadioButton.Checked)
+            {
+                filterLabel.Enabled = true;
+                filterTextBox.Enabled = true;
+                searchButton.Enabled = true;
+            }
+        }
+
+        private void positionRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (positionRadioButton.Checked)
+            {
+                filterLabel.Enabled = true;
+                filterTextBox.Enabled = true;
+                searchButton.Enabled = true;
+            }
+        }
+
+        private void departmentRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (departmentRadioButton.Checked)
+            {
+                filterLabel.Enabled = true;
+                filterTextBox.Enabled = true;
+                searchButton.Enabled = true;
             }
         }
     }

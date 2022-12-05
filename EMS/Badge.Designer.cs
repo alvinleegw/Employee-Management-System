@@ -85,7 +85,7 @@
             this.departmentLabel.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.departmentLabel.Location = new System.Drawing.Point(2, 763);
             this.departmentLabel.Name = "departmentLabel";
-            this.departmentLabel.Size = new System.Drawing.Size(625, 33);
+            this.departmentLabel.Size = new System.Drawing.Size(633, 33);
             this.departmentLabel.TabIndex = 4;
             this.departmentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
