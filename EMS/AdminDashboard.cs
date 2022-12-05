@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,25 +16,32 @@ namespace EMS
         private bool _dragging;
         private Point _startPoint = new Point(0, 0);
         private int _row;
+        public static string connectionString = null;
+        MySqlConnection connection;
 
         public AdminDashboard()
         {
             InitializeComponent();
             userLabel.Text = Login.username;
-        }
-
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
+            try
             {
-                MessageBox.Show("You have clicked Ok Button");
-                //Some task…
+                string date = DateTime.Now.ToString("d");
+                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                MySqlCommand command2 = connection.CreateCommand();
+                MySqlCommand command3 = connection.CreateCommand();
+                command.CommandText = "SELECT COUNT(*) FROM EMPLOYEE";
+                employeeLabel.Text = command.ExecuteScalar().ToString();
+                command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE counter != 0 AND date ='" + date +"'";
+                clockinLabel.Text= command2.ExecuteScalar().ToString();
+                command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE counter = 2 AND date ='" + date + "'";
+                clockoutLabel.Text = command3.ExecuteScalar().ToString();
             }
-            if (result == DialogResult.Cancel)
+            catch(Exception ex)
             {
-                MessageBox.Show("You have clicked Cancel Button");
-                //Some task…
+                MessageBox.Show(ex.Message);
             }
         }
 

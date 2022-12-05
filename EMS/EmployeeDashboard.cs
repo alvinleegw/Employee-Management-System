@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,12 +17,50 @@ namespace EMS
         private Point _startPoint = new Point(0, 0);
         private int _row;
         public static string username;
+        public static string connectionString = null;
+        MySqlConnection connection;
 
         public EmployeeDashboard()
         {
             InitializeComponent();
             username = Login.username;
             userLabel.Text = username;
+            try
+            {
+                string date = DateTime.Now.ToString("d");
+                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                MySqlCommand command2 = connection.CreateCommand();
+                MySqlCommand command3 = connection.CreateCommand();
+                MySqlCommand command4 = connection.CreateCommand();
+                command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username ='" + username + "'";
+                string employeeid = command.ExecuteScalar().ToString();
+                command2.CommandText = "SELECT clockin FROM ATTENDANCE WHERE date ='" + date + "'"
+                + " AND employeeid ='" + employeeid + "'";
+                if (command2.ExecuteScalar() != null)
+                {
+                    clockinLabel.Text = command2.ExecuteScalar().ToString();
+                }
+                 command3.CommandText = "SELECT clockout FROM ATTENDANCE WHERE date ='" + date + "'"
+                 + " AND employeeid ='" + employeeid + "'";
+                if (command3.ExecuteScalar() != null)
+                {
+                    clockoutLabel.Text = command3.ExecuteScalar().ToString();
+                }
+                 command4.CommandText = "SELECT workinghours FROM ATTENDANCE WHERE date ='" + date + "'"
+                 + " AND employeeid ='" + employeeid + "'";
+                if (command4.ExecuteScalar() != null)
+                {
+                    workinghoursLabel.Text = command4.ExecuteScalar().ToString();
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void EmployeeDashboard_MouseUp(object sender, MouseEventArgs e)
