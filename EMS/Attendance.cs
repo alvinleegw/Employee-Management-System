@@ -158,10 +158,22 @@ namespace EMS
 
         private void clockinButton_Click(object sender, EventArgs e)
         {
-            capturedevice = new VideoCaptureDevice(filterinfocollection[cameraComboBox.SelectedIndex].MonikerString);
-            capturedevice.NewFrame += CaptureDevice_NewFrame;
-            capturedevice.Start();
-            timer1.Start();
+            TimeSpan start = new TimeSpan(07, 30, 00);
+            TimeSpan end = new TimeSpan(17, 31, 00);
+            TimeSpan now = DateTime.Now.TimeOfDay;
+            if (now >= start && now <= end)
+            {
+                capturedevice = new VideoCaptureDevice(filterinfocollection[cameraComboBox.SelectedIndex].MonikerString);
+                capturedevice.NewFrame += CaptureDevice_NewFrame;
+                capturedevice.Start();
+                timer1.Start();
+            }
+            else
+            {
+                displayLabel.ForeColor = Color.MistyRose;
+                displayLabel.Text = "Clock In / Out Enabled Between 0730 to 1730 Only";
+            }
+                
         }
 
         private void CaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -249,10 +261,22 @@ namespace EMS
 
         private void clockoutButton_Click(object sender, EventArgs e)
         {
-            capturedevice = new VideoCaptureDevice(filterinfocollection[cameraComboBox.SelectedIndex].MonikerString);
-            capturedevice.NewFrame += CaptureDevice_NewFrame;
-            capturedevice.Start();
-            timer2.Start();
+            TimeSpan start = new TimeSpan(07, 30, 00);
+            TimeSpan end = new TimeSpan(17, 31, 00);
+            TimeSpan now = DateTime.Now.TimeOfDay;
+            if (now >= start && now <= end)
+            {
+                capturedevice = new VideoCaptureDevice(filterinfocollection[cameraComboBox.SelectedIndex].MonikerString);
+                capturedevice.NewFrame += CaptureDevice_NewFrame;
+                capturedevice.Start();
+                timer2.Start();
+            }
+            else
+            {
+                displayLabel.ForeColor = Color.MistyRose;
+                displayLabel.Text = "Clock In / Out Enabled Between 0730 to 1730 Only";
+            }
+                
         }
 
         private void timer2_Tick(object sender, EventArgs e)
