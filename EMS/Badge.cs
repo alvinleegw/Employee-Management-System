@@ -69,12 +69,10 @@ namespace EMS
         {
             if (pictureBox1.Image == null)
             {
-                errorLabel.Text = "Please Upload An Image";
+                MessageBox.Show("Please Upload An Image", "Image Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                errorLabel.Text = String.Empty;
-                errorLabel.Visible = false;
                 printButton.Visible = false;
                 closeButton.Visible = false;
                 Panel panel = new Panel();
@@ -93,18 +91,8 @@ namespace EMS
                 {
                     printDocument1.Print();
                 }
-                errorLabel.Visible = true;
                 printButton.Visible = true;
                 closeButton.Visible = true;
-                pictureBox1.Image = null;
-                employeeidLabel.Text = String.Empty;
-                nameLabel.Text = String.Empty;
-                positionLabel.Text = String.Empty;
-                departmentLabel.Text = String.Empty;
-                Manage.employeeid = String.Empty;
-                Manage.name = String.Empty;
-                Manage.position = String.Empty;
-                Manage.department = String.Empty;
             }
         }
 

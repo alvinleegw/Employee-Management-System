@@ -38,24 +38,32 @@
             // 
             // printButton
             // 
+            this.printButton.BackColor = System.Drawing.Color.White;
             this.printButton.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.printButton.Location = new System.Drawing.Point(348, 851);
+            this.printButton.Image = global::EMS.Properties.Resources.print;
+            this.printButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.printButton.Location = new System.Drawing.Point(247, 841);
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(132, 69);
+            this.printButton.Size = new System.Drawing.Size(163, 89);
             this.printButton.TabIndex = 0;
             this.printButton.Text = "Print";
-            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.printButton.UseVisualStyleBackColor = false;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // closeButton
             // 
+            this.closeButton.BackColor = System.Drawing.Color.White;
             this.closeButton.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.Location = new System.Drawing.Point(486, 851);
+            this.closeButton.Image = global::EMS.Properties.Resources.close;
+            this.closeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.closeButton.Location = new System.Drawing.Point(429, 841);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(132, 69);
+            this.closeButton.Size = new System.Drawing.Size(166, 89);
             this.closeButton.TabIndex = 1;
             this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // printDialog1

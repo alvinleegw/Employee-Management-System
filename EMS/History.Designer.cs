@@ -146,11 +146,14 @@
             this.searchButton.BackColor = System.Drawing.Color.DodgerBlue;
             this.searchButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.searchButton.ForeColor = System.Drawing.Color.White;
-            this.searchButton.Location = new System.Drawing.Point(1455, 86);
+            this.searchButton.Image = global::EMS.Properties.Resources.search_2;
+            this.searchButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.searchButton.Location = new System.Drawing.Point(1462, 72);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(233, 69);
+            this.searchButton.Size = new System.Drawing.Size(211, 89);
             this.searchButton.TabIndex = 6;
             this.searchButton.Text = "Search";
+            this.searchButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
@@ -271,11 +274,14 @@
             this.exportButton.BackColor = System.Drawing.Color.DodgerBlue;
             this.exportButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.exportButton.ForeColor = System.Drawing.Color.White;
-            this.exportButton.Location = new System.Drawing.Point(2002, 208);
+            this.exportButton.Image = global::EMS.Properties.Resources.export;
+            this.exportButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.exportButton.Location = new System.Drawing.Point(1944, 182);
             this.exportButton.Name = "exportButton";
-            this.exportButton.Size = new System.Drawing.Size(233, 69);
+            this.exportButton.Size = new System.Drawing.Size(291, 89);
             this.exportButton.TabIndex = 11;
             this.exportButton.Text = "Export Data";
+            this.exportButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.exportButton.UseVisualStyleBackColor = false;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 

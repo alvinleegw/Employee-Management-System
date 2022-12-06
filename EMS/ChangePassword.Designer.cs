@@ -96,7 +96,7 @@
             this.inputTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.inputTextBox.Location = new System.Drawing.Point(564, 116);
             this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(300, 55);
+            this.inputTextBox.Size = new System.Drawing.Size(351, 55);
             this.inputTextBox.TabIndex = 4;
             // 
             // searchButton
@@ -104,11 +104,14 @@
             this.searchButton.BackColor = System.Drawing.Color.Plum;
             this.searchButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.searchButton.ForeColor = System.Drawing.Color.SlateBlue;
-            this.searchButton.Location = new System.Drawing.Point(900, 109);
+            this.searchButton.Image = global::EMS.Properties.Resources.search_3;
+            this.searchButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.searchButton.Location = new System.Drawing.Point(928, 99);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(225, 69);
+            this.searchButton.Size = new System.Drawing.Size(197, 89);
             this.searchButton.TabIndex = 5;
             this.searchButton.Text = "Search";
+            this.searchButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
@@ -127,11 +130,14 @@
             this.updateButton.BackColor = System.Drawing.Color.Plum;
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.updateButton.ForeColor = System.Drawing.Color.SlateBlue;
-            this.updateButton.Location = new System.Drawing.Point(582, 390);
+            this.updateButton.Image = global::EMS.Properties.Resources.change_password_4;
+            this.updateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.updateButton.Location = new System.Drawing.Point(526, 390);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(333, 69);
+            this.updateButton.Size = new System.Drawing.Size(389, 89);
             this.updateButton.TabIndex = 9;
             this.updateButton.Text = "Update Password";
+            this.updateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateButton.UseVisualStyleBackColor = false;
             this.updateButton.Click += new System.EventHandler(this.enterButton_Click);
             // 
@@ -190,11 +196,14 @@
             this.resetButton.BackColor = System.Drawing.Color.Plum;
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.resetButton.ForeColor = System.Drawing.Color.SlateBlue;
+            this.resetButton.Image = global::EMS.Properties.Resources.reset_3;
+            this.resetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.resetButton.Location = new System.Drawing.Point(940, 390);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(185, 69);
+            this.resetButton.Size = new System.Drawing.Size(185, 89);
             this.resetButton.TabIndex = 13;
             this.resetButton.Text = "Reset";
+            this.resetButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetButton.UseVisualStyleBackColor = false;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 

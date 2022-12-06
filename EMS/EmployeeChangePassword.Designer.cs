@@ -105,22 +105,28 @@
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.updateButton.Location = new System.Drawing.Point(547, 354);
+            this.updateButton.Image = global::EMS.Properties.Resources.change_password_3;
+            this.updateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.updateButton.Location = new System.Drawing.Point(482, 354);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(341, 69);
+            this.updateButton.Size = new System.Drawing.Size(386, 89);
             this.updateButton.TabIndex = 6;
             this.updateButton.Text = "Update Password";
+            this.updateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // resetButton
             // 
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.resetButton.Location = new System.Drawing.Point(908, 354);
+            this.resetButton.Image = global::EMS.Properties.Resources.reset;
+            this.resetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.resetButton.Location = new System.Drawing.Point(895, 354);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(168, 69);
+            this.resetButton.Size = new System.Drawing.Size(181, 89);
             this.resetButton.TabIndex = 7;
             this.resetButton.Text = "Reset";
+            this.resetButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 

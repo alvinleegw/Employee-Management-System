@@ -102,9 +102,9 @@ namespace EMS
             {
                 statusLabel.Text = "Name Length Must Be Between 3 to 37 Characters Only";
             }
-            else if (positionTextBox.Text.Length < 5 || positionTextBox.Text.Length > 30)
+            else if (positionTextBox.Text.Length < 3 || positionTextBox.Text.Length > 30)
             {
-                statusLabel.Text = "Position Length Must Be Between 5 to 30 Characters Only";
+                statusLabel.Text = "Position Length Must Be Between 3 to 30 Characters Only";
             }
             else if (!isValidEmail)
             {
@@ -242,9 +242,9 @@ namespace EMS
             {
                 statusLabel.Text = "Name Length Must Be Between 3 to 37 Characters Only";
             }
-            else if (positionTextBox.Text.Length < 5 || positionTextBox.Text.Length > 30)
+            else if (positionTextBox.Text.Length < 3 || positionTextBox.Text.Length > 30)
             {
-                statusLabel.Text = "Position Length Must Be Between 5 to 30 Characters Only";
+                statusLabel.Text = "Position Length Must Be Between 3 to 30 Characters Only";
             }
             else if (!isValidEmail)
             {

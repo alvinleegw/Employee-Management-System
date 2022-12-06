@@ -49,7 +49,7 @@
             // 
             this.closeButton.BackColor = System.Drawing.Color.Tomato;
             this.closeButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.Location = new System.Drawing.Point(1638, 12);
+            this.closeButton.Location = new System.Drawing.Point(1649, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(73, 69);
             this.closeButton.TabIndex = 0;
@@ -61,7 +61,7 @@
             // 
             this.minimiseButton.BackColor = System.Drawing.Color.Gold;
             this.minimiseButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.minimiseButton.Location = new System.Drawing.Point(1542, 12);
+            this.minimiseButton.Location = new System.Drawing.Point(1560, 12);
             this.minimiseButton.Name = "minimiseButton";
             this.minimiseButton.Size = new System.Drawing.Size(73, 69);
             this.minimiseButton.TabIndex = 1;
@@ -83,14 +83,16 @@
             // 
             // selectLabel
             // 
-            this.selectLabel.AutoSize = true;
             this.selectLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.selectLabel.ForeColor = System.Drawing.Color.White;
-            this.selectLabel.Location = new System.Drawing.Point(42, 119);
+            this.selectLabel.Image = global::EMS.Properties.Resources.camera;
+            this.selectLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.selectLabel.Location = new System.Drawing.Point(12, 119);
             this.selectLabel.Name = "selectLabel";
-            this.selectLabel.Size = new System.Drawing.Size(318, 48);
+            this.selectLabel.Size = new System.Drawing.Size(385, 48);
             this.selectLabel.TabIndex = 3;
             this.selectLabel.Text = "Camera Available:";
+            this.selectLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cameraComboBox
             // 
@@ -98,7 +100,7 @@
             this.cameraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cameraComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cameraComboBox.FormattingEnabled = true;
-            this.cameraComboBox.Location = new System.Drawing.Point(366, 116);
+            this.cameraComboBox.Location = new System.Drawing.Point(403, 116);
             this.cameraComboBox.Name = "cameraComboBox";
             this.cameraComboBox.Size = new System.Drawing.Size(503, 56);
             this.cameraComboBox.Sorted = true;
@@ -119,11 +121,14 @@
             this.clockinButton.BackColor = System.Drawing.Color.Purple;
             this.clockinButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.clockinButton.ForeColor = System.Drawing.Color.White;
-            this.clockinButton.Location = new System.Drawing.Point(960, 109);
+            this.clockinButton.Image = global::EMS.Properties.Resources.clock_in_2;
+            this.clockinButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.clockinButton.Location = new System.Drawing.Point(922, 99);
             this.clockinButton.Name = "clockinButton";
-            this.clockinButton.Size = new System.Drawing.Size(225, 69);
+            this.clockinButton.Size = new System.Drawing.Size(225, 89);
             this.clockinButton.TabIndex = 6;
             this.clockinButton.Text = "Clock In";
+            this.clockinButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.clockinButton.UseVisualStyleBackColor = false;
             this.clockinButton.Click += new System.EventHandler(this.clockinButton_Click);
             // 
@@ -132,11 +137,14 @@
             this.clockoutButton.BackColor = System.Drawing.Color.MediumPurple;
             this.clockoutButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.clockoutButton.ForeColor = System.Drawing.Color.White;
-            this.clockoutButton.Location = new System.Drawing.Point(1208, 109);
+            this.clockoutButton.Image = global::EMS.Properties.Resources.clock_in_2;
+            this.clockoutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.clockoutButton.Location = new System.Drawing.Point(1153, 99);
             this.clockoutButton.Name = "clockoutButton";
-            this.clockoutButton.Size = new System.Drawing.Size(225, 69);
+            this.clockoutButton.Size = new System.Drawing.Size(257, 89);
             this.clockoutButton.TabIndex = 7;
             this.clockoutButton.Text = "Clock Out";
+            this.clockoutButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.clockoutButton.UseVisualStyleBackColor = false;
             this.clockoutButton.Click += new System.EventHandler(this.clockoutButton_Click);
             // 
@@ -163,11 +171,14 @@
             this.stopButton.BackColor = System.Drawing.Color.Firebrick;
             this.stopButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.stopButton.ForeColor = System.Drawing.Color.White;
-            this.stopButton.Location = new System.Drawing.Point(1448, 109);
+            this.stopButton.Image = global::EMS.Properties.Resources.stop;
+            this.stopButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.stopButton.Location = new System.Drawing.Point(1416, 99);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(263, 69);
+            this.stopButton.Size = new System.Drawing.Size(309, 89);
             this.stopButton.TabIndex = 9;
             this.stopButton.Text = "Stop Camera";
+            this.stopButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.stopButton.UseVisualStyleBackColor = false;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
@@ -186,7 +197,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1726, 924);
+            this.ClientSize = new System.Drawing.Size(1742, 924);
             this.Controls.Add(this.displayLabel);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.statusLabel);

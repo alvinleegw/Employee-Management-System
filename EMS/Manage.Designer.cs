@@ -246,12 +246,15 @@
             this.addButton.BackColor = System.Drawing.Color.Crimson;
             this.addButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(60, 1128);
+            this.addButton.Image = global::EMS.Properties.Resources.add;
+            this.addButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.addButton.Location = new System.Drawing.Point(82, 1128);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(195, 69);
+            this.addButton.Size = new System.Drawing.Size(167, 89);
             this.addButton.TabIndex = 17;
             this.addButton.TabStop = false;
             this.addButton.Text = "Add";
+            this.addButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -260,12 +263,15 @@
             this.updateButton.BackColor = System.Drawing.Color.Crimson;
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.updateButton.ForeColor = System.Drawing.Color.White;
-            this.updateButton.Location = new System.Drawing.Point(291, 1128);
+            this.updateButton.Image = global::EMS.Properties.Resources.update;
+            this.updateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.updateButton.Location = new System.Drawing.Point(272, 1128);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(202, 69);
+            this.updateButton.Size = new System.Drawing.Size(236, 89);
             this.updateButton.TabIndex = 18;
             this.updateButton.TabStop = false;
             this.updateButton.Text = "Update";
+            this.updateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateButton.UseVisualStyleBackColor = false;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
@@ -274,12 +280,15 @@
             this.deleteButton.BackColor = System.Drawing.Color.Crimson;
             this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Location = new System.Drawing.Point(525, 1128);
+            this.deleteButton.Image = global::EMS.Properties.Resources.delete;
+            this.deleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.deleteButton.Location = new System.Drawing.Point(529, 1128);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(203, 69);
+            this.deleteButton.Size = new System.Drawing.Size(207, 89);
             this.deleteButton.TabIndex = 19;
             this.deleteButton.TabStop = false;
             this.deleteButton.Text = "Delete";
+            this.deleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -288,12 +297,15 @@
             this.clearButton.BackColor = System.Drawing.Color.Crimson;
             this.clearButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.clearButton.ForeColor = System.Drawing.Color.White;
-            this.clearButton.Location = new System.Drawing.Point(762, 1128);
+            this.clearButton.Image = global::EMS.Properties.Resources.reset_2;
+            this.clearButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.clearButton.Location = new System.Drawing.Point(755, 1128);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(203, 69);
+            this.clearButton.Size = new System.Drawing.Size(196, 89);
             this.clearButton.TabIndex = 20;
             this.clearButton.TabStop = false;
             this.clearButton.Text = "Clear";
+            this.clearButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
@@ -467,36 +479,42 @@
             this.searchButton.BackColor = System.Drawing.Color.Crimson;
             this.searchButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.searchButton.ForeColor = System.Drawing.Color.White;
-            this.searchButton.Location = new System.Drawing.Point(2476, 174);
+            this.searchButton.Image = global::EMS.Properties.Resources.search;
+            this.searchButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.searchButton.Location = new System.Drawing.Point(2478, 164);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(203, 69);
+            this.searchButton.Size = new System.Drawing.Size(215, 89);
             this.searchButton.TabIndex = 27;
             this.searchButton.TabStop = false;
             this.searchButton.Text = "Search";
+            this.searchButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // resultLabel
             // 
-            this.resultLabel.AutoSize = true;
             this.resultLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.resultLabel.ForeColor = System.Drawing.Color.Salmon;
-            this.resultLabel.Location = new System.Drawing.Point(1842, 998);
+            this.resultLabel.Location = new System.Drawing.Point(1040, 998);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(0, 54);
+            this.resultLabel.Size = new System.Drawing.Size(1952, 54);
             this.resultLabel.TabIndex = 32;
+            this.resultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // exportButton
             // 
             this.exportButton.BackColor = System.Drawing.Color.Crimson;
             this.exportButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.exportButton.ForeColor = System.Drawing.Color.White;
-            this.exportButton.Location = new System.Drawing.Point(2699, 174);
+            this.exportButton.Image = global::EMS.Properties.Resources.export;
+            this.exportButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.exportButton.Location = new System.Drawing.Point(1026, 1235);
             this.exportButton.Name = "exportButton";
-            this.exportButton.Size = new System.Drawing.Size(293, 69);
+            this.exportButton.Size = new System.Drawing.Size(329, 89);
             this.exportButton.TabIndex = 33;
             this.exportButton.TabStop = false;
             this.exportButton.Text = "Export Data";
+            this.exportButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.exportButton.UseVisualStyleBackColor = false;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
@@ -518,12 +536,15 @@
             this.badgeButton.BackColor = System.Drawing.Color.Crimson;
             this.badgeButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.badgeButton.ForeColor = System.Drawing.Color.White;
-            this.badgeButton.Location = new System.Drawing.Point(60, 1235);
+            this.badgeButton.Image = global::EMS.Properties.Resources.badge;
+            this.badgeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.badgeButton.Location = new System.Drawing.Point(82, 1235);
             this.badgeButton.Name = "badgeButton";
-            this.badgeButton.Size = new System.Drawing.Size(433, 69);
+            this.badgeButton.Size = new System.Drawing.Size(393, 89);
             this.badgeButton.TabIndex = 35;
             this.badgeButton.TabStop = false;
             this.badgeButton.Text = "Generate Badge";
+            this.badgeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.badgeButton.UseVisualStyleBackColor = false;
             this.badgeButton.Click += new System.EventHandler(this.badgeButton_Click);
             // 
@@ -532,12 +553,15 @@
             this.qrButton.BackColor = System.Drawing.Color.Crimson;
             this.qrButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.qrButton.ForeColor = System.Drawing.Color.White;
-            this.qrButton.Location = new System.Drawing.Point(525, 1235);
+            this.qrButton.Image = global::EMS.Properties.Resources.qr;
+            this.qrButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.qrButton.Location = new System.Drawing.Point(512, 1235);
             this.qrButton.Name = "qrButton";
-            this.qrButton.Size = new System.Drawing.Size(440, 69);
+            this.qrButton.Size = new System.Drawing.Size(439, 89);
             this.qrButton.TabIndex = 36;
             this.qrButton.TabStop = false;
             this.qrButton.Text = "Generate QR Code";
+            this.qrButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qrButton.UseVisualStyleBackColor = false;
             this.qrButton.Click += new System.EventHandler(this.qrButton_Click);
             // 
@@ -546,12 +570,15 @@
             this.importButton.BackColor = System.Drawing.Color.Crimson;
             this.importButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.importButton.ForeColor = System.Drawing.Color.White;
-            this.importButton.Location = new System.Drawing.Point(2699, 99);
+            this.importButton.Image = global::EMS.Properties.Resources.import;
+            this.importButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.importButton.Location = new System.Drawing.Point(1026, 1128);
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(293, 69);
+            this.importButton.Size = new System.Drawing.Size(329, 89);
             this.importButton.TabIndex = 37;
             this.importButton.TabStop = false;
             this.importButton.Text = "Import Data";
+            this.importButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.importButton.UseVisualStyleBackColor = false;
             this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 

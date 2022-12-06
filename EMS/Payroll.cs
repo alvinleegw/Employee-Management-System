@@ -197,9 +197,10 @@ namespace EMS
 
         private async void printButton_Click(object sender, EventArgs e)
         {
-            statusLabel.Text = String.Empty;
             selectLabel.Visible = false;
             dateTimePicker1.Visible = false;
+            this.Refresh();
+            statusLabel.Text = String.Empty;
             printButton.Visible = false;
             closeButton.Visible = false;
             Panel panel = new Panel();
@@ -246,7 +247,7 @@ namespace EMS
             DateTime time = dateTimePicker1.Value;
             month = time.Month.ToString();
             year = time.Year.ToString();
-            if (time.Month == DateTime.Now.Month && checkLastDayOfMonth() == false)
+            if (time.Month == DateTime.Now.Month && time.Year == DateTime.Now.Year && checkLastDayOfMonth() == false)
             {
                 try
                 {
@@ -276,6 +277,8 @@ namespace EMS
                     statusLabel.ForeColor = Color.Red;
                     statusLabel.Text = ex.Message;
                 }
+                printButton.Enabled = false;
+                statusLabel.ForeColor = Color.Red;
                 statusLabel.Text = "Partial Payslip Could Be Preview Anytime but Complete Version Could Be Printed Only At the Last Day of the Month or Later";
                 payslipidLabel.Text = "Payslip ID: ";
                 dateissuedLabel.Text = "Date Issued: ";

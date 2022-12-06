@@ -58,7 +58,7 @@
             this.userLabel.ForeColor = System.Drawing.Color.White;
             this.userLabel.Location = new System.Drawing.Point(3, 20);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(456, 54);
+            this.userLabel.Size = new System.Drawing.Size(503, 54);
             this.userLabel.TabIndex = 0;
             this.userLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -66,7 +66,7 @@
             // 
             this.closeButton.BackColor = System.Drawing.Color.Tomato;
             this.closeButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.Location = new System.Drawing.Point(1917, 12);
+            this.closeButton.Location = new System.Drawing.Point(1971, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(78, 69);
             this.closeButton.TabIndex = 2;
@@ -91,7 +91,7 @@
             this.panel1.Controls.Add(this.userLabel);
             this.panel1.Location = new System.Drawing.Point(-5, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(462, 800);
+            this.panel1.Size = new System.Drawing.Size(509, 800);
             this.panel1.TabIndex = 4;
             // 
             // changepasswordButton
@@ -99,11 +99,14 @@
             this.changepasswordButton.BackColor = System.Drawing.Color.Firebrick;
             this.changepasswordButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.changepasswordButton.ForeColor = System.Drawing.Color.White;
+            this.changepasswordButton.Image = global::EMS.Properties.Resources.change_password;
+            this.changepasswordButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.changepasswordButton.Location = new System.Drawing.Point(38, 210);
             this.changepasswordButton.Name = "changepasswordButton";
-            this.changepasswordButton.Size = new System.Drawing.Size(387, 69);
+            this.changepasswordButton.Size = new System.Drawing.Size(442, 93);
             this.changepasswordButton.TabIndex = 4;
             this.changepasswordButton.Text = "Change Password";
+            this.changepasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.changepasswordButton.UseVisualStyleBackColor = false;
             this.changepasswordButton.Click += new System.EventHandler(this.changepasswordButton_Click);
             // 
@@ -112,9 +115,11 @@
             this.historyButton.BackColor = System.Drawing.Color.Firebrick;
             this.historyButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.historyButton.ForeColor = System.Drawing.Color.White;
-            this.historyButton.Location = new System.Drawing.Point(38, 317);
+            this.historyButton.Image = global::EMS.Properties.Resources.history;
+            this.historyButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.historyButton.Location = new System.Drawing.Point(38, 343);
             this.historyButton.Name = "historyButton";
-            this.historyButton.Size = new System.Drawing.Size(387, 69);
+            this.historyButton.Size = new System.Drawing.Size(442, 93);
             this.historyButton.TabIndex = 3;
             this.historyButton.Text = "View History";
             this.historyButton.UseVisualStyleBackColor = false;
@@ -125,9 +130,11 @@
             this.logoutButton.BackColor = System.Drawing.Color.Firebrick;
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.logoutButton.ForeColor = System.Drawing.Color.White;
-            this.logoutButton.Location = new System.Drawing.Point(38, 422);
+            this.logoutButton.Image = global::EMS.Properties.Resources.logout;
+            this.logoutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.logoutButton.Location = new System.Drawing.Point(38, 478);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(387, 69);
+            this.logoutButton.Size = new System.Drawing.Size(442, 93);
             this.logoutButton.TabIndex = 2;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = false;
@@ -138,11 +145,14 @@
             this.manageButton.BackColor = System.Drawing.Color.Firebrick;
             this.manageButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.manageButton.ForeColor = System.Drawing.Color.White;
-            this.manageButton.Location = new System.Drawing.Point(38, 101);
+            this.manageButton.Image = global::EMS.Properties.Resources.employee;
+            this.manageButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.manageButton.Location = new System.Drawing.Point(38, 77);
             this.manageButton.Name = "manageButton";
-            this.manageButton.Size = new System.Drawing.Size(387, 69);
+            this.manageButton.Size = new System.Drawing.Size(442, 93);
             this.manageButton.TabIndex = 0;
             this.manageButton.Text = "Manage Employee";
+            this.manageButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.manageButton.UseVisualStyleBackColor = false;
             this.manageButton.Click += new System.EventHandler(this.manageButton_Click);
             // 
@@ -150,7 +160,7 @@
             // 
             this.minimizeButton.BackColor = System.Drawing.Color.Gold;
             this.minimizeButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.minimizeButton.Location = new System.Drawing.Point(1833, 13);
+            this.minimizeButton.Location = new System.Drawing.Point(1887, 13);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(78, 69);
             this.minimizeButton.TabIndex = 6;
@@ -163,9 +173,9 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.employeeLabel);
             this.panel2.Controls.Add(this.display1Label);
-            this.panel2.Location = new System.Drawing.Point(481, 129);
+            this.panel2.Location = new System.Drawing.Point(524, 129);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(458, 196);
+            this.panel2.Size = new System.Drawing.Size(496, 196);
             this.panel2.TabIndex = 7;
             // 
             // employeeLabel
@@ -174,29 +184,31 @@
             this.employeeLabel.ForeColor = System.Drawing.Color.SteelBlue;
             this.employeeLabel.Location = new System.Drawing.Point(3, 80);
             this.employeeLabel.Name = "employeeLabel";
-            this.employeeLabel.Size = new System.Drawing.Size(449, 96);
+            this.employeeLabel.Size = new System.Drawing.Size(490, 96);
             this.employeeLabel.TabIndex = 1;
             this.employeeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // display1Label
             // 
-            this.display1Label.AutoSize = true;
             this.display1Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.display1Label.ForeColor = System.Drawing.Color.SteelBlue;
-            this.display1Label.Location = new System.Drawing.Point(103, 9);
+            this.display1Label.Image = global::EMS.Properties.Resources.employees;
+            this.display1Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.display1Label.Location = new System.Drawing.Point(73, 15);
             this.display1Label.Name = "display1Label";
-            this.display1Label.Size = new System.Drawing.Size(270, 65);
+            this.display1Label.Size = new System.Drawing.Size(349, 65);
             this.display1Label.TabIndex = 0;
             this.display1Label.Text = "Employees";
+            this.display1Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.clockinLabel);
             this.panel3.Controls.Add(this.display2Label);
-            this.panel3.Location = new System.Drawing.Point(1001, 129);
+            this.panel3.Location = new System.Drawing.Point(1035, 129);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(458, 196);
+            this.panel3.Size = new System.Drawing.Size(496, 196);
             this.panel3.TabIndex = 8;
             // 
             // clockinLabel
@@ -205,29 +217,31 @@
             this.clockinLabel.ForeColor = System.Drawing.Color.SteelBlue;
             this.clockinLabel.Location = new System.Drawing.Point(3, 87);
             this.clockinLabel.Name = "clockinLabel";
-            this.clockinLabel.Size = new System.Drawing.Size(452, 89);
+            this.clockinLabel.Size = new System.Drawing.Size(490, 89);
             this.clockinLabel.TabIndex = 1;
             this.clockinLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // display2Label
             // 
-            this.display2Label.AutoSize = true;
             this.display2Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.display2Label.ForeColor = System.Drawing.Color.SteelBlue;
-            this.display2Label.Location = new System.Drawing.Point(30, 13);
+            this.display2Label.Image = global::EMS.Properties.Resources.clock_in;
+            this.display2Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.display2Label.Location = new System.Drawing.Point(23, 15);
             this.display2Label.Name = "display2Label";
-            this.display2Label.Size = new System.Drawing.Size(377, 65);
+            this.display2Label.Size = new System.Drawing.Size(446, 65);
             this.display2Label.TabIndex = 0;
             this.display2Label.Text = "Clock Ins Today";
+            this.display2Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.clockoutLabel);
             this.panel4.Controls.Add(this.display3Label);
-            this.panel4.Location = new System.Drawing.Point(1517, 129);
+            this.panel4.Location = new System.Drawing.Point(1545, 129);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(458, 196);
+            this.panel4.Size = new System.Drawing.Size(496, 196);
             this.panel4.TabIndex = 8;
             // 
             // clockoutLabel
@@ -236,18 +250,19 @@
             this.clockoutLabel.ForeColor = System.Drawing.Color.SteelBlue;
             this.clockoutLabel.Location = new System.Drawing.Point(6, 104);
             this.clockoutLabel.Name = "clockoutLabel";
-            this.clockoutLabel.Size = new System.Drawing.Size(449, 72);
+            this.clockoutLabel.Size = new System.Drawing.Size(487, 72);
             this.clockoutLabel.TabIndex = 1;
             this.clockoutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // display3Label
             // 
-            this.display3Label.AutoSize = true;
             this.display3Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.display3Label.ForeColor = System.Drawing.Color.SteelBlue;
-            this.display3Label.Location = new System.Drawing.Point(19, 13);
+            this.display3Label.Image = global::EMS.Properties.Resources.clock_out;
+            this.display3Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.display3Label.Location = new System.Drawing.Point(6, 15);
             this.display3Label.Name = "display3Label";
-            this.display3Label.Size = new System.Drawing.Size(417, 65);
+            this.display3Label.Size = new System.Drawing.Size(479, 65);
             this.display3Label.TabIndex = 0;
             this.display3Label.Text = "Clock Outs Today";
             // 
@@ -256,7 +271,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(2007, 789);
+            this.ClientSize = new System.Drawing.Size(2061, 789);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -272,11 +287,8 @@
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AdminDashboard_MouseUp);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

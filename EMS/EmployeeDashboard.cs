@@ -97,7 +97,16 @@ namespace EMS
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                this.Hide();
+                Login login = new Login();
+                login.ShowDialog();
+                userLabel.Text = "";
+                Login.username = "";
+                this.Close();
+            }
         }
 
         private void minimiseButton_Click(object sender, EventArgs e)
