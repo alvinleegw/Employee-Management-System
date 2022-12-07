@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.loginLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
@@ -179,11 +180,11 @@
             this.versionLabel.AutoSize = true;
             this.versionLabel.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.versionLabel.ForeColor = System.Drawing.Color.Black;
-            this.versionLabel.Location = new System.Drawing.Point(261, 542);
+            this.versionLabel.Location = new System.Drawing.Point(237, 542);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(228, 38);
+            this.versionLabel.Size = new System.Drawing.Size(252, 38);
             this.versionLabel.TabIndex = 12;
-            this.versionLabel.Text = "EMS Version 4.5";
+            this.versionLabel.Text = "EMS Version 4.5.1";
             // 
             // pictureBox1
             // 
@@ -239,6 +240,7 @@
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.loginLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

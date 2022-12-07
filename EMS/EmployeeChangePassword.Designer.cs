@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeChangePassword));
             this.closeButton = new System.Windows.Forms.Button();
             this.miniseButton = new System.Windows.Forms.Button();
             this.inputpasswordLabel = new System.Windows.Forms.Label();
@@ -167,6 +168,7 @@
             this.Controls.Add(this.miniseButton);
             this.Controls.Add(this.closeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EmployeeChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmployeeChangePassword";

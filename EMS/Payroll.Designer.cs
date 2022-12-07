@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payroll));
             this.title2Label = new System.Windows.Forms.Label();
             this.payslipidLabel = new System.Windows.Forms.Label();
             this.employeeidLabel = new System.Windows.Forms.Label();
@@ -316,6 +317,7 @@
             this.Controls.Add(this.title2Label);
             this.Controls.Add(this.titleLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Payroll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payroll";
