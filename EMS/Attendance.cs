@@ -293,6 +293,10 @@ namespace EMS
                                 TimeSpan TS = timeto - timefrom;
                                 double hour = TS.TotalHours;
                                 workinghours = Math.Round(hour, 2);
+                                if (workinghours >= 8.00)
+                                {
+                                    workinghours = 8.00;
+                                }
                             }
                             try
                             {

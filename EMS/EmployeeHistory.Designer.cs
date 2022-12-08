@@ -131,10 +131,11 @@
             // 
             this.selectLabel.AutoSize = true;
             this.selectLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.selectLabel.Location = new System.Drawing.Point(596, 12);
+            this.selectLabel.Location = new System.Drawing.Point(684, 19);
             this.selectLabel.Name = "selectLabel";
-            this.selectLabel.Size = new System.Drawing.Size(0, 48);
+            this.selectLabel.Size = new System.Drawing.Size(240, 48);
             this.selectLabel.TabIndex = 6;
+            this.selectLabel.Text = "Please select:";
             // 
             // dateTimePicker1
             // 
