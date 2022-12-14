@@ -180,11 +180,11 @@
             this.versionLabel.AutoSize = true;
             this.versionLabel.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.versionLabel.ForeColor = System.Drawing.Color.Black;
-            this.versionLabel.Location = new System.Drawing.Point(237, 542);
+            this.versionLabel.Location = new System.Drawing.Point(260, 542);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(252, 38);
+            this.versionLabel.Size = new System.Drawing.Size(228, 38);
             this.versionLabel.TabIndex = 12;
-            this.versionLabel.Text = "EMS Version 4.5.1";
+            this.versionLabel.Text = "EMS Version 5.0";
             // 
             // pictureBox1
             // 

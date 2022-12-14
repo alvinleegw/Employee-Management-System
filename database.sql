@@ -3,13 +3,13 @@ CREATE DATABASE IF NOT EXISTS EMS;
 USE EMS;
 
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 04:13 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.5
+-- Generation Time: Dec 13, 2022 at 11:52 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
   `adminid` int(1) NOT NULL,
   `username` varchar(5) NOT NULL,
   `password` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -43,6 +43,35 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`adminid`, `username`, `password`) VALUES
 (1, 'admin', '21232F297A57A5A743894A0E4A801FC3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `archive`
+--
+
+CREATE TABLE `archive` (
+  `archiveid` varchar(5) NOT NULL,
+  `portrait` mediumblob NOT NULL,
+  `name` varchar(37) NOT NULL,
+  `ic` varchar(12) NOT NULL,
+  `dateofbirth` varchar(10) NOT NULL,
+  `age` int(3) NOT NULL,
+  `mobileno` varchar(12) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `addressline1` varchar(30) NOT NULL,
+  `addressline2` varchar(30) NOT NULL,
+  `addressline3` varchar(30) DEFAULT NULL,
+  `postcode` varchar(5) NOT NULL,
+  `district` varchar(25) NOT NULL,
+  `state` varchar(15) NOT NULL,
+  `datejoined` varchar(10) NOT NULL,
+  `dateleft` varchar(10) NOT NULL,
+  `position` varchar(30) NOT NULL,
+  `department` varchar(30) NOT NULL,
+  `hourlyrate` int(4) NOT NULL,
+  `adminid` int(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,7 +89,20 @@ CREATE TABLE `attendance` (
   `month` varchar(2) DEFAULT NULL,
   `year` varchar(4) NOT NULL,
   `employeeid` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departmentinfo`
+--
+
+CREATE TABLE `departmentinfo` (
+  `departmentcode` varchar(2) NOT NULL,
+  `departmentname` varchar(30) NOT NULL,
+  `counter` int(3) NOT NULL DEFAULT 1,
+  `adminid` int(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -72,22 +114,25 @@ CREATE TABLE `employee` (
   `employeeid` varchar(5) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(32) NOT NULL,
+  `portrait` mediumblob NOT NULL,
   `name` varchar(37) NOT NULL,
-  `position` varchar(30) NOT NULL,
+  `ic` varchar(12) NOT NULL,
+  `dateofbirth` varchar(10) NOT NULL,
+  `age` int(3) NOT NULL,
+  `mobileno` varchar(12) NOT NULL,
   `email` varchar(30) NOT NULL,
+  `addressline1` varchar(30) NOT NULL,
+  `addressline2` varchar(30) NOT NULL,
+  `addressline3` varchar(30) DEFAULT NULL,
+  `postcode` varchar(5) NOT NULL,
+  `district` varchar(25) NOT NULL,
+  `state` varchar(15) NOT NULL,
+  `datejoined` varchar(10) NOT NULL,
+  `position` varchar(30) NOT NULL,
   `department` varchar(30) NOT NULL,
   `hourlyrate` int(4) NOT NULL,
   `adminid` int(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `employee`
---
-
-INSERT INTO `employee` (`employeeid`, `username`, `password`, `name`, `position`, `email`, `department`, `hourlyrate`, `adminid`) VALUES
-('IT001', 'alvinleegw', 'E3966108CD0BD2E11817487A1AA9538B', 'ALVIN LEE GUO WEI', 'INDUSTRIAL TRAINEE', 'alvinleegw@hotmail.com', 'IT', 15, 1),
-('IT002', 'dannytay', '21BD20843CB6EDFF216F185366B87DC6', 'DANNY TAY LI MUK', 'DESIGN MANAGER', 'dannytay360@hotmail.com', 'IT', 20, 1),
-('ME001', 'yeekeong', 'B491E0C88EED89813356EE35F220FC39', 'TEH YEE KEONG', 'INDUSTRIAL TRAINEE', 'yeekeong@gmail.com', 'ENGINEERING', 20, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -105,7 +150,19 @@ CREATE TABLE `payslip` (
   `month` varchar(2) NOT NULL,
   `year` varchar(4) NOT NULL,
   `employeeid` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `positioninfo`
+--
+
+CREATE TABLE `positioninfo` (
+  `positionname` varchar(30) NOT NULL,
+  `adminid` int(1) NOT NULL DEFAULT 1,
+  `departmentcode` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -118,11 +175,24 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`adminid`);
 
 --
+-- Indexes for table `archive`
+--
+ALTER TABLE `archive`
+  ADD KEY `adminid` (`adminid`);
+
+--
 -- Indexes for table `attendance`
 --
 ALTER TABLE `attendance`
   ADD PRIMARY KEY (`attendanceid`),
   ADD KEY `employeeid` (`employeeid`);
+
+--
+-- Indexes for table `departmentinfo`
+--
+ALTER TABLE `departmentinfo`
+  ADD PRIMARY KEY (`departmentcode`),
+  ADD KEY `adminid` (`adminid`);
 
 --
 -- Indexes for table `employee`
@@ -131,6 +201,8 @@ ALTER TABLE `employee`
   ADD PRIMARY KEY (`employeeid`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `ic` (`ic`),
+  ADD UNIQUE KEY `mobileno` (`mobileno`),
   ADD KEY `adminid` (`adminid`);
 
 --
@@ -140,6 +212,14 @@ ALTER TABLE `payslip`
   ADD PRIMARY KEY (`payslipno`),
   ADD UNIQUE KEY `payslipid` (`payslipid`),
   ADD KEY `employeeid` (`employeeid`);
+
+--
+-- Indexes for table `positioninfo`
+--
+ALTER TABLE `positioninfo`
+  ADD PRIMARY KEY (`positionname`),
+  ADD KEY `adminid` (`adminid`),
+  ADD KEY `departmentname` (`departmentcode`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -162,10 +242,22 @@ ALTER TABLE `payslip`
 --
 
 --
+-- Constraints for table `archive`
+--
+ALTER TABLE `archive`
+  ADD CONSTRAINT `archive_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`);
+
+--
 -- Constraints for table `attendance`
 --
 ALTER TABLE `attendance`
   ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `departmentinfo`
+--
+ALTER TABLE `departmentinfo`
+  ADD CONSTRAINT `departmentinfo_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`);
 
 --
 -- Constraints for table `employee`
@@ -178,6 +270,13 @@ ALTER TABLE `employee`
 --
 ALTER TABLE `payslip`
   ADD CONSTRAINT `payslip_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `positioninfo`
+--
+ALTER TABLE `positioninfo`
+  ADD CONSTRAINT `positioninfo_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`),
+  ADD CONSTRAINT `positioninfo_ibfk_2` FOREIGN KEY (`departmentcode`) REFERENCES `departmentinfo` (`departmentcode`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

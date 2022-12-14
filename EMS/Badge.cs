@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace EMS
 {
     public partial class Badge : Form
     {
+        public static string connectionString = null;
+        MySqlConnection connection;
         Bitmap bitmap;
         private bool _dragging;
         private Point _startPoint = new Point(0, 0);
@@ -25,6 +28,26 @@ namespace EMS
             nameLabel.Text = Manage.name;
             positionLabel.Text = Manage.position;
             departmentLabel.Text = Manage.department;
+            try
+            {
+                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT portrait FROM EMPLOYEE WHERE employeeid ='" + Manage.employeeid + "'";
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+                DataSet dataset = new DataSet();
+                dataAdapter.Fill(dataset);
+                if (dataset.Tables[0].Rows.Count > 0)
+                {
+                    MemoryStream ms = new MemoryStream((byte[])dataset.Tables[0].Rows[0]["portrait"]);
+                    pictureBox1.Image = new Bitmap(ms);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Badge_MouseUp(object sender, MouseEventArgs e)
@@ -54,46 +77,28 @@ namespace EMS
             this.Close();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.Title = "Insert Employee Portrait";
-            openFileDialog1.Filter = "JPEG Files(*.jpeg)|*.jpg|PNG Files(*.png)|*.png";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox1.Load(openFileDialog1.FileName);
-            }
-        }
-
         private void printButton_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image == null)
+            printButton.Visible = false;
+            closeButton.Visible = false;
+            Panel panel = new Panel();
+            this.Controls.Add(panel);
+            Graphics grp = panel.CreateGraphics();
+            Size formSize = this.ClientSize;
+            bitmap = new Bitmap(formSize.Width, formSize.Height, grp);
+            grp = Graphics.FromImage(bitmap);
+            Point panelLocation = PointToScreen(panel.Location);
+            grp.CopyFromScreen(panelLocation.X, panelLocation.Y, 0, 0, formSize);
+            PrintDialog printDlg = new PrintDialog();
+            printDlg.Document = printDocument1;
+            printDlg.AllowSelection = true;
+            printDlg.AllowSomePages = true;
+            if (printDlg.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Please Upload An Image", "Image Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                printDocument1.Print();
             }
-            else
-            {
-                printButton.Visible = false;
-                closeButton.Visible = false;
-                Panel panel = new Panel();
-                this.Controls.Add(panel);
-                Graphics grp = panel.CreateGraphics();
-                Size formSize = this.ClientSize;
-                bitmap = new Bitmap(formSize.Width, formSize.Height, grp);
-                grp = Graphics.FromImage(bitmap);
-                Point panelLocation = PointToScreen(panel.Location);
-                grp.CopyFromScreen(panelLocation.X, panelLocation.Y, 0, 0, formSize);
-                PrintDialog printDlg = new PrintDialog();
-                printDlg.Document = printDocument1;
-                printDlg.AllowSelection = true;
-                printDlg.AllowSomePages = true;
-                if (printDlg.ShowDialog() == DialogResult.OK)
-                {
-                    printDocument1.Print();
-                }
-                printButton.Visible = true;
-                closeButton.Visible = true;
-            }
+            printButton.Visible = true;
+            closeButton.Visible = true;
         }
 
         private void CaptureScreen()
