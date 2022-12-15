@@ -18,6 +18,11 @@ using MySqlX.XDevAPI.Relational;
 using Google.Protobuf.WellKnownTypes;
 using System.Diagnostics;
 using static QRCoder.Base64QRCode;
+using System.Reflection.Metadata;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using Font = iTextSharp.text.Font;
+using Document = iTextSharp.text.Document;
 
 namespace EMS
 {
@@ -713,6 +718,8 @@ namespace EMS
         
         private void clearButton_Click(object sender, EventArgs e)
         {
+            statusLabel.Text = String.Empty;
+            resultLabel.Text = String.Empty;
             employeeidComboBox.SelectedItem = null;
             employeeidTextBox.Text = String.Empty;
             pictureBox1.Image = null;
@@ -967,78 +974,89 @@ namespace EMS
             }
             else
             {
-                string departmentcode = employeeidComboBox.SelectedItem.ToString();
-                employeeid = departmentcode + employeeidTextBox.Text;
-                try
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record? You can archive the record instead.", "Delete Record Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
                 {
-                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                    connection = new MySqlConnection(connectionString);
-                    connection.Open();
-                    MySqlCommand command = connection.CreateCommand();
-                    command.CommandText = "DELETE FROM EMPLOYEE WHERE employeeid = '" + employeeid + "'";
-                    if (command.ExecuteNonQuery() == 1)
+                    string departmentcode = employeeidComboBox.SelectedItem.ToString();
+                    employeeid = departmentcode + employeeidTextBox.Text;
+                    try
                     {
-                        resultLabel.Text = "Data Deleted Successfully";
-                        employeeidComboBox.SelectedItem = null;
-                        employeeidTextBox.Text = String.Empty;
-                        pictureBox1.Image = null;
-                        usernameTextBox.Text = String.Empty;
-                        passwordTextBox.Text = String.Empty;
-                        icTextBox.Text = String.Empty;
-                        nameTextBox.Text = String.Empty;
-                        dobTextBox.Text = String.Empty;
-                        ageTextBox.Text = String.Empty;
-                        phoneTextBox.Text = String.Empty;
-                        emailTextBox.Text = String.Empty;
-                        address1TextBox.Text = String.Empty;
-                        address2TextBox.Text = String.Empty;
-                        address3TextBox.Text = String.Empty;
-                        postcodeTextBox.Text = String.Empty;
-                        districtTextBox.Text = String.Empty;
-                        stateComboBox.SelectedItem = null;
-                        datejoinedTextBox.Text = DateTime.Now.ToString("d");
-                        positionComboBox.SelectedItem = null;
-                        departmentTextBox.Text = String.Empty;
-                        numericUpDown1.Value = 10;
+                        connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                        connection = new MySqlConnection(connectionString);
+                        connection.Open();
+                        MySqlCommand command = connection.CreateCommand();
+                        MySqlCommand command2 = connection.CreateCommand();
+                        command.CommandText = "DELETE FROM EMPLOYEE WHERE employeeid = '" + employeeid + "'";
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            resultLabel.Text = "Data Deleted Successfully";
+                            command2.CommandText = "SELECT counter FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "'";
+                            int counter = Convert.ToInt32(command2.ExecuteScalar());
+                            counter--;
+                            MySqlCommand command3 = connection.CreateCommand();
+                            command3.CommandText = "UPDATE DEPARTMENTINFO SET counter ='" + counter + "' WHERE departmentcode ='" + departmentcode + "'";
+                            command3.ExecuteNonQuery();
+                            employeeidComboBox.SelectedItem = null;
+                            employeeidTextBox.Text = String.Empty;
+                            pictureBox1.Image = null;
+                            usernameTextBox.Text = String.Empty;
+                            passwordTextBox.Text = String.Empty;
+                            icTextBox.Text = String.Empty;
+                            nameTextBox.Text = String.Empty;
+                            dobTextBox.Text = String.Empty;
+                            ageTextBox.Text = String.Empty;
+                            phoneTextBox.Text = String.Empty;
+                            emailTextBox.Text = String.Empty;
+                            address1TextBox.Text = String.Empty;
+                            address2TextBox.Text = String.Empty;
+                            address3TextBox.Text = String.Empty;
+                            postcodeTextBox.Text = String.Empty;
+                            districtTextBox.Text = String.Empty;
+                            stateComboBox.SelectedItem = null;
+                            datejoinedTextBox.Text = DateTime.Now.ToString("d");
+                            positionComboBox.SelectedItem = null;
+                            departmentTextBox.Text = String.Empty;
+                            numericUpDown1.Value = 10;
+                        }
+                        else
+                        {
+                            statusLabel.Text = "Failed to Delete Data";
+                        }
+                        MySqlCommand command4 = connection.CreateCommand();
+                        command4.CommandText = "SELECT employeeid, username, name, ic, dateofbirth, age, mobileno, email, addressline1, "
+                        + "addressline2, addressline3, postcode, district, state, datejoined, position, department, hourlyrate FROM EMPLOYEE";
+                        command4.ExecuteNonQuery();
+                        DataTable dataTable = new DataTable();
+                        using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command4))
+                        {
+                            dataAdapter.Fill(dataTable);
+                        }
+                        dataGridView1.DataSource = dataTable;
+                        dataGridView1.Columns[0].HeaderText = "Employee ID";
+                        dataGridView1.Columns[1].HeaderText = "Username";
+                        dataGridView1.Columns[2].HeaderText = "Name";
+                        dataGridView1.Columns[3].HeaderText = "IC";
+                        dataGridView1.Columns[4].HeaderText = "Date of Birth";
+                        dataGridView1.Columns[5].HeaderText = "Age";
+                        dataGridView1.Columns[6].HeaderText = "Mobile No";
+                        dataGridView1.Columns[7].HeaderText = "Email";
+                        dataGridView1.Columns[8].HeaderText = "Address Line 1";
+                        dataGridView1.Columns[9].HeaderText = "Address Line 2";
+                        dataGridView1.Columns[10].HeaderText = "Address Line 3";
+                        dataGridView1.Columns[11].HeaderText = "Postcode";
+                        dataGridView1.Columns[12].HeaderText = "District";
+                        dataGridView1.Columns[13].HeaderText = "State";
+                        dataGridView1.Columns[14].HeaderText = "Date Joined";
+                        dataGridView1.Columns[15].HeaderText = "Position";
+                        dataGridView1.Columns[16].HeaderText = "Department";
+                        dataGridView1.Columns[17].HeaderText = "Hourly Rate";
+                        dataGridView1.DataMember = dataTable.TableName;
+                        connection.Close();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        statusLabel.Text = "Failed to Delete Data";
+                        statusLabel.Text = ex.Message;
                     }
-                    MySqlCommand command2 = connection.CreateCommand();
-                    command2.CommandText = "SELECT employeeid, username, name, ic, dateofbirth, age, mobileno, email, addressline1, "
-                    + "addressline2, addressline3, postcode, district, state, datejoined, position, department, hourlyrate FROM EMPLOYEE";
-                    command2.ExecuteNonQuery();
-                    DataTable dataTable = new DataTable();
-                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
-                    {
-                        dataAdapter.Fill(dataTable);
-                    }
-                    dataGridView1.DataSource = dataTable;
-                    dataGridView1.Columns[0].HeaderText = "Employee ID";
-                    dataGridView1.Columns[1].HeaderText = "Username";
-                    dataGridView1.Columns[2].HeaderText = "Name";
-                    dataGridView1.Columns[3].HeaderText = "IC";
-                    dataGridView1.Columns[4].HeaderText = "Date of Birth";
-                    dataGridView1.Columns[5].HeaderText = "Age";
-                    dataGridView1.Columns[6].HeaderText = "Mobile No";
-                    dataGridView1.Columns[7].HeaderText = "Email";
-                    dataGridView1.Columns[8].HeaderText = "Address Line 1";
-                    dataGridView1.Columns[9].HeaderText = "Address Line 2";
-                    dataGridView1.Columns[10].HeaderText = "Address Line 3";
-                    dataGridView1.Columns[11].HeaderText = "Postcode";
-                    dataGridView1.Columns[12].HeaderText = "District";
-                    dataGridView1.Columns[13].HeaderText = "State";
-                    dataGridView1.Columns[14].HeaderText = "Date Joined";
-                    dataGridView1.Columns[15].HeaderText = "Position";
-                    dataGridView1.Columns[16].HeaderText = "Department";
-                    dataGridView1.Columns[17].HeaderText = "Hourly Rate";
-                    dataGridView1.DataMember = dataTable.TableName;
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    statusLabel.Text = ex.Message;
                 }
             }
         }
@@ -1227,7 +1245,7 @@ namespace EMS
                  if (saveFileDialog.ShowDialog() == DialogResult.OK)
                  {
                      File.WriteAllText(saveFileDialog.FileName, csv.ToString(), System.Text.Encoding.UTF8);
-                     statusLabel.Text = "Data Successfully Exported";
+                     statusLabel.Text = "Data Successfully Exported (CSV)";
                  }
              }
              catch (Exception ex)
@@ -1295,6 +1313,170 @@ namespace EMS
                 employeeid = departmentcode + employeeidTextBox.Text;
                 QR qr = new QR();
                 qr.ShowDialog();
+            }
+        }
+
+        private void export2Button_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "PDF (*.pdf)|*.pdf";
+            bool fileError = false;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (File.Exists(sfd.FileName))
+                {
+                    try
+                    {
+                        File.Delete(sfd.FileName);
+                    }
+                    catch (IOException ex)
+                    {
+                        fileError = true;
+                        statusLabel.Text = ex.Message;
+                    }
+                }
+                if (!fileError)
+                {
+                    try
+                    {
+                        PdfPTable pdfTable = new PdfPTable(dataGridView1.Columns.Count);
+                        pdfTable.DefaultCell.Padding = 2;
+                        pdfTable.WidthPercentage = 100;
+                        pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+
+                        foreach (DataGridViewColumn column in dataGridView1.Columns)
+                        {
+                            Font tablefont = FontFactory.GetFont("Times-Roman", 8);
+                            PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, tablefont));
+                            pdfTable.AddCell(cell);
+                        }
+
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            foreach (DataGridViewCell cell in row.Cells)
+                            {
+                                Font font = FontFactory.GetFont("Times-Roman", 8);
+                                pdfTable.AddCell(new Phrase(cell.Value.ToString(), font));
+                            }
+                        }
+
+                        using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                        {
+                            Document pdfDoc = new Document(iTextSharp.text.PageSize.A4.Rotate(), 10f, 20f, 20f, 10f);
+                            PdfWriter.GetInstance(pdfDoc, stream);
+                            pdfDoc.Open();
+                            pdfDoc.Add(pdfTable);
+                            pdfDoc.Close();
+                            stream.Close();
+                        }
+                        statusLabel.Text = "Data Successfully Exported (PDF)";
+                    }
+                    catch (Exception ex)
+                    {
+                        statusLabel.Text = ex.Message;
+                    }
+                }
+            }
+        }
+
+        private void archiveButton_Click(object sender, EventArgs e)
+        {
+            
+            if (employeeidComboBox.SelectedItem == null || employeeidTextBox.Text == String.Empty)
+            {
+                statusLabel.Text = "Employee ID Field Must Not Be Empty";
+            }
+            else
+            {
+                string departmentcode = employeeidComboBox.SelectedItem.ToString();
+                employeeid = departmentcode + employeeidTextBox.Text;
+                DialogResult result = MessageBox.Show("Are you sure you want to archive this record? You cannot undo this action.", "Archive Record Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string dateleft = DateTime.Now.ToString("d");
+                        connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                        connection = new MySqlConnection(connectionString);
+                        connection.Open();
+                        MySqlCommand command = connection.CreateCommand();
+                        command.CommandText = "INSERT INTO ARCHIVE (employeeid, portrait, name, ic, dateofbirth, age, mobileno, email, addressline1, addressline2, addressline3, postcode, district, state, datejoined, position, department, hourlyrate) "
+                        + "SELECT employeeid, portrait, name, ic, dateofbirth, age, mobileno, email, addressline1, addressline2, addressline3, postcode, district, state, datejoined, position, department, hourlyrate FROM EMPLOYEE WHERE employeeid='" + employeeid + "'";
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            resultLabel.Text = "Data Archived Successfully";
+                            MySqlCommand command3 = connection.CreateCommand();
+                            command3.CommandText = "DELETE FROM EMPLOYEE WHERE employeeid ='" + employeeid + "'";
+                            command3.ExecuteNonQuery();
+                            MySqlCommand command4 = connection.CreateCommand();
+                            command4.CommandText = "SELECT counter FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "'";
+                            int counter = Convert.ToInt32(command4.ExecuteScalar());
+                            counter--;
+                            MySqlCommand command5 = connection.CreateCommand();
+                            command5.CommandText = "UPDATE DEPARTMENTINFO SET counter ='" + counter + "' WHERE departmentcode ='" + departmentcode + "'";
+                            command5.ExecuteNonQuery();
+                        }
+                        MySqlCommand command2 = connection.CreateCommand();
+                        command2.CommandText = "UPDATE ARCHIVE SET dateleft ='" + dateleft + "' WHERE employeeid ='" + employeeid + "'";
+                        command2.ExecuteNonQuery();
+                        MySqlCommand command6 = connection.CreateCommand();
+                        command6.CommandText = "SELECT employeeid, username, name, ic, dateofbirth, age, mobileno, email, addressline1, "
+                        + "addressline2, addressline3, postcode, district, state, datejoined, position, department, hourlyrate FROM EMPLOYEE";
+                        command6.ExecuteNonQuery();
+                        DataTable dataTable = new DataTable();
+                        using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command6))
+                        {
+                            dataAdapter.Fill(dataTable);
+                        }
+                        dataGridView1.DataSource = dataTable;
+                        dataGridView1.Columns[0].HeaderText = "Employee ID";
+                        dataGridView1.Columns[1].HeaderText = "Username";
+                        dataGridView1.Columns[2].HeaderText = "Name";
+                        dataGridView1.Columns[3].HeaderText = "IC";
+                        dataGridView1.Columns[4].HeaderText = "Date of Birth";
+                        dataGridView1.Columns[5].HeaderText = "Age";
+                        dataGridView1.Columns[6].HeaderText = "Mobile No";
+                        dataGridView1.Columns[7].HeaderText = "Email";
+                        dataGridView1.Columns[8].HeaderText = "Address Line 1";
+                        dataGridView1.Columns[9].HeaderText = "Address Line 2";
+                        dataGridView1.Columns[10].HeaderText = "Address Line 3";
+                        dataGridView1.Columns[11].HeaderText = "Postcode";
+                        dataGridView1.Columns[12].HeaderText = "District";
+                        dataGridView1.Columns[13].HeaderText = "State";
+                        dataGridView1.Columns[14].HeaderText = "Date Joined";
+                        dataGridView1.Columns[15].HeaderText = "Position";
+                        dataGridView1.Columns[16].HeaderText = "Department";
+                        dataGridView1.Columns[17].HeaderText = "Hourly Rate";
+                        dataGridView1.DataMember = dataTable.TableName;
+                        connection.Close();
+                        employeeidComboBox.SelectedItem = null;
+                        employeeidTextBox.Text = String.Empty;
+                        pictureBox1.Image = null;
+                        usernameTextBox.Text = String.Empty;
+                        passwordTextBox.Text = String.Empty;
+                        icTextBox.Text = String.Empty;
+                        nameTextBox.Text = String.Empty;
+                        dobTextBox.Text = String.Empty;
+                        ageTextBox.Text = String.Empty;
+                        phoneTextBox.Text = String.Empty;
+                        emailTextBox.Text = String.Empty;
+                        address1TextBox.Text = String.Empty;
+                        address2TextBox.Text = String.Empty;
+                        address3TextBox.Text = String.Empty;
+                        postcodeTextBox.Text = String.Empty;
+                        districtTextBox.Text = String.Empty;
+                        stateComboBox.SelectedItem = null;
+                        datejoinedTextBox.Text = DateTime.Now.ToString("d");
+                        positionComboBox.SelectedItem = null;
+                        departmentTextBox.Text = String.Empty;
+                        numericUpDown1.Value = 10;
+                    }
+                    catch (Exception ex)
+                    {
+                        statusLabel.Text = ex.Message;
+                    }
+                }
             }
         }
     }

@@ -96,6 +96,8 @@
             this.employeeidTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.datejoinedTextBox = new System.Windows.Forms.TextBox();
+            this.export2Button = new System.Windows.Forms.Button();
+            this.archiveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -281,7 +283,7 @@
             this.updateButton.ForeColor = System.Drawing.Color.White;
             this.updateButton.Image = global::EMS.Properties.Resources.update;
             this.updateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.updateButton.Location = new System.Drawing.Point(356, 1441);
+            this.updateButton.Location = new System.Drawing.Point(354, 1441);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(367, 89);
             this.updateButton.TabIndex = 18;
@@ -298,12 +300,12 @@
             this.deleteButton.ForeColor = System.Drawing.Color.White;
             this.deleteButton.Image = global::EMS.Properties.Resources.delete;
             this.deleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.deleteButton.Location = new System.Drawing.Point(741, 1441);
+            this.deleteButton.Location = new System.Drawing.Point(732, 1441);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(215, 89);
+            this.deleteButton.Size = new System.Drawing.Size(339, 89);
             this.deleteButton.TabIndex = 19;
             this.deleteButton.TabStop = false;
-            this.deleteButton.Text = "Delete";
+            this.deleteButton.Text = "Delete Record";
             this.deleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -315,12 +317,12 @@
             this.clearButton.ForeColor = System.Drawing.Color.White;
             this.clearButton.Image = global::EMS.Properties.Resources.reset_2;
             this.clearButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.clearButton.Location = new System.Drawing.Point(973, 1441);
+            this.clearButton.Location = new System.Drawing.Point(1087, 1441);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(196, 89);
+            this.clearButton.Size = new System.Drawing.Size(215, 89);
             this.clearButton.TabIndex = 20;
             this.clearButton.TabStop = false;
-            this.clearButton.Text = "Clear";
+            this.clearButton.Text = "Reset";
             this.clearButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -523,14 +525,14 @@
             this.exportButton.BackColor = System.Drawing.Color.Crimson;
             this.exportButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.exportButton.ForeColor = System.Drawing.Color.White;
-            this.exportButton.Image = global::EMS.Properties.Resources.export;
+            this.exportButton.Image = global::EMS.Properties.Resources.csv;
             this.exportButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.exportButton.Location = new System.Drawing.Point(1350, 1548);
+            this.exportButton.Location = new System.Drawing.Point(1793, 1441);
             this.exportButton.Name = "exportButton";
-            this.exportButton.Size = new System.Drawing.Size(329, 89);
+            this.exportButton.Size = new System.Drawing.Size(438, 89);
             this.exportButton.TabIndex = 33;
             this.exportButton.TabStop = false;
-            this.exportButton.Text = "Export Data";
+            this.exportButton.Text = "Export Data (CSV)";
             this.exportButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.exportButton.UseVisualStyleBackColor = false;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
@@ -572,7 +574,7 @@
             this.qrButton.ForeColor = System.Drawing.Color.White;
             this.qrButton.Image = global::EMS.Properties.Resources.qr;
             this.qrButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.qrButton.Location = new System.Drawing.Point(450, 1548);
+            this.qrButton.Location = new System.Drawing.Point(437, 1548);
             this.qrButton.Name = "qrButton";
             this.qrButton.Size = new System.Drawing.Size(439, 89);
             this.qrButton.TabIndex = 36;
@@ -855,7 +857,7 @@
             this.managedepartmentButton.ForeColor = System.Drawing.Color.White;
             this.managedepartmentButton.Image = global::EMS.Properties.Resources.department;
             this.managedepartmentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.managedepartmentButton.Location = new System.Drawing.Point(1188, 1441);
+            this.managedepartmentButton.Location = new System.Drawing.Point(1290, 1548);
             this.managedepartmentButton.Name = "managedepartmentButton";
             this.managedepartmentButton.Size = new System.Drawing.Size(491, 89);
             this.managedepartmentButton.TabIndex = 63;
@@ -872,9 +874,9 @@
             this.managepositionButton.ForeColor = System.Drawing.Color.White;
             this.managepositionButton.Image = global::EMS.Properties.Resources.position;
             this.managepositionButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.managepositionButton.Location = new System.Drawing.Point(908, 1548);
+            this.managepositionButton.Location = new System.Drawing.Point(1318, 1441);
             this.managepositionButton.Name = "managepositionButton";
-            this.managepositionButton.Size = new System.Drawing.Size(418, 89);
+            this.managepositionButton.Size = new System.Drawing.Size(455, 89);
             this.managepositionButton.TabIndex = 64;
             this.managepositionButton.TabStop = false;
             this.managepositionButton.Text = "Manage Position";
@@ -910,12 +912,48 @@
             this.datejoinedTextBox.Size = new System.Drawing.Size(243, 61);
             this.datejoinedTextBox.TabIndex = 67;
             // 
+            // export2Button
+            // 
+            this.export2Button.BackColor = System.Drawing.Color.Crimson;
+            this.export2Button.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.export2Button.ForeColor = System.Drawing.Color.White;
+            this.export2Button.Image = global::EMS.Properties.Resources.pdf;
+            this.export2Button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.export2Button.Location = new System.Drawing.Point(1800, 1548);
+            this.export2Button.Name = "export2Button";
+            this.export2Button.Size = new System.Drawing.Size(431, 89);
+            this.export2Button.TabIndex = 68;
+            this.export2Button.TabStop = false;
+            this.export2Button.Text = "Export Data (PDF)";
+            this.export2Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.export2Button.UseVisualStyleBackColor = false;
+            this.export2Button.Click += new System.EventHandler(this.export2Button_Click);
+            // 
+            // archiveButton
+            // 
+            this.archiveButton.BackColor = System.Drawing.Color.Crimson;
+            this.archiveButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.archiveButton.ForeColor = System.Drawing.Color.White;
+            this.archiveButton.Image = global::EMS.Properties.Resources.archive;
+            this.archiveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.archiveButton.Location = new System.Drawing.Point(894, 1548);
+            this.archiveButton.Name = "archiveButton";
+            this.archiveButton.Size = new System.Drawing.Size(379, 89);
+            this.archiveButton.TabIndex = 69;
+            this.archiveButton.TabStop = false;
+            this.archiveButton.Text = "Archive Record";
+            this.archiveButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.archiveButton.UseVisualStyleBackColor = false;
+            this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(3800, 1700);
+            this.Controls.Add(this.archiveButton);
+            this.Controls.Add(this.export2Button);
             this.Controls.Add(this.datejoinedTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.employeeidTextBox);
@@ -1063,5 +1101,7 @@
         private TextBox employeeidTextBox;
         private Label label1;
         private TextBox datejoinedTextBox;
+        private Button export2Button;
+        private Button archiveButton;
     }
 }
