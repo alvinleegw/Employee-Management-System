@@ -200,7 +200,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Department";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " Manage Department";
+            this.Text = " Manage Department Info";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddDepartment_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddDepartment_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AddDepartment_MouseUp);

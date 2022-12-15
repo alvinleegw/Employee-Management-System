@@ -95,7 +95,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QR";
+            this.Text = "Employee QR";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.QR_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.QR_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.QR_MouseUp);

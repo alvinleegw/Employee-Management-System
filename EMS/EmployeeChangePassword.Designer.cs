@@ -171,7 +171,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EmployeeChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EmployeeChangePassword";
+            this.Text = "Change Password";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EmployeeChangePassword_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EmployeeChangePassword_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EmployeeChangePassword_MouseUp);

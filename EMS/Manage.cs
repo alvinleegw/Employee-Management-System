@@ -989,12 +989,6 @@ namespace EMS
                         if (command.ExecuteNonQuery() == 1)
                         {
                             resultLabel.Text = "Data Deleted Successfully";
-                            command2.CommandText = "SELECT counter FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "'";
-                            int counter = Convert.ToInt32(command2.ExecuteScalar());
-                            counter--;
-                            MySqlCommand command3 = connection.CreateCommand();
-                            command3.CommandText = "UPDATE DEPARTMENTINFO SET counter ='" + counter + "' WHERE departmentcode ='" + departmentcode + "'";
-                            command3.ExecuteNonQuery();
                             employeeidComboBox.SelectedItem = null;
                             employeeidTextBox.Text = String.Empty;
                             pictureBox1.Image = null;
@@ -1021,12 +1015,11 @@ namespace EMS
                         {
                             statusLabel.Text = "Failed to Delete Data";
                         }
-                        MySqlCommand command4 = connection.CreateCommand();
-                        command4.CommandText = "SELECT employeeid, username, name, ic, dateofbirth, age, mobileno, email, addressline1, "
+                        command2.CommandText = "SELECT employeeid, username, name, ic, dateofbirth, age, mobileno, email, addressline1, "
                         + "addressline2, addressline3, postcode, district, state, datejoined, position, department, hourlyrate FROM EMPLOYEE";
-                        command4.ExecuteNonQuery();
+                        command2.ExecuteNonQuery();
                         DataTable dataTable = new DataTable();
-                        using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command4))
+                        using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
                         {
                             dataAdapter.Fill(dataTable);
                         }
@@ -1235,7 +1228,7 @@ namespace EMS
                  csv.AppendLine(header);
                  foreach (DataGridViewRow row in dataGridView1.Rows)
                  {
-                     var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17}","\"" + row.Cells[0].Value + "\"", "\"" + row.Cells[1].Value + "\"", "\"" + row.Cells[2].Value + "\"", "=\"" + row.Cells[3].Value + "\"", "\"" + row.Cells[4].Value + "\"", "\"" + row.Cells[5].Value + "\"", "\"" + row.Cells[6].Value + "\"", "\"" + row.Cells[7].Value + "\"", "\"" + row.Cells[8].Value + "\"", "\"" + row.Cells[9].Value + "\"", "\"" + row.Cells[10].Value + "\"", "=\"" + row.Cells[11].Value + "\"", "\"" + row.Cells[12].Value + "\"", "\"" + row.Cells[13].Value + "\"", "\"" + row.Cells[14].Value + "\"", "\"" + row.Cells[15].Value + "\"", "\"" + row.Cells[16].Value + "\"", "\"" + row.Cells[17].Value + "\"");
+                     var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17}","\"" + row.Cells[0].Value + "\"", "\"" + row.Cells[1].Value + "\"", "\"" + row.Cells[2].Value + "\"", "=\"" + row.Cells[3].Value + "\"", "\"" + row.Cells[4].Value + "\"", "\"" + row.Cells[5].Value + "\"", "=\"" + row.Cells[6].Value + "\"", "\"" + row.Cells[7].Value + "\"", "\"" + row.Cells[8].Value + "\"", "\"" + row.Cells[9].Value + "\"", "\"" + row.Cells[10].Value + "\"", "=\"" + row.Cells[11].Value + "\"", "\"" + row.Cells[12].Value + "\"", "\"" + row.Cells[13].Value + "\"", "\"" + row.Cells[14].Value + "\"", "\"" + row.Cells[15].Value + "\"", "\"" + row.Cells[16].Value + "\"", "\"" + row.Cells[17].Value + "\"");
                      csv.AppendLine(newLine);
                  }
                  SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -1408,23 +1401,16 @@ namespace EMS
                             MySqlCommand command3 = connection.CreateCommand();
                             command3.CommandText = "DELETE FROM EMPLOYEE WHERE employeeid ='" + employeeid + "'";
                             command3.ExecuteNonQuery();
-                            MySqlCommand command4 = connection.CreateCommand();
-                            command4.CommandText = "SELECT counter FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "'";
-                            int counter = Convert.ToInt32(command4.ExecuteScalar());
-                            counter--;
-                            MySqlCommand command5 = connection.CreateCommand();
-                            command5.CommandText = "UPDATE DEPARTMENTINFO SET counter ='" + counter + "' WHERE departmentcode ='" + departmentcode + "'";
-                            command5.ExecuteNonQuery();
                         }
                         MySqlCommand command2 = connection.CreateCommand();
                         command2.CommandText = "UPDATE ARCHIVE SET dateleft ='" + dateleft + "' WHERE employeeid ='" + employeeid + "'";
                         command2.ExecuteNonQuery();
-                        MySqlCommand command6 = connection.CreateCommand();
-                        command6.CommandText = "SELECT employeeid, username, name, ic, dateofbirth, age, mobileno, email, addressline1, "
+                        MySqlCommand command4 = connection.CreateCommand();
+                        command4.CommandText = "SELECT employeeid, username, name, ic, dateofbirth, age, mobileno, email, addressline1, "
                         + "addressline2, addressline3, postcode, district, state, datejoined, position, department, hourlyrate FROM EMPLOYEE";
-                        command6.ExecuteNonQuery();
+                        command4.ExecuteNonQuery();
                         DataTable dataTable = new DataTable();
-                        using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command6))
+                        using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command4))
                         {
                             dataAdapter.Fill(dataTable);
                         }

@@ -232,7 +232,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ChangePassword";
+            this.Text = "Change Password (Admin)";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChangePassword_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChangePassword_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ChangePassword_MouseUp);

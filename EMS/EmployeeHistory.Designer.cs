@@ -211,7 +211,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EmployeeHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EmployeeHistory";
+            this.Text = "Employee Attendance History";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EmployeeHistory_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EmployeeHistory_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EmployeeHistory_MouseUp);

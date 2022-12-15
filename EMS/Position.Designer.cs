@@ -203,7 +203,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Position";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Position";
+            this.Text = "Manage Position Info";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Position_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Position_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Position_MouseUp);

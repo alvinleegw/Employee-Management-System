@@ -307,7 +307,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EmployeeDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EmployeeDashboard";
+            this.Text = "Employee Dashboard";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EmployeeDashboard_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EmployeeDashboard_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EmployeeDashboard_MouseUp);
