@@ -792,7 +792,6 @@ namespace EMS
             {
                 statusLabel.Text = ex.Message;
             }
-
         }
 
         

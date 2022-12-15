@@ -118,5 +118,13 @@ namespace EMS
             changepassword.ShowDialog();
             this.Close();
         }
+
+        private void archiveButton_Click(object sender, EventArgs e)
+        {
+            Archive archive = new Archive();
+            this.Hide();
+            archive.ShowDialog();
+            this.Close();
+        }
     }
 }

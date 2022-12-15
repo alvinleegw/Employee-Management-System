@@ -73,9 +73,9 @@ namespace EMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_1 {
+        internal static System.Drawing.Bitmap add_2 {
             get {
-                object obj = ResourceManager.GetObject("add 1", resourceCulture);
+                object obj = ResourceManager.GetObject("add 2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +86,16 @@ namespace EMS.Properties {
         internal static System.Drawing.Bitmap archive {
             get {
                 object obj = ResourceManager.GetObject("archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap archive_2 {
+            get {
+                object obj = ResourceManager.GetObject("archive 2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +273,19 @@ namespace EMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap delete_1 {
+        internal static System.Drawing.Bitmap delete_2 {
             get {
-                object obj = ResourceManager.GetObject("delete 1", resourceCulture);
+                object obj = ResourceManager.GetObject("delete 2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_3 {
+            get {
+                object obj = ResourceManager.GetObject("delete 3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -463,6 +483,16 @@ namespace EMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reset_5 {
+            get {
+                object obj = ResourceManager.GetObject("reset 5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
@@ -486,6 +516,16 @@ namespace EMS.Properties {
         internal static System.Drawing.Bitmap search_3 {
             get {
                 object obj = ResourceManager.GetObject("search 3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_4 {
+            get {
+                object obj = ResourceManager.GetObject("search 4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

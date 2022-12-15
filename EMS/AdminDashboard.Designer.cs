@@ -33,6 +33,7 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.archiveButton = new System.Windows.Forms.Button();
             this.changepasswordButton = new System.Windows.Forms.Button();
             this.historyButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
@@ -85,6 +86,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.archiveButton);
             this.panel1.Controls.Add(this.changepasswordButton);
             this.panel1.Controls.Add(this.historyButton);
             this.panel1.Controls.Add(this.logoutButton);
@@ -94,6 +96,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(509, 800);
             this.panel1.TabIndex = 4;
+            // 
+            // archiveButton
+            // 
+            this.archiveButton.BackColor = System.Drawing.Color.Firebrick;
+            this.archiveButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.archiveButton.ForeColor = System.Drawing.Color.White;
+            this.archiveButton.Image = global::EMS.Properties.Resources.archive_2;
+            this.archiveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.archiveButton.Location = new System.Drawing.Point(38, 475);
+            this.archiveButton.Name = "archiveButton";
+            this.archiveButton.Size = new System.Drawing.Size(442, 93);
+            this.archiveButton.TabIndex = 9;
+            this.archiveButton.Text = "View Archive";
+            this.archiveButton.UseVisualStyleBackColor = false;
+            this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
             // 
             // changepasswordButton
             // 
@@ -133,7 +150,7 @@
             this.logoutButton.ForeColor = System.Drawing.Color.White;
             this.logoutButton.Image = global::EMS.Properties.Resources.logout;
             this.logoutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.logoutButton.Location = new System.Drawing.Point(38, 478);
+            this.logoutButton.Location = new System.Drawing.Point(38, 606);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(442, 93);
             this.logoutButton.TabIndex = 2;
@@ -315,5 +332,6 @@
         private Panel panel4;
         private Label clockoutLabel;
         private Label display3Label;
+        private Button archiveButton;
     }
 }

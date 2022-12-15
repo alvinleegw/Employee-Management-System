@@ -112,7 +112,7 @@
             this.addButton.BackColor = System.Drawing.Color.MediumBlue;
             this.addButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Image = global::EMS.Properties.Resources.add_1;
+            this.addButton.Image = global::EMS.Properties.Resources.add_2;
             this.addButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.addButton.Location = new System.Drawing.Point(829, 133);
             this.addButton.Name = "addButton";
@@ -155,7 +155,7 @@
             this.deleteButton.BackColor = System.Drawing.Color.MediumBlue;
             this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.deleteButton.ForeColor = System.Drawing.Color.White;
-            this.deleteButton.Image = global::EMS.Properties.Resources.delete_1;
+            this.deleteButton.Image = global::EMS.Properties.Resources.delete_2;
             this.deleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.deleteButton.Location = new System.Drawing.Point(1050, 133);
             this.deleteButton.Name = "deleteButton";
