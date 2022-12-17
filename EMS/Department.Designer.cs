@@ -101,6 +101,7 @@
             this.codeTextBox.Name = "codeTextBox";
             this.codeTextBox.Size = new System.Drawing.Size(114, 55);
             this.codeTextBox.TabIndex = 4;
+            this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // label1
             // 
@@ -120,6 +121,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(520, 55);
             this.nameTextBox.TabIndex = 6;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // addButton
             // 

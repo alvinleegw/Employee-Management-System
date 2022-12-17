@@ -93,6 +93,10 @@ namespace EMS
                 }
                 else if (hash == hash2)
                 {
+                    resetButton.Enabled = false;
+                    updateButton.Enabled = false;
+                    passwordTextBox.Enabled = false;
+                    password2TextBox.Enabled = false;
                     statusLabel.ForeColor = Color.Green;
                     statusLabel.Text = "Updating...";
                     await Task.Delay(2500);
@@ -110,6 +114,10 @@ namespace EMS
                         }
                         passwordTextBox.Text = String.Empty;
                         password2TextBox.Text = String.Empty;
+                        passwordTextBox.Enabled = true;
+                        password2TextBox.Enabled = true;
+                        resetButton.Enabled = true;
+                        updateButton.Enabled = true;
                         connection.Close();
                         await Task.Delay(5000);
                         statusLabel.Text = String.Empty;
@@ -127,6 +135,66 @@ namespace EMS
         {
             passwordTextBox.Text = String.Empty;
             password2TextBox.Text = String.Empty;
+        }
+
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (passwordTextBox.Text != String.Empty && password2TextBox.Text != String.Empty)
+            {
+                if (passwordTextBox.Text.Length < 8 || password2TextBox.Text.Length < 8)
+                {
+                    statusLabel.ForeColor = Color.DarkRed;
+                    statusLabel.Text = "New Password And Confirm Password Length Must Be At Least 8 Characters";
+                }
+                else if (passwordTextBox.Text != password2TextBox.Text)
+                {
+                    statusLabel.ForeColor = Color.DarkRed;
+                    statusLabel.Text = "New Password And Confirm Password Must Be The Same";
+                }
+                else
+                {
+                    statusLabel.ForeColor = Color.Green;
+                    statusLabel.Text = "New Password And Confirm Password Matched";
+                }
+            }
+            else
+            {
+                if (!statusLabel.Text.Contains("Password Successfully Updated"))
+                {
+                    statusLabel.ForeColor = Color.DarkRed;
+                    statusLabel.Text = "Please Enter New Password And Confirm Password";
+                }
+            }
+        }
+
+        private void password2TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (passwordTextBox.Text != String.Empty && password2TextBox.Text != String.Empty)
+            {
+                if (passwordTextBox.Text.Length < 8 || password2TextBox.Text.Length < 8)
+                {
+                    statusLabel.ForeColor = Color.DarkRed;
+                    statusLabel.Text = "New Password And Confirm Password Length Must Be At Least 8 Characters";
+                }
+                else if (passwordTextBox.Text != password2TextBox.Text)
+                {
+                    statusLabel.ForeColor = Color.DarkRed;
+                    statusLabel.Text = "New Password And Confirm Password Must Be The Same";
+                }
+                else
+                {
+                    statusLabel.ForeColor = Color.Green;
+                    statusLabel.Text = "New Password And Confirm Password Matched";
+                }
+            }
+            else
+            {
+                if (!statusLabel.Text.Contains("Password Successfully Updated"))
+                {
+                    statusLabel.ForeColor = Color.DarkRed;
+                    statusLabel.Text = "Please Enter New Password And Confirm Password";
+                }
+            }
         }
     }
 }

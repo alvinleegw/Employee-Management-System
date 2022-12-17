@@ -150,6 +150,7 @@
             this.passwordTextBox.Size = new System.Drawing.Size(492, 55);
             this.passwordTextBox.TabIndex = 8;
             this.passwordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // inputpasswordLabel
             // 
@@ -170,6 +171,7 @@
             this.password2TextBox.Size = new System.Drawing.Size(492, 55);
             this.password2TextBox.TabIndex = 11;
             this.password2TextBox.UseSystemPasswordChar = true;
+            this.password2TextBox.TextChanged += new System.EventHandler(this.password2TextBox_TextChanged);
             // 
             // inputpassword2Label
             // 

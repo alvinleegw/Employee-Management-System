@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EMS
@@ -147,9 +148,9 @@ namespace EMS
                     command2.CommandText = "INSERT INTO POSITIONINFO(positionname, departmentcode) VALUES('" + position + "', '" + departmentcode + "')";
                     if (command2.ExecuteNonQuery() == 1)
                     {
+                        positionTextBox.Text = String.Empty;
                         statusLabel.ForeColor = Color.LightGreen;
                         statusLabel.Text = "Position Successfully Added";
-                        positionTextBox.Text = String.Empty;
                     }
                     command3.CommandText = "SELECT PositionInfo.positionname, DepartmentInfo.departmentname FROM POSITIONINFO INNER JOIN DEPARTMENTINFO ON " +
                     "PositionInfo.departmentcode = Departmentinfo.departmentcode WHERE PositionInfo.departmentcode ='" + departmentcode + "'";
@@ -214,9 +215,9 @@ namespace EMS
                     command2.CommandText = "DELETE FROM POSITIONINFO WHERE positionname = '" + position + "' AND departmentcode = '" + departmentcode + "'";
                     if (command2.ExecuteNonQuery() == 1)
                     {
+                        positionTextBox.Text = String.Empty;
                         statusLabel.ForeColor = Color.LightGreen;
                         statusLabel.Text = "Position Successfully Deleted";
-                        positionTextBox.Text = String.Empty;
                     }
                     command3.CommandText = "SELECT PositionInfo.positionname, DepartmentInfo.departmentname FROM POSITIONINFO INNER JOIN DEPARTMENTINFO ON " +
                     "PositionInfo.departmentcode = Departmentinfo.departmentcode WHERE PositionInfo.departmentcode ='" + departmentcode + "'";
@@ -230,7 +231,6 @@ namespace EMS
                     dataGridView1.Columns[1].HeaderText = "Department";
                     dataGridView1.DataMember = dataTable.TableName;
                     positionTextBox.Text = String.Empty;
-                    departmentComboBox.SelectedItem = null;
                     await Task.Delay(1500);
                     statusLabel.Text = String.Empty;
                     connection.Close();
@@ -248,6 +248,34 @@ namespace EMS
             departmentComboBox.SelectedItem = null;
             positionTextBox.Text= String.Empty;
             statusLabel.Text = String.Empty;
+        }
+
+        private void positionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (positionTextBox.Text != String.Empty)
+            {
+                if (positionTextBox.Text.Length < 3 || positionTextBox.Text.Length > 30)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Position Must Be Between 3 To 30 Characters";
+                }
+                else
+                {
+                    statusLabel.Text = String.Empty;
+                }
+            }
+            else
+            {
+                if (!statusLabel.Text.Contains("Position Successfully Added") || !statusLabel.Text.Contains("Position Successfully Deleted"))
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Please Select Department And Enter Position";
+                }
+                else
+                {
+                    statusLabel.Text = String.Empty;
+                }
+            }
         }
     }
 }

@@ -889,6 +889,7 @@
             this.employeeidTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.employeeidTextBox.Location = new System.Drawing.Point(450, 157);
             this.employeeidTextBox.Name = "employeeidTextBox";
+            this.employeeidTextBox.ReadOnly = true;
             this.employeeidTextBox.Size = new System.Drawing.Size(88, 61);
             this.employeeidTextBox.TabIndex = 65;
             // 

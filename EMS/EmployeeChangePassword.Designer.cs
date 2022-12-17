@@ -93,6 +93,7 @@
             this.passwordTextBox.Size = new System.Drawing.Size(450, 55);
             this.passwordTextBox.TabIndex = 4;
             this.passwordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // password2TextBox
             // 
@@ -102,6 +103,7 @@
             this.password2TextBox.Size = new System.Drawing.Size(450, 55);
             this.password2TextBox.TabIndex = 5;
             this.password2TextBox.UseSystemPasswordChar = true;
+            this.password2TextBox.TextChanged += new System.EventHandler(this.password2TextBox_TextChanged);
             // 
             // updateButton
             // 

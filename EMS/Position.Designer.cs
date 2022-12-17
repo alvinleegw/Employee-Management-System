@@ -106,6 +106,7 @@
             this.positionTextBox.Name = "positionTextBox";
             this.positionTextBox.Size = new System.Drawing.Size(764, 55);
             this.positionTextBox.TabIndex = 5;
+            this.positionTextBox.TextChanged += new System.EventHandler(this.positionTextBox_TextChanged);
             // 
             // addButton
             // 

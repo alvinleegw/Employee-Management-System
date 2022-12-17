@@ -113,9 +113,10 @@ namespace EMS
                     if (command.ExecuteNonQuery() == 1)
                     {
                         statusLabel.ForeColor = Color.LawnGreen;
-                        statusLabel.Text = "Department Successfully Added";
                         codeTextBox.Text = String.Empty;
                         nameTextBox.Text = String.Empty;
+                        statusLabel.ForeColor = Color.LawnGreen;
+                        statusLabel.Text = "Department Successfully Added";
                     }
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
@@ -177,6 +178,8 @@ namespace EMS
                     command2.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENTINFO";
                     if (command.ExecuteNonQuery() == 1)
                     {
+                        codeTextBox.Text = String.Empty;
+                        nameTextBox.Text = String.Empty;
                         statusLabel.ForeColor = Color.LawnGreen;
                         statusLabel.Text = "Department Successfully Deleted";
                     }
@@ -189,8 +192,6 @@ namespace EMS
                     dataGridView1.Columns[0].HeaderText = "Department Code";
                     dataGridView1.Columns[1].HeaderText = "Department Name";
                     dataGridView1.DataMember = dataTable.TableName;
-                    codeTextBox.Text = String.Empty;
-                    nameTextBox.Text = String.Empty;
                     await Task.Delay(1500);
                     statusLabel.Text = String.Empty;
                     connection.Close();
@@ -208,6 +209,69 @@ namespace EMS
             codeTextBox.Text = String.Empty;
             nameTextBox.Text = String.Empty;
             statusLabel.Text = String.Empty;
+        }
+
+        private void codeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"^[a-zA-Z]+$");
+            bool checkCode = regex.IsMatch(codeTextBox.Text);
+            if (codeTextBox.Text != String.Empty)
+            {
+                if (codeTextBox.Text.Length != 2)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Department Code Must Be 2 Characters Only";
+                }
+                else if (!checkCode)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Department Code Must Be Alphabets Only";
+                }
+                else
+                {
+                    statusLabel.Text = String.Empty;
+                }
+            }
+            else
+            {
+                if (!statusLabel.Text.Contains("Department Successfully Added") || !statusLabel.Text.Contains("Department Successfully Deleted"))
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Please Enter Department Code and Name";
+                }
+                else
+                {
+                    statusLabel.Text = String.Empty;
+                }
+            }
+        }
+
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (nameTextBox.Text != String.Empty)
+            {
+                if (nameTextBox.Text.Length < 2 || nameTextBox.Text.Length > 30)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Department Name Must Between 2 To 30 Characters Only";
+                }
+                else
+                {
+                    statusLabel.Text = String.Empty;
+                }
+            }
+            else
+            {
+                if (!statusLabel.Text.Contains("Department Successfully Added") || !statusLabel.Text.Contains("Department Successfully Deleted"))
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Please Enter Department Code and Name";
+                }
+                else
+                {
+                    statusLabel.Text = String.Empty;
+                }
+            }
         }
     }
 }
