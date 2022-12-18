@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
@@ -121,6 +122,8 @@ namespace EMS
 
         private async void addButton_Click(object sender, EventArgs e)
         {
+            Regex regexname = new Regex(@"^[A-Za-z\s&()\s-./]*$");
+            bool checkname = regexname.IsMatch(positionTextBox.Text);
             if (departmentComboBox.SelectedIndex == -1 || positionTextBox.Text == String.Empty)
             {
                 statusLabel.ForeColor = Color.MistyRose;
@@ -130,6 +133,11 @@ namespace EMS
             {
                 statusLabel.ForeColor = Color.MistyRose;
                 statusLabel.Text = "Position Must Be Between 3 To 30 Characters";
+            }
+            else if (!checkname)
+            {
+                statusLabel.ForeColor = Color.MistyRose;
+                statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &()-./ Only";
             }
             else
             {
@@ -252,12 +260,19 @@ namespace EMS
 
         private void positionTextBox_TextChanged(object sender, EventArgs e)
         {
+            Regex regexname = new Regex(@"^[A-Za-z\s&()\s-./]*$");
+            bool checkname = regexname.IsMatch(positionTextBox.Text);
             if (positionTextBox.Text != String.Empty)
             {
                 if (positionTextBox.Text.Length < 3 || positionTextBox.Text.Length > 30)
                 {
                     statusLabel.ForeColor = Color.MistyRose;
                     statusLabel.Text = "Position Must Be Between 3 To 30 Characters";
+                }
+                else if (!checkname)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &()-./ Only";
                 }
                 else
                 {

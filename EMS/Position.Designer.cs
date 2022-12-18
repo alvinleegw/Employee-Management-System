@@ -47,7 +47,7 @@
             // 
             this.closeButton.BackColor = System.Drawing.Color.Tomato;
             this.closeButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.Location = new System.Drawing.Point(1182, 5);
+            this.closeButton.Location = new System.Drawing.Point(1515, 9);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(73, 69);
             this.closeButton.TabIndex = 0;
@@ -60,7 +60,7 @@
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.titleLabel.ForeColor = System.Drawing.Color.White;
-            this.titleLabel.Location = new System.Drawing.Point(372, 9);
+            this.titleLabel.Location = new System.Drawing.Point(611, 6);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(407, 65);
             this.titleLabel.TabIndex = 1;
@@ -71,7 +71,7 @@
             this.departmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.departmentComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.departmentComboBox.FormattingEnabled = true;
-            this.departmentComboBox.Location = new System.Drawing.Point(45, 133);
+            this.departmentComboBox.Location = new System.Drawing.Point(96, 132);
             this.departmentComboBox.Name = "departmentComboBox";
             this.departmentComboBox.Size = new System.Drawing.Size(764, 56);
             this.departmentComboBox.TabIndex = 2;
@@ -82,7 +82,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(45, 82);
+            this.label1.Location = new System.Drawing.Point(96, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(343, 48);
             this.label1.TabIndex = 3;
@@ -93,7 +93,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(45, 220);
+            this.label2.Location = new System.Drawing.Point(96, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(265, 48);
             this.label2.TabIndex = 4;
@@ -102,7 +102,7 @@
             // positionTextBox
             // 
             this.positionTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.positionTextBox.Location = new System.Drawing.Point(45, 271);
+            this.positionTextBox.Location = new System.Drawing.Point(96, 270);
             this.positionTextBox.Name = "positionTextBox";
             this.positionTextBox.Size = new System.Drawing.Size(764, 55);
             this.positionTextBox.TabIndex = 5;
@@ -115,7 +115,7 @@
             this.addButton.ForeColor = System.Drawing.Color.White;
             this.addButton.Image = global::EMS.Properties.Resources.add_2;
             this.addButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addButton.Location = new System.Drawing.Point(829, 133);
+            this.addButton.Location = new System.Drawing.Point(880, 132);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(205, 89);
             this.addButton.TabIndex = 6;
@@ -128,9 +128,9 @@
             // 
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.statusLabel.ForeColor = System.Drawing.Color.MistyRose;
-            this.statusLabel.Location = new System.Drawing.Point(141, 347);
+            this.statusLabel.Location = new System.Drawing.Point(12, 347);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(1009, 48);
+            this.statusLabel.Size = new System.Drawing.Size(1576, 48);
             this.statusLabel.TabIndex = 7;
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -142,7 +142,7 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(141, 398);
+            this.dataGridView1.Location = new System.Drawing.Point(297, 417);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 123;
@@ -158,7 +158,7 @@
             this.deleteButton.ForeColor = System.Drawing.Color.White;
             this.deleteButton.Image = global::EMS.Properties.Resources.delete_2;
             this.deleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.deleteButton.Location = new System.Drawing.Point(1050, 133);
+            this.deleteButton.Location = new System.Drawing.Point(1101, 132);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(205, 89);
             this.deleteButton.TabIndex = 9;
@@ -174,7 +174,7 @@
             this.resetButton.ForeColor = System.Drawing.Color.White;
             this.resetButton.Image = global::EMS.Properties.Resources.reset_4;
             this.resetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.resetButton.Location = new System.Drawing.Point(829, 237);
+            this.resetButton.Location = new System.Drawing.Point(1323, 132);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(205, 89);
             this.resetButton.TabIndex = 10;
@@ -188,7 +188,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumPurple;
-            this.ClientSize = new System.Drawing.Size(1273, 1000);
+            this.ClientSize = new System.Drawing.Size(1600, 1000);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.dataGridView1);

@@ -141,10 +141,10 @@ namespace EMS
             Regex regexdistrict = new Regex(@"^[a-zA-Z ]+$");
             bool checkdistrict = regexdistrict.IsMatch(districtTextBox.Text);
             if (employeeidComboBox.SelectedItem == null || employeeidTextBox.Text == String.Empty
-            || icTextBox.Text == String.Empty || passwordTextBox.Text == String.Empty 
-            || nameTextBox.Text == String.Empty || dobTextBox.Text == String.Empty || ageTextBox.Text == String.Empty
-            || phoneTextBox.Text == String.Empty || emailTextBox.Text == String.Empty || address1TextBox.Text == String.Empty
-            || address2TextBox.Text == String.Empty || postcodeTextBox.Text == String.Empty || districtTextBox.Text == String.Empty
+            || icTextBox.Text == String.Empty || passwordTextBox.Text == String.Empty
+            || string.IsNullOrWhiteSpace(nameTextBox.Text) || dobTextBox.Text == String.Empty || ageTextBox.Text == String.Empty
+            || phoneTextBox.Text == String.Empty || emailTextBox.Text == String.Empty || string.IsNullOrWhiteSpace(address1TextBox.Text)
+            || string.IsNullOrWhiteSpace(address2TextBox.Text) || postcodeTextBox.Text == String.Empty || string.IsNullOrWhiteSpace(districtTextBox.Text)
             || stateComboBox.SelectedItem == null || positionComboBox.SelectedItem == null || departmentTextBox.Text == String.Empty
             || pictureBox1.Image == null)
             {
@@ -342,6 +342,7 @@ namespace EMS
             try
             {
                 employeeidComboBox.Items.Clear();
+                employeeidTextBox.Text = String.Empty;
                 positionComboBox.Items.Clear();
                 departmentTextBox.Text = String.Empty;
                 connectionString = "server=localhost;database=ems;uid=root;pwd=;";
@@ -370,6 +371,7 @@ namespace EMS
             try
             {
                 employeeidComboBox.Items.Clear();
+                employeeidTextBox.Text = String.Empty;
                 positionComboBox.Items.Clear();
                 departmentTextBox.Text = String.Empty;
                 connectionString = "server=localhost;database=ems;uid=root;pwd=;";
@@ -461,25 +463,82 @@ namespace EMS
                     {
                         ages = (int)DateTime.Now.Year - (1900 + nyear);
                         age = ages.ToString();
-                        ageTextBox.Text = age;
                         year = 1900 + nyear;
                     }
                     else
                     {
                         ages = (int)DateTime.Now.Year - (2000 + nyear);
                         age = ages.ToString();
-                        ageTextBox.Text = age;
                         year = 2000 + nyear;
                     }
                     month = ic.Substring(2, 2);
                     day = ic.Substring(4, 2);
-                    dob = day.ToString() + "/" + month.ToString() + "/" + year.ToString();
-                    dobTextBox.Text = dob;
+                    int days = Convert.ToInt32(day);
+                    if (month == "01" && days > 31)
+                    {
+                        statusLabel.Text = "January Has At Most 31 Days Only";
+                    }
+                    else if (month == "02" && DateTime.IsLeapYear(year) && days > 29)
+                    {
+                        statusLabel.Text = "February At Leap Year Has At Most 29 Days Only";
+                    }
+                    else if (month == "02" && !DateTime.IsLeapYear(year) && days > 28)
+                    {
+                        statusLabel.Text = "February Not At Leap Year Has At Most 28 Days Only";
+                    }
+                    else if (month == "03" && days > 31)
+                    {
+                        statusLabel.Text = "March Has At Most 31 Days Only";
+                    }
+                    else if (month == "04" && days > 30)
+                    {
+                        statusLabel.Text = "April Has At Most 30 Days Only";
+                    }
+                    else if (month == "05" && days > 31)
+                    {
+                        statusLabel.Text = "May Has At Most 31 Days Only";
+                    }
+                    else if (month == "06" && days > 30)
+                    {
+                        statusLabel.Text = "June Has At Most 30 Days Only";
+                    }
+                    else if (month == "07" && days > 31)
+                    {
+                        statusLabel.Text = "July Has At Most 31 Days Only";
+                    }
+                    else if (month == "08" && days > 31)
+                    {
+                        statusLabel.Text = "August Has At Most 31 Days Only";
+                    }
+                    else if (month == "09" && days > 30)
+                    {
+                        statusLabel.Text = "September Has At Most 30 Days Only";
+                    }
+                    else if (month == "10" && days > 31)
+                    {
+                        statusLabel.Text = "October Has At Most 31 Days Only";
+                    }
+                    else if (month == "11" && days > 30)
+                    {
+                        statusLabel.Text = "November Has At Most 30 Days Only";
+                    }
+                    else if (month == "12" && days > 31)
+                    {
+                        statusLabel.Text = "December Has At Most 31 Days Only";
+                    }
+                    else
+                    {
+                        dob = day.ToString() + "/" + month.ToString() + "/" + year.ToString();
+                        dobTextBox.Text = dob;
+                        ageTextBox.Text = age;
+                    }
                 }
             }
             else
             {
                 statusLabel.Text = String.Empty;
+                dobTextBox.Text = String.Empty;
+                ageTextBox.Text = String.Empty;
             }
         }
 
@@ -808,8 +867,8 @@ namespace EMS
             Regex regexdistrict = new Regex(@"^[a-zA-Z ]+$");
             bool checkdistrict = regexdistrict.IsMatch(districtTextBox.Text);
             if (employeeidComboBox.SelectedItem == null || employeeidTextBox.Text == String.Empty
-            || nameTextBox.Text == String.Empty || phoneTextBox.Text == String.Empty || emailTextBox.Text == String.Empty 
-            || address1TextBox.Text == String.Empty || address2TextBox.Text == String.Empty || postcodeTextBox.Text == String.Empty || districtTextBox.Text == String.Empty
+            || string.IsNullOrWhiteSpace(nameTextBox.Text) || phoneTextBox.Text == String.Empty || emailTextBox.Text == String.Empty
+            || string.IsNullOrWhiteSpace(address1TextBox.Text) || string.IsNullOrWhiteSpace(address2TextBox.Text) || postcodeTextBox.Text == String.Empty || string.IsNullOrWhiteSpace(districtTextBox.Text)
             || stateComboBox.SelectedItem == null || positionComboBox.SelectedItem == null || departmentTextBox.Text == String.Empty
             || pictureBox1.Image == null)
             {

@@ -77,6 +77,8 @@ namespace EMS
         {
             Regex regex = new Regex(@"^[a-zA-Z]+$");
             bool checkCode = regex.IsMatch(codeTextBox.Text);
+            Regex regexname = new Regex(@"^[A-Za-z&.()]*$");
+            bool checkname = regexname.IsMatch(nameTextBox.Text);
             if (codeTextBox.Text == String.Empty || nameTextBox.Text == String.Empty)
             {
                 statusLabel.ForeColor = Color.MistyRose;
@@ -96,6 +98,11 @@ namespace EMS
             {
                 statusLabel.ForeColor = Color.MistyRose;
                 statusLabel.Text = "Department Name Must Between 2 To 30 Characters Only";
+            }
+            else if (!checkname)
+            {
+                statusLabel.ForeColor = Color.MistyRose;
+                statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &.() Only";
             }
             else
             {
@@ -248,12 +255,19 @@ namespace EMS
 
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
+            Regex regexname = new Regex(@"^[A-Za-z&.()]*$");
+            bool checkname = regexname.IsMatch(nameTextBox.Text);
             if (nameTextBox.Text != String.Empty)
             {
                 if (nameTextBox.Text.Length < 2 || nameTextBox.Text.Length > 30)
                 {
                     statusLabel.ForeColor = Color.MistyRose;
                     statusLabel.Text = "Department Name Must Between 2 To 30 Characters Only";
+                }
+                else if (!checkname)
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &.() Only";
                 }
                 else
                 {
