@@ -308,6 +308,22 @@ namespace EMS
                         }
                         if (counter == 1)
                         {
+                            try
+                            {
+                                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                                connection = new MySqlConnection(connectionString);
+                                connection.Open();
+                                MySqlCommand command2 = connection.CreateCommand();
+                                command2.CommandText = "SELECT clockin FROM ATTENDANCE WHERE employeeid = '" + employeeid + "' AND date = '" +
+                                date + "'";
+                                clockin = command2.ExecuteScalar().ToString();
+                                connection.Close();
+                            }
+                            catch (Exception ex)
+                            {
+                                statusLabel.ForeColor = Color.MistyRose;
+                                statusLabel.Text = "Error Connecting to Database";
+                            }
                             clockout = DateTime.Now.ToString("HH:mm");
                             counter = 2;
                             month = DateTime.Now.Month.ToString();
