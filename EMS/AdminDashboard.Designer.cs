@@ -33,6 +33,7 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.payrollButton = new System.Windows.Forms.Button();
             this.archiveButton = new System.Windows.Forms.Button();
             this.changepasswordButton = new System.Windows.Forms.Button();
             this.historyButton = new System.Windows.Forms.Button();
@@ -86,16 +87,32 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.payrollButton);
             this.panel1.Controls.Add(this.archiveButton);
             this.panel1.Controls.Add(this.changepasswordButton);
             this.panel1.Controls.Add(this.historyButton);
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.manageButton);
             this.panel1.Controls.Add(this.userLabel);
-            this.panel1.Location = new System.Drawing.Point(-5, -1);
+            this.panel1.Location = new System.Drawing.Point(-4, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(509, 800);
+            this.panel1.Size = new System.Drawing.Size(508, 896);
             this.panel1.TabIndex = 4;
+            // 
+            // payrollButton
+            // 
+            this.payrollButton.BackColor = System.Drawing.Color.Firebrick;
+            this.payrollButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.payrollButton.ForeColor = System.Drawing.Color.White;
+            this.payrollButton.Image = global::EMS.Properties.Resources.payroll_2;
+            this.payrollButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.payrollButton.Location = new System.Drawing.Point(38, 608);
+            this.payrollButton.Name = "payrollButton";
+            this.payrollButton.Size = new System.Drawing.Size(442, 93);
+            this.payrollButton.TabIndex = 10;
+            this.payrollButton.Text = "Payroll";
+            this.payrollButton.UseVisualStyleBackColor = false;
+            this.payrollButton.Click += new System.EventHandler(this.payrollButton_Click);
             // 
             // archiveButton
             // 
@@ -150,7 +167,7 @@
             this.logoutButton.ForeColor = System.Drawing.Color.White;
             this.logoutButton.Image = global::EMS.Properties.Resources.logout;
             this.logoutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.logoutButton.Location = new System.Drawing.Point(38, 606);
+            this.logoutButton.Location = new System.Drawing.Point(48, 742);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(442, 93);
             this.logoutButton.TabIndex = 2;
@@ -289,7 +306,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(2061, 789);
+            this.ClientSize = new System.Drawing.Size(2061, 893);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -333,5 +350,6 @@
         private Label clockoutLabel;
         private Label display3Label;
         private Button archiveButton;
+        private Button payrollButton;
     }
 }

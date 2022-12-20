@@ -309,9 +309,9 @@ namespace EMS
                         dateissuedLabel.Text = "Date Issued: ";
                         monthLabel.Text = "Month: ";
                         yearLabel.Text = "Year: ";
-                        totalworkinghoursLabel.Text = "Total Working Hours: ";
-                        totalworkingdaysLabel.Text = "Total Working Days: ";
-                        totalsalaryLabel.Text = "Total Salary: RM";
+                        totalworkinghoursLabel.Text = "Total Working Hours: 0";
+                        totalworkingdaysLabel.Text = "Total Working Days: 0";
+                        totalsalaryLabel.Text = "Total Salary: RM  0";
                     }
                     else
                     {

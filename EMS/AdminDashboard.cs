@@ -126,5 +126,13 @@ namespace EMS
             archive.ShowDialog();
             this.Close();
         }
+
+        private void payrollButton_Click(object sender, EventArgs e)
+        {
+            AdminPayroll adminpayroll = new AdminPayroll();
+            this.Hide();
+            adminpayroll.ShowDialog();
+            this.Close();
+        }
     }
 }
