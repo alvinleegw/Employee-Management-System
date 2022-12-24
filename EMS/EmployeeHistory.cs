@@ -33,14 +33,11 @@ namespace EMS
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
-                MySqlCommand command3 = connection.CreateCommand();
                 command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
                 employeeid = command.ExecuteScalar().ToString();
                 command2.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE employeeid = '" 
                 + employeeid + "'";
                 command2.ExecuteNonQuery();
-                command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid = '" + employeeid + "'";
-                result = command3.ExecuteScalar().ToString();
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
                 {
@@ -52,8 +49,6 @@ namespace EMS
                 dataGridView1.Columns[2].HeaderText = "Working Hours";
                 dataGridView1.Columns[3].HeaderText = "Date";
                 dataGridView1.DataMember = dataTable.TableName;
-                resultLabel.ForeColor = Color.Black;
-                resultLabel.Text = result + " rows returned";
                 connection.Close();
             }
             catch (Exception ex)

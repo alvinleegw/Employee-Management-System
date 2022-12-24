@@ -153,5 +153,13 @@ namespace EMS
             employeechangepassword.ShowDialog();
             this.Close();
         }
+
+        private void leaveButton_Click(object sender, EventArgs e)
+        {
+            Leave leave = new Leave();
+            this.Hide();
+            leave.ShowDialog();
+            this.Close();
+        }
     }
 }

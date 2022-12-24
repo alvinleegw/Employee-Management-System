@@ -108,10 +108,10 @@ INSERT INTO `attendance` (`attendanceid`, `clockin`, `clockout`, `workinghours`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departmentinfo`
+-- Table structure for table `department`
 --
 
-CREATE TABLE `departmentinfo` (
+CREATE TABLE `department` (
   `departmentcode` varchar(2) NOT NULL,
   `departmentname` varchar(30) NOT NULL,
   `counter` int(3) NOT NULL DEFAULT 1,
@@ -119,10 +119,10 @@ CREATE TABLE `departmentinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `departmentinfo`
+-- Dumping data for table `department`
 --
 
-INSERT INTO `departmentinfo` (`departmentcode`, `departmentname`, `counter`, `adminid`) VALUES
+INSERT INTO `department` (`departmentcode`, `departmentname`, `counter`, `adminid`) VALUES
 ('EN', 'ENGINEERING', 2, 1),
 ('IT', 'IT', 3, 1);
 
@@ -186,20 +186,20 @@ CREATE TABLE `payslip` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `positioninfo`
+-- Table structure for table `position`
 --
 
-CREATE TABLE `positioninfo` (
+CREATE TABLE `position` (
   `positionname` varchar(30) NOT NULL,
   `adminid` int(1) NOT NULL DEFAULT 1,
   `departmentcode` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `positioninfo`
+-- Dumping data for table `position`
 --
 
-INSERT INTO `positioninfo` (`positionname`, `adminid`, `departmentcode`) VALUES
+INSERT INTO `position` (`positionname`, `adminid`, `departmentcode`) VALUES
 ('DESIGN MANAGER', 1, 'IT'),
 ('MANUFACTURING ENGINEERING', 1, 'EN'),
 ('PENETRATION TESTER', 1, 'IT'),
@@ -233,9 +233,9 @@ ALTER TABLE `attendance`
   ADD KEY `employeeid` (`employeeid`);
 
 --
--- Indexes for table `departmentinfo`
+-- Indexes for table `department`
 --
-ALTER TABLE `departmentinfo`
+ALTER TABLE `department`
   ADD PRIMARY KEY (`departmentcode`),
   ADD KEY `adminid` (`adminid`);
 
@@ -259,9 +259,9 @@ ALTER TABLE `payslip`
   ADD KEY `employeeid` (`employeeid`);
 
 --
--- Indexes for table `positioninfo`
+-- Indexes for table `position`
 --
-ALTER TABLE `positioninfo`
+ALTER TABLE `position`
   ADD PRIMARY KEY (`positionname`),
   ADD KEY `adminid` (`adminid`),
   ADD KEY `departmentname` (`departmentcode`);
@@ -299,10 +299,10 @@ ALTER TABLE `attendance`
   ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
 
 --
--- Constraints for table `departmentinfo`
+-- Constraints for table `department`
 --
-ALTER TABLE `departmentinfo`
-  ADD CONSTRAINT `departmentinfo_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`);
+ALTER TABLE `department`
+  ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`);
 
 --
 -- Constraints for table `employee`
@@ -317,11 +317,11 @@ ALTER TABLE `payslip`
   ADD CONSTRAINT `payslip_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
 
 --
--- Constraints for table `positioninfo`
+-- Constraints for table `position`
 --
-ALTER TABLE `positioninfo`
-  ADD CONSTRAINT `positioninfo_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`),
-  ADD CONSTRAINT `positioninfo_ibfk_2` FOREIGN KEY (`departmentcode`) REFERENCES `departmentinfo` (`departmentcode`) ON DELETE CASCADE;
+ALTER TABLE `position`
+  ADD CONSTRAINT `position_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`),
+  ADD CONSTRAINT `position_ibfk_2` FOREIGN KEY (`departmentcode`) REFERENCES `department` (`departmentcode`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

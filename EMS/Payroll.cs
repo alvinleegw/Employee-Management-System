@@ -81,7 +81,7 @@ namespace EMS
                 }
                 reader.Close();
                 command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
-                "' AND month ='" + month + "' AND year ='" + year + "'";
+                "' AND month ='" + month + "' AND year ='" + year + "' AND counter = '2'";
                 totalworkingdays = Convert.ToInt32(command2.ExecuteScalar());
                 command3.CommandText = "SELECT COUNT(*) FROM PAYSLIP WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                 if (Convert.ToInt32(command3.ExecuteScalar()) == 0)
@@ -259,7 +259,7 @@ namespace EMS
                     month = DateTime.Now.Month.ToString();
                     command.CommandText = "SELECT SUM(workinghours) FROM ATTENDANCE WHERE employeeid ='" + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                     command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
-                    "' AND month ='" + month + "' AND year ='" + year + "'";
+                    "' AND month ='" + month + "' AND year ='" + year + "' AND counter = '2'";
                     totalworkingdays = Convert.ToInt32(command2.ExecuteScalar());
                     string temp = command.ExecuteScalar().ToString();
                     if (temp == String.Empty)

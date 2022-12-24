@@ -48,6 +48,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.workinghoursLabel = new System.Windows.Forms.Label();
             this.display3Label = new System.Windows.Forms.Label();
+            this.leaveButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -81,6 +82,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel1.Controls.Add(this.leaveButton);
             this.panel1.Controls.Add(this.userLabel);
             this.panel1.Controls.Add(this.changepasswordButton);
             this.panel1.Controls.Add(this.historyButton);
@@ -90,7 +92,7 @@
             this.panel1.Controls.Add(this.clockinButton);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(499, 800);
+            this.panel1.Size = new System.Drawing.Size(499, 906);
             this.panel1.TabIndex = 2;
             // 
             // userLabel
@@ -141,7 +143,7 @@
             this.logoutButton.ForeColor = System.Drawing.Color.White;
             this.logoutButton.Image = global::EMS.Properties.Resources.logout;
             this.logoutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.logoutButton.Location = new System.Drawing.Point(32, 693);
+            this.logoutButton.Location = new System.Drawing.Point(32, 793);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(442, 89);
             this.logoutButton.TabIndex = 6;
@@ -291,12 +293,27 @@
             this.display3Label.TabIndex = 0;
             this.display3Label.Text = "Working Hours";
             // 
+            // leaveButton
+            // 
+            this.leaveButton.BackColor = System.Drawing.Color.Black;
+            this.leaveButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.leaveButton.ForeColor = System.Drawing.Color.White;
+            this.leaveButton.Image = global::EMS.Properties.Resources.leave;
+            this.leaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.leaveButton.Location = new System.Drawing.Point(32, 686);
+            this.leaveButton.Name = "leaveButton";
+            this.leaveButton.Size = new System.Drawing.Size(442, 89);
+            this.leaveButton.TabIndex = 9;
+            this.leaveButton.Text = "Leave";
+            this.leaveButton.UseVisualStyleBackColor = false;
+            this.leaveButton.Click += new System.EventHandler(this.leaveButton_Click);
+            // 
             // EmployeeDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(2007, 800);
+            this.ClientSize = new System.Drawing.Size(2007, 904);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -340,5 +357,6 @@
         private Panel panel2;
         private Label workinghoursLabel;
         private Label display3Label;
+        private Button leaveButton;
     }
 }

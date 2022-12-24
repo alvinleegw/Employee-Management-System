@@ -36,14 +36,10 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
-                MySqlCommand command2 = connection.CreateCommand();
                 command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
                 "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
                 "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid";
                 command.ExecuteNonQuery();
-                command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
-                "= Attendance.employeeid";
-                result = command2.ExecuteScalar().ToString();
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
                 {
@@ -60,8 +56,6 @@ namespace EMS
                 dataGridView1.Columns[7].HeaderText = "Month";
                 dataGridView1.Columns[8].HeaderText = "Year";
                 dataGridView1.DataMember = dataTable.TableName;
-                resultLabel.ForeColor = Color.White;
-                resultLabel.Text = result + " rows returned";
                 connection.Close();
             }
             catch (Exception ex)
