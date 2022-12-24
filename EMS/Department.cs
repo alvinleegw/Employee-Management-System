@@ -31,7 +31,7 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENTINFO";
+                command.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENT";
                 connection.Close();
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
@@ -77,7 +77,7 @@ namespace EMS
         {
             Regex regex = new Regex(@"^[a-zA-Z]+$");
             bool checkCode = regex.IsMatch(codeTextBox.Text);
-            Regex regexname = new Regex(@"^[A-Za-z&.()]*$");
+            Regex regexname = new Regex(@"^[A-Za-z&.() ]*$");
             bool checkname = regexname.IsMatch(nameTextBox.Text);
             if (codeTextBox.Text == String.Empty || nameTextBox.Text == String.Empty)
             {
@@ -102,7 +102,7 @@ namespace EMS
             else if (!checkname)
             {
                 statusLabel.ForeColor = Color.MistyRose;
-                statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &.() Only";
+                statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &&.() Only";
             }
             else
             {
@@ -115,8 +115,8 @@ namespace EMS
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
-                    command.CommandText = "INSERT INTO DEPARTMENTINFO(departmentcode, departmentname) VALUES('" + departmentcode + "', '" + departmentname + "')";
-                    command2.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENTINFO";
+                    command.CommandText = "INSERT INTO DEPARTMENT(departmentcode, departmentname) VALUES('" + departmentcode + "', '" + departmentname + "')";
+                    command2.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENT";
                     if (command.ExecuteNonQuery() == 1)
                     {
                         statusLabel.ForeColor = Color.LawnGreen;
@@ -181,8 +181,8 @@ namespace EMS
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
-                    command.CommandText = "DELETE FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "' AND departmentname = '" + departmentname + "'";
-                    command2.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENTINFO";
+                    command.CommandText = "DELETE FROM DEPARTMENT WHERE departmentcode ='" + departmentcode + "' AND departmentname = '" + departmentname + "'";
+                    command2.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENT";
                     if (command.ExecuteNonQuery() == 1)
                     {
                         codeTextBox.Text = String.Empty;
@@ -255,7 +255,7 @@ namespace EMS
 
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
-            Regex regexname = new Regex(@"^[A-Za-z&.()]*$");
+            Regex regexname = new Regex(@"^[A-Za-z&.() ]*$");
             bool checkname = regexname.IsMatch(nameTextBox.Text);
             if (nameTextBox.Text != String.Empty)
             {
@@ -267,7 +267,7 @@ namespace EMS
                 else if (!checkname)
                 {
                     statusLabel.ForeColor = Color.MistyRose;
-                    statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &.() Only";
+                    statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &&.() Only";
                 }
                 else
                 {

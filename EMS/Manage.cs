@@ -66,7 +66,7 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT departmentcode FROM DEPARTMENTINFO";
+                command.CommandText = "SELECT departmentcode FROM DEPARTMENT";
                 MySqlDataReader read = command.ExecuteReader();
                 while (read.Read())
                 {
@@ -265,11 +265,11 @@ namespace EMS
                     {
                         resultLabel.Text = "Data Inserted Successfully";
                         MySqlCommand command2 = connection.CreateCommand();
-                        command2.CommandText = "SELECT counter FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "'";
+                        command2.CommandText = "SELECT counter FROM DEPARTMENT WHERE departmentcode ='" + departmentcode + "'";
                         int counter = Convert.ToInt32(command2.ExecuteScalar());
                         counter++;
                         MySqlCommand command3 = connection.CreateCommand();
-                        command3.CommandText = "UPDATE DEPARTMENTINFO SET counter ='" + counter + "' WHERE departmentcode ='" + departmentcode + "'";
+                        command3.CommandText = "UPDATE DEPARTMENT SET counter ='" + counter + "' WHERE departmentcode ='" + departmentcode + "'";
                         command3.ExecuteNonQuery();
                         employeeidComboBox.SelectedItem = null;
                         employeeidTextBox.Text = String.Empty;
@@ -349,7 +349,7 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT departmentcode FROM DEPARTMENTINFO";
+                command.CommandText = "SELECT departmentcode FROM DEPARTMENT";
                 MySqlDataReader read = command.ExecuteReader();
                 while (read.Read())
                 {
@@ -378,7 +378,7 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT departmentcode FROM DEPARTMENTINFO";
+                command.CommandText = "SELECT departmentcode FROM DEPARTMENT";
                 MySqlDataReader read = command.ExecuteReader();
                 while (read.Read())
                 {
@@ -410,17 +410,17 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     MySqlCommand command3 = connection.CreateCommand();
-                    command.CommandText = "SELECT counter FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "'";
+                    command.CommandText = "SELECT counter FROM DEPARTMENT WHERE departmentcode ='" + departmentcode + "'";
                     temp = (int)command.ExecuteScalar();
                     employeeidTextBox.Text = temp.ToString("D3");
-                    command2.CommandText = "SELECT positionname FROM POSITIONINFO WHERE departmentcode ='" + departmentcode + "'";
+                    command2.CommandText = "SELECT positionname FROM POSITION WHERE departmentcode ='" + departmentcode + "'";
                     MySqlDataReader read = command2.ExecuteReader();
                     while (read.Read())
                     {
                         positionComboBox.Items.Add(read[0]);
                     }
                     read.Close();
-                    command3.CommandText = "SELECT departmentname FROM DEPARTMENTINFO WHERE departmentcode ='" + departmentcode + "'";
+                    command3.CommandText = "SELECT departmentname FROM DEPARTMENT WHERE departmentcode ='" + departmentcode + "'";
                     departmentname = command3.ExecuteScalar().ToString();
                     departmentTextBox.Text = departmentname;
                     connection.Close();

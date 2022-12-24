@@ -35,9 +35,9 @@ namespace EMS
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2= connection.CreateCommand();
-                command.CommandText = "SELECT PositionInfo.positionname, DepartmentInfo.departmentname FROM POSITIONINFO INNER JOIN DEPARTMENTINFO ON " +
-                "PositionInfo.departmentcode = DepartmentInfo.departmentcode";
-                command2.CommandText = "SELECT departmentname FROM DEPARTMENTINFO";
+                command.CommandText = "SELECT Position.positionname, Department.departmentname FROM POSITION INNER JOIN DEPARTMENT ON " +
+                "Position.departmentcode = Department.departmentcode";
+                command2.CommandText = "SELECT departmentname FROM DEPARTMENT";
                 MySqlDataReader read = command2.ExecuteReader();
                 while(read.Read())
                 {
@@ -97,10 +97,10 @@ namespace EMS
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
-                    command.CommandText = "SELECT departmentcode FROM DEPARTMENTINFO WHERE departmentname ='" + departmentname + "'";
+                    command.CommandText = "SELECT departmentcode FROM DEPARTMENT WHERE departmentname ='" + departmentname + "'";
                     departmentcode = command.ExecuteScalar().ToString();
-                    command2.CommandText = "SELECT PositionInfo.positionname, DepartmentInfo.departmentname FROM POSITIONINFO INNER JOIN DEPARTMENTINFO ON " +
-                    "PositionInfo.departmentcode = Departmentinfo.departmentcode WHERE PositionInfo.departmentcode ='" + departmentcode + "'";
+                    command2.CommandText = "SELECT Position.positionname, Department.departmentname FROM POSITION INNER JOIN DEPARTMENT ON " +
+                    "Position.departmentcode = Department.departmentcode WHERE Position.departmentcode ='" + departmentcode + "'";
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
                     {
@@ -122,7 +122,7 @@ namespace EMS
 
         private async void addButton_Click(object sender, EventArgs e)
         {
-            Regex regexname = new Regex(@"^[A-Za-z\s&()\s-./]*$");
+            Regex regexname = new Regex(@"^[A-Za-z\s&()\s-./ ]*$");
             bool checkname = regexname.IsMatch(positionTextBox.Text);
             if (departmentComboBox.SelectedIndex == -1 || positionTextBox.Text == String.Empty)
             {
@@ -137,7 +137,7 @@ namespace EMS
             else if (!checkname)
             {
                 statusLabel.ForeColor = Color.MistyRose;
-                statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &()-./ Only";
+                statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters ()-./&& Only";
             }
             else
             {
@@ -151,17 +151,17 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     MySqlCommand command3 = connection.CreateCommand();
-                    command.CommandText = "SELECT departmentcode FROM DEPARTMENTINFO WHERE departmentname ='" + departmentname + "'";
+                    command.CommandText = "SELECT departmentcode FROM DEPARTMENT WHERE departmentname ='" + departmentname + "'";
                     departmentcode = command.ExecuteScalar().ToString();
-                    command2.CommandText = "INSERT INTO POSITIONINFO(positionname, departmentcode) VALUES('" + position + "', '" + departmentcode + "')";
+                    command2.CommandText = "INSERT INTO `position`(`positionname`, `adminid`, `departmentcode`) VALUES('" + position + "', '1', '" + departmentcode + "')";
                     if (command2.ExecuteNonQuery() == 1)
                     {
                         positionTextBox.Text = String.Empty;
                         statusLabel.ForeColor = Color.LightGreen;
                         statusLabel.Text = "Position Successfully Added";
                     }
-                    command3.CommandText = "SELECT PositionInfo.positionname, DepartmentInfo.departmentname FROM POSITIONINFO INNER JOIN DEPARTMENTINFO ON " +
-                    "PositionInfo.departmentcode = Departmentinfo.departmentcode WHERE PositionInfo.departmentcode ='" + departmentcode + "'";
+                    command3.CommandText = "SELECT Position.positionname, Department.departmentname FROM POSITION INNER JOIN DEPARTMENT ON " +
+                    "Position.departmentcode = Department.departmentcode WHERE Position.departmentcode ='" + departmentcode + "'";
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command3))
                     {
@@ -218,17 +218,17 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     MySqlCommand command3 = connection.CreateCommand();
-                    command.CommandText = "SELECT departmentcode FROM DEPARTMENTINFO WHERE departmentname ='" + departmentname + "'";
+                    command.CommandText = "SELECT departmentcode FROM DEPARTMENT WHERE departmentname ='" + departmentname + "'";
                     departmentcode = command.ExecuteScalar().ToString();
-                    command2.CommandText = "DELETE FROM POSITIONINFO WHERE positionname = '" + position + "' AND departmentcode = '" + departmentcode + "'";
+                    command2.CommandText = "DELETE FROM POSITION WHERE positionname = '" + position + "' AND departmentcode = '" + departmentcode + "'";
                     if (command2.ExecuteNonQuery() == 1)
                     {
                         positionTextBox.Text = String.Empty;
                         statusLabel.ForeColor = Color.LightGreen;
                         statusLabel.Text = "Position Successfully Deleted";
                     }
-                    command3.CommandText = "SELECT PositionInfo.positionname, DepartmentInfo.departmentname FROM POSITIONINFO INNER JOIN DEPARTMENTINFO ON " +
-                    "PositionInfo.departmentcode = Departmentinfo.departmentcode WHERE PositionInfo.departmentcode ='" + departmentcode + "'";
+                    command3.CommandText = "SELECT Position.positionname, Department.departmentname FROM POSITION INNER JOIN DEPARTMENT ON " +
+                    "Position.departmentcode = Department.departmentcode WHERE Position.departmentcode ='" + departmentcode + "'";
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command3))
                     {
@@ -260,7 +260,7 @@ namespace EMS
 
         private void positionTextBox_TextChanged(object sender, EventArgs e)
         {
-            Regex regexname = new Regex(@"^[A-Za-z\s&()\s-./]*$");
+            Regex regexname = new Regex(@"^[A-Za-z\s&()\s-./ ]*$");
             bool checkname = regexname.IsMatch(positionTextBox.Text);
             if (positionTextBox.Text != String.Empty)
             {
@@ -272,7 +272,7 @@ namespace EMS
                 else if (!checkname)
                 {
                     statusLabel.ForeColor = Color.MistyRose;
-                    statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &()-./ Only";
+                    statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters ()-./&& Only";
                 }
                 else
                 {
