@@ -137,7 +137,7 @@ namespace EMS
             else if (!checkname)
             {
                 statusLabel.ForeColor = Color.MistyRose;
-                statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &()-./ Only";
+                statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &&()-./ Only";
             }
             else
             {
@@ -272,7 +272,7 @@ namespace EMS
                 else if (!checkname)
                 {
                     statusLabel.ForeColor = Color.MistyRose;
-                    statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &()-./ Only";
+                    statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &&()-./ Only";
                 }
                 else
                 {

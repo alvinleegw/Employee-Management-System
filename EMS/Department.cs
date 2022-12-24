@@ -102,7 +102,7 @@ namespace EMS
             else if (!checkname)
             {
                 statusLabel.ForeColor = Color.MistyRose;
-                statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &.() Only";
+                statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &&.() Only";
             }
             else
             {
@@ -267,7 +267,7 @@ namespace EMS
                 else if (!checkname)
                 {
                     statusLabel.ForeColor = Color.MistyRose;
-                    statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &.() Only";
+                    statusLabel.Text = "Department Name Must Be Alphabets And Certain Special Characters &&.() Only";
                 }
                 else
                 {
