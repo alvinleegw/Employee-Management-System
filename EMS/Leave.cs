@@ -30,14 +30,13 @@ namespace EMS
         public static string document;
         public static string startdate;
         public static string enddate;
+        public static string month;
+        public static string year;
 
         public Leave()
         {
             InitializeComponent();
-            //remember to remove comment
-            //username = EmployeeDashboard.username;
-            //remember to remove this line
-            username = "alvinleegw";
+            username = EmployeeDashboard.username;
             monthCalendar1.MinDate = DateTime.Now;
             monthCalendar2.MinDate = DateTime.Now;
             try
@@ -186,6 +185,8 @@ namespace EMS
                 description = descriptionTextBox.Text;
                 startdate = monthCalendar1.SelectionRange.Start.ToString("d");
                 enddate = monthCalendar2.SelectionRange.Start.ToString("d");
+                month = DateTime.Now.Month.ToString();
+                year = DateTime.Now.Year.ToString();
                 if (document == String.Empty)
                 {
                     try
@@ -194,8 +195,8 @@ namespace EMS
                         connection = new MySqlConnection(connectionString);
                         connection.Open();
                         MySqlCommand command = connection.CreateCommand();
-                        command.CommandText = "INSERT INTO LEAVEREQUEST(leavetype, description, startdate, enddate, dateapplied, employeeid) VALUES('"
-                        + leavetype + "', '" + description + "', '" + startdate + "', '" + enddate + "', '" + dateapplied + "', '" + employeeid + "')";
+                        command.CommandText = "INSERT INTO LEAVEREQUEST(leavetype, description, startdate, enddate, dateapplied, month, year, employeeid) VALUES('"
+                        + leavetype + "', '" + description + "', '" + startdate + "', '" + enddate + "', '" + dateapplied + "', '" + month + "', '" + year + "', '" + employeeid + "')";
                         if (command.ExecuteNonQuery() == 1)
                         {
                             monthCalendar1.SetDate(DateTime.Now);
@@ -229,8 +230,8 @@ namespace EMS
                         filestream.Read(contents, 0, (int)filestream.Length);
                         filestream.Close();
                         MySqlCommand command = connection.CreateCommand();
-                        command.CommandText = "INSERT INTO LEAVEREQUEST(leavetype, description, documentname, document, startdate, enddate, dateapplied, employeeid) VALUES('"
-                        + leavetype + "', '" + description + "', '" + document + "', @document, '" + startdate + "', '" + enddate + "', '" + dateapplied + "', '" + employeeid + "')";
+                        command.CommandText = "INSERT INTO LEAVEREQUEST(leavetype, description, documentname, document, startdate, enddate, dateapplied, month, year, employeeid) VALUES('"
+                        + leavetype + "', '" + description + "', '" + document + "', @document, '" + startdate + "', '" + enddate + "', '" + dateapplied + "', '" + month + "', '" + year + "', '" + employeeid + "')";
                         command.Parameters.AddWithValue("@document", contents);
                         if (command.ExecuteNonQuery() == 1)
                         {
@@ -242,7 +243,7 @@ namespace EMS
                             descriptionTextBox.Text = String.Empty;
                             documentLabel.Text = String.Empty;
                             openFileDialog1.FileName = null;
-                            await Task.Delay(1500);
+                            await Task.Delay(2500);
                             statusLabel.Text = String.Empty;
                         }
                         connection.Close();

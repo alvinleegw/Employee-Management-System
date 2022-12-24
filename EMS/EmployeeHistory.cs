@@ -25,6 +25,8 @@ namespace EMS
         {
             InitializeComponent();
             username = EmployeeDashboard.username;
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
             try
             {
                 string result;

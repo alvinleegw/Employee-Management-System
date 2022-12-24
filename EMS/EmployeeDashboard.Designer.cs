@@ -100,7 +100,7 @@
             this.leaveButton.BackColor = System.Drawing.Color.Black;
             this.leaveButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.leaveButton.ForeColor = System.Drawing.Color.White;
-            this.leaveButton.Image = global::EMS.Properties.Resources.leave;
+            this.leaveButton.Image = global::EMS.Properties.Resources.leave_2;
             this.leaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.leaveButton.Location = new System.Drawing.Point(32, 686);
             this.leaveButton.Name = "leaveButton";
@@ -147,7 +147,7 @@
             this.historyButton.Name = "historyButton";
             this.historyButton.Size = new System.Drawing.Size(442, 89);
             this.historyButton.TabIndex = 7;
-            this.historyButton.Text = "History";
+            this.historyButton.Text = "Clocking History";
             this.historyButton.UseVisualStyleBackColor = false;
             this.historyButton.Click += new System.EventHandler(this.historyButton_Click);
             // 

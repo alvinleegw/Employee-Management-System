@@ -134,5 +134,13 @@ namespace EMS
             adminpayroll.ShowDialog();
             this.Close();
         }
+
+        private void leaveButton_Click(object sender, EventArgs e)
+        {
+            AdminLeave adminleave = new AdminLeave();
+            this.Hide();
+            adminleave.ShowDialog();
+            this.Close();
+        }
     }
 }
