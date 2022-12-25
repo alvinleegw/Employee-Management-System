@@ -40,7 +40,7 @@ namespace EMS
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
+                command.CommandText = "SELECT status, employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, remarks, month, year FROM LEAVEREQUEST ORDER BY INSTR(status, 'PEN') DESC, status";
                 command.ExecuteNonQuery();
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command))
@@ -48,14 +48,14 @@ namespace EMS
                     dataAdapter.Fill(dataTable);
                 }
                 dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].HeaderText = "Employee ID";
-                dataGridView1.Columns[1].HeaderText = "Leave Type";
-                dataGridView1.Columns[2].HeaderText = "Description";
-                dataGridView1.Columns[3].HeaderText = "Date Applied";
-                dataGridView1.Columns[4].HeaderText = "Start Date";
-                dataGridView1.Columns[5].HeaderText = "End Date";
-                dataGridView1.Columns[6].HeaderText = "Date Approved/Rejected";
-                dataGridView1.Columns[7].HeaderText = "Status";
+                dataGridView1.Columns[0].HeaderText = "Status";
+                dataGridView1.Columns[1].HeaderText = "Employee ID";
+                dataGridView1.Columns[2].HeaderText = "Leave Type";
+                dataGridView1.Columns[3].HeaderText = "Description";
+                dataGridView1.Columns[4].HeaderText = "Date Applied";
+                dataGridView1.Columns[5].HeaderText = "Start Date";
+                dataGridView1.Columns[6].HeaderText = "End Date";
+                dataGridView1.Columns[7].HeaderText = "Date Approved/Rejected";
                 dataGridView1.Columns[8].HeaderText = "Remarks";
                 dataGridView1.Columns[9].HeaderText = "Month";
                 dataGridView1.Columns[10].HeaderText = "Year";
@@ -106,8 +106,10 @@ namespace EMS
                 if (e.RowIndex >= 0)
                 {
                     DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                    employeeidTextBox.Text = row.Cells[0].Value.ToString();
-                    employeeid = row.Cells[0].Value.ToString();
+                    statusTextBox.Text = row.Cells[0].Value.ToString();
+                    status = row.Cells[0].Value.ToString();
+                    employeeidTextBox.Text = row.Cells[1].Value.ToString();
+                    employeeid = row.Cells[1].Value.ToString();
                     connectionString = "server=localhost;database=ems;uid=root;pwd=;";
                     connection = new MySqlConnection(connectionString);
                     connection.Open();
@@ -121,16 +123,14 @@ namespace EMS
                         departmentTextBox.Text = reader["department"].ToString();
                     }
                     reader.Close();
-                    leavetypeTextBox.Text = row.Cells[1].Value.ToString();
-                    descriptionTextBox.Text = row.Cells[2].Value.ToString();
-                    dateappliedTextBox.Text = row.Cells[3].Value.ToString();
-                    startdateTextBox.Text = row.Cells[4].Value.ToString();
-                    startdate = row.Cells[4].Value.ToString();
-                    enddateTextBox.Text = row.Cells[5].Value.ToString();
-                    enddate = row.Cells[5].Value.ToString();
-                    dateapproverejectTextBox.Text = row.Cells[6].Value.ToString();
-                    statusTextBox.Text = row.Cells[7].Value.ToString();
-                    status = row.Cells[7].Value.ToString();
+                    leavetypeTextBox.Text = row.Cells[2].Value.ToString();
+                    descriptionTextBox.Text = row.Cells[3].Value.ToString();
+                    dateappliedTextBox.Text = row.Cells[4].Value.ToString();
+                    startdateTextBox.Text = row.Cells[5].Value.ToString();
+                    startdate = row.Cells[5].Value.ToString();
+                    enddateTextBox.Text = row.Cells[6].Value.ToString();
+                    enddate = row.Cells[6].Value.ToString();
+                    dateapproverejectTextBox.Text = row.Cells[7].Value.ToString();
                     remarksTextBox.Text = row.Cells[8].Value.ToString();
                     if (status == "PENDING")
                     {
@@ -161,7 +161,7 @@ namespace EMS
             }
             catch (Exception ex)
             {
-                statusLabel.Text = ex.Message;
+                status2Label.Text = ex.Message;
             }
         }
 
@@ -202,7 +202,7 @@ namespace EMS
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    status2Label.Text = ex.Message;
                 }
             }
         }
@@ -257,7 +257,7 @@ namespace EMS
                         }
                     }
                     MySqlCommand command3 = connection.CreateCommand();
-                    command3.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
+                    command3.CommandText = "SELECT status, employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, remarks, month, year FROM LEAVEREQUEST ORDER BY INSTR(status, 'PEN') DESC, status";
                     command3.ExecuteNonQuery();
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command3))
@@ -265,14 +265,14 @@ namespace EMS
                         dataAdapter.Fill(dataTable);
                     }
                     dataGridView1.DataSource = dataTable;
-                    dataGridView1.Columns[0].HeaderText = "Employee ID";
-                    dataGridView1.Columns[1].HeaderText = "Leave Type";
-                    dataGridView1.Columns[2].HeaderText = "Description";
-                    dataGridView1.Columns[3].HeaderText = "Date Applied";
-                    dataGridView1.Columns[4].HeaderText = "Start Date";
-                    dataGridView1.Columns[5].HeaderText = "End Date";
-                    dataGridView1.Columns[6].HeaderText = "Date Approved/Rejected";
-                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[0].HeaderText = "Status";
+                    dataGridView1.Columns[1].HeaderText = "Employee ID";
+                    dataGridView1.Columns[2].HeaderText = "Leave Type";
+                    dataGridView1.Columns[3].HeaderText = "Description";
+                    dataGridView1.Columns[4].HeaderText = "Date Applied";
+                    dataGridView1.Columns[5].HeaderText = "Start Date";
+                    dataGridView1.Columns[6].HeaderText = "End Date";
+                    dataGridView1.Columns[7].HeaderText = "Date Approved/Rejected";
                     dataGridView1.Columns[8].HeaderText = "Remarks";
                     dataGridView1.Columns[9].HeaderText = "Month";
                     dataGridView1.Columns[10].HeaderText = "Year";
@@ -317,7 +317,7 @@ namespace EMS
                         dateapproverejectTextBox.Text = dateapprovereject;
                     }
                     MySqlCommand command2 = connection.CreateCommand();
-                    command2.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
+                    command2.CommandText = "SELECT status, employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, remarks, month, year FROM LEAVEREQUEST ORDER BY INSTR(status, 'PEN') DESC, status";
                     command2.ExecuteNonQuery();
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
@@ -325,14 +325,14 @@ namespace EMS
                         dataAdapter.Fill(dataTable);
                     }
                     dataGridView1.DataSource = dataTable;
-                    dataGridView1.Columns[0].HeaderText = "Employee ID";
-                    dataGridView1.Columns[1].HeaderText = "Leave Type";
-                    dataGridView1.Columns[2].HeaderText = "Description";
-                    dataGridView1.Columns[3].HeaderText = "Date Applied";
-                    dataGridView1.Columns[4].HeaderText = "Start Date";
-                    dataGridView1.Columns[5].HeaderText = "End Date";
-                    dataGridView1.Columns[6].HeaderText = "Date Approved/Rejected";
-                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[0].HeaderText = "Status";
+                    dataGridView1.Columns[1].HeaderText = "Employee ID";
+                    dataGridView1.Columns[2].HeaderText = "Leave Type";
+                    dataGridView1.Columns[3].HeaderText = "Description";
+                    dataGridView1.Columns[4].HeaderText = "Date Applied";
+                    dataGridView1.Columns[5].HeaderText = "Start Date";
+                    dataGridView1.Columns[6].HeaderText = "End Date";
+                    dataGridView1.Columns[7].HeaderText = "Date Approved/Rejected";
                     dataGridView1.Columns[8].HeaderText = "Remarks";
                     dataGridView1.Columns[9].HeaderText = "Month";
                     dataGridView1.Columns[10].HeaderText = "Year";

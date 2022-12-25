@@ -32,12 +32,18 @@ namespace EMS
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
                 MySqlCommand command3 = connection.CreateCommand();
+                MySqlCommand command4 = connection.CreateCommand();
+                MySqlCommand command5 = connection.CreateCommand();
                 command.CommandText = "SELECT COUNT(*) FROM EMPLOYEE";
                 employeeLabel.Text = command.ExecuteScalar().ToString();
-                command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE counter != 0 AND date ='" + date +"'";
+                command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE counter != 0 AND date ='" + date +"' AND status IS NULL";
                 clockinLabel.Text= command2.ExecuteScalar().ToString();
-                command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE counter = 2 AND date ='" + date + "'";
+                command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE counter = 2 AND date ='" + date + "' AND status IS NULL";
                 clockoutLabel.Text = command3.ExecuteScalar().ToString();
+                command4.CommandText = "SELECT COUNT(*) FROM LEAVEREQUEST WHERE status = 'PENDING'";
+                pendingLabel.Text = command4.ExecuteScalar().ToString();
+                command5.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE date ='" + date + "' AND status = 'LEAVE'";
+                leaveLabel.Text = command5.ExecuteScalar().ToString();
             }
             catch(Exception ex)
             {

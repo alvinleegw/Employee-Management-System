@@ -35,6 +35,8 @@ namespace EMS
                 MySqlCommand command2 = connection.CreateCommand();
                 MySqlCommand command3 = connection.CreateCommand();
                 MySqlCommand command4 = connection.CreateCommand();
+                MySqlCommand command5 = connection.CreateCommand();
+                MySqlCommand command6 = connection.CreateCommand();
                 command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username ='" + username + "'";
                 string employeeid = command.ExecuteScalar().ToString();
                 command2.CommandText = "SELECT clockin FROM ATTENDANCE WHERE date ='" + date + "'"
@@ -43,17 +45,28 @@ namespace EMS
                 {
                     clockinLabel.Text = command2.ExecuteScalar().ToString();
                 }
-                 command3.CommandText = "SELECT clockout FROM ATTENDANCE WHERE date ='" + date + "'"
+                command3.CommandText = "SELECT clockout FROM ATTENDANCE WHERE date ='" + date + "'"
                  + " AND employeeid ='" + employeeid + "'";
                 if (command3.ExecuteScalar() != null)
                 {
                     clockoutLabel.Text = command3.ExecuteScalar().ToString();
                 }
-                 command4.CommandText = "SELECT workinghours FROM ATTENDANCE WHERE date ='" + date + "'"
+                command4.CommandText = "SELECT workinghours FROM ATTENDANCE WHERE date ='" + date + "'"
                  + " AND employeeid ='" + employeeid + "'";
                 if (command4.ExecuteScalar() != null)
                 {
                     workinghoursLabel.Text = command4.ExecuteScalar().ToString();
+                }
+                command5.CommandText = "SELECT status FROM ATTENDANCE WHERE date ='" + date + "'"
+                + " AND employeeid ='" + employeeid + "'";
+                if (command5.ExecuteScalar() != null)
+                {
+                    statusLabel.Text = "On Leave";
+                }
+                command6.CommandText = "SELECT COUNT(*) FROM LEAVEREQUEST WHERE employeeid ='" + employeeid + "' AND status = 'PENDING'";
+                if (command6.ExecuteScalar() != null)
+                {
+                    pendingLabel.Text = command6.ExecuteScalar().ToString();
                 }
                 connection.Close();
             }
@@ -159,6 +172,14 @@ namespace EMS
             Leave leave = new Leave();
             this.Hide();
             leave.ShowDialog();
+            this.Close();
+        }
+
+        private void statusButton_Click(object sender, EventArgs e)
+        {
+            LeaveStatus leavestatus = new LeaveStatus();
+            this.Hide();
+            leavestatus.ShowDialog();
             this.Close();
         }
     }
