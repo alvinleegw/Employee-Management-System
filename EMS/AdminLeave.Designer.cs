@@ -461,7 +461,6 @@
             this.status3Label.Name = "status3Label";
             this.status3Label.Size = new System.Drawing.Size(1351, 48);
             this.status3Label.TabIndex = 67;
-            this.status3Label.Text = "sdf";
             this.status3Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AdminLeave

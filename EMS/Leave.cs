@@ -118,10 +118,10 @@ namespace EMS
                     if (openFileDialog1.CheckFileExists)
                     {
                         string path = Path.GetFileName(openFileDialog1.FileName);
-                        if (path.Length > 15)
+                        if (path.Length > 25)
                         {
                             statusLabel.ForeColor = Color.Red;
-                            statusLabel.Text = "Maximum Characters For Document Name is 15 Characters Only";
+                            statusLabel.Text = "Maximum Characters For Document Name is 25 Characters Only";
                         }
                         else
                         {

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using iTextSharp.text;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -190,7 +191,8 @@ namespace EMS
                             using (BinaryWriter binarywriter = new BinaryWriter(filestream))
                             {
                                 binarywriter.Write(fileData);
-                                MessageBox.Show("File Succesfully Downloaded to Path: " + path);
+                                MessageBox.Show("File Successfully Downloaded to Path: " + path, "File Downloaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                folderBrowserDialog1.SelectedPath = null;
                                 binarywriter.Close();
                             }
                         }
@@ -234,12 +236,31 @@ namespace EMS
                         approveButton.Visible = false;
                         rejectButton.Visible = false;
                         dateapproverejectTextBox.Text = dateapprovereject;
+                        MySqlCommand command2 = connection.CreateCommand();
+                        DateTime startingDate = Convert.ToDateTime(startdate);
+                        DateTime endingDate = Convert.ToDateTime(enddate);
+                        for (DateTime date = startingDate; date <= endingDate; date = date.AddDays(1))
+                        {
+                            DayOfWeek day = date.DayOfWeek;
+                            string month = date.Month.ToString();
+                            string year = date.Year.ToString();
+                            if ((day == DayOfWeek.Saturday) || (day == DayOfWeek.Sunday))
+                            {
+
+                            }
+                            else
+                            {
+                                command2.CommandText = "INSERT INTO ATTENDANCE(status, counter, date, month, year, employeeid) VALUES('LEAVE', '2', '"
+                                + date.ToString("d") + "', '" + month + "', '" + year + "', '" + employeeid + "')";
+                                command2.ExecuteNonQuery();
+                            }
+                        }
                     }
-                    MySqlCommand command2 = connection.CreateCommand();
-                    command2.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
-                    command2.ExecuteNonQuery();
+                    MySqlCommand command3 = connection.CreateCommand();
+                    command3.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
+                    command3.ExecuteNonQuery();
                     DataTable dataTable = new DataTable();
-                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
+                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command3))
                     {
                         dataAdapter.Fill(dataTable);
                     }

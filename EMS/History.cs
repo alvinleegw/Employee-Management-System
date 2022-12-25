@@ -37,7 +37,7 @@ namespace EMS
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
                 command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                 "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid";
                 command.ExecuteNonQuery();
                 DataTable dataTable = new DataTable();
@@ -53,8 +53,9 @@ namespace EMS
                 dataGridView1.Columns[4].HeaderText = "Clock In";
                 dataGridView1.Columns[5].HeaderText = "Clock Out";
                 dataGridView1.Columns[6].HeaderText = "Date";
-                dataGridView1.Columns[7].HeaderText = "Month";
-                dataGridView1.Columns[8].HeaderText = "Year";
+                dataGridView1.Columns[7].HeaderText = "Status";
+                dataGridView1.Columns[8].HeaderText = "Month";
+                dataGridView1.Columns[9].HeaderText = "Year";
                 dataGridView1.DataMember = dataTable.TableName;
                 connection.Close();
             }
@@ -115,7 +116,7 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                     "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid WHERE Attendance.date ='" + date + "'";
                     command.ExecuteNonQuery();
                     command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
@@ -134,8 +135,9 @@ namespace EMS
                     dataGridView1.Columns[4].HeaderText = "Clock In";
                     dataGridView1.Columns[5].HeaderText = "Clock Out";
                     dataGridView1.Columns[6].HeaderText = "Date";
-                    dataGridView1.Columns[7].HeaderText = "Month";
-                    dataGridView1.Columns[8].HeaderText = "Year";
+                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[8].HeaderText = "Month";
+                    dataGridView1.Columns[9].HeaderText = "Year";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.White;
                     resultLabel.Text = result + " rows returned";
@@ -167,7 +169,7 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                     "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid";
                     command.ExecuteNonQuery();
                     command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
@@ -186,8 +188,9 @@ namespace EMS
                     dataGridView1.Columns[4].HeaderText = "Clock In";
                     dataGridView1.Columns[5].HeaderText = "Clock Out";
                     dataGridView1.Columns[6].HeaderText = "Date";
-                    dataGridView1.Columns[7].HeaderText = "Month";
-                    dataGridView1.Columns[8].HeaderText = "Year";
+                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[8].HeaderText = "Month";
+                    dataGridView1.Columns[9].HeaderText = "Year";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.White;
                     resultLabel.Text = result + " rows returned";
@@ -249,7 +252,7 @@ namespace EMS
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
                 command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                 "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid WHERE Attendance.date ='" + date + "'";
                 command.ExecuteNonQuery();
                 command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
@@ -268,8 +271,9 @@ namespace EMS
                 dataGridView1.Columns[4].HeaderText = "Clock In";
                 dataGridView1.Columns[5].HeaderText = "Clock Out";
                 dataGridView1.Columns[6].HeaderText = "Date";
-                dataGridView1.Columns[7].HeaderText = "Month";
-                dataGridView1.Columns[8].HeaderText = "Year";
+                dataGridView1.Columns[7].HeaderText = "Status";
+                dataGridView1.Columns[8].HeaderText = "Month";
+                dataGridView1.Columns[9].HeaderText = "Year";
                 dataGridView1.DataMember = dataTable.TableName;
                 resultLabel.ForeColor = Color.White;
                 resultLabel.Text = result + " rows returned";
@@ -296,7 +300,7 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                     "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid WHERE Employee.employeeid LIKE '" + employeeid + "%'";
                     command.ExecuteNonQuery();
                     command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
@@ -315,8 +319,9 @@ namespace EMS
                     dataGridView1.Columns[4].HeaderText = "Clock In";
                     dataGridView1.Columns[5].HeaderText = "Clock Out";
                     dataGridView1.Columns[6].HeaderText = "Date";
-                    dataGridView1.Columns[7].HeaderText = "Month";
-                    dataGridView1.Columns[8].HeaderText = "Year";
+                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[8].HeaderText = "Month";
+                    dataGridView1.Columns[9].HeaderText = "Year";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.White;
                     resultLabel.Text = result + " rows returned";
@@ -339,7 +344,7 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                     "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid WHERE Employee.name LIKE '" + name + "%'";
                     command.ExecuteNonQuery();
                     command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
@@ -358,8 +363,9 @@ namespace EMS
                     dataGridView1.Columns[4].HeaderText = "Clock In";
                     dataGridView1.Columns[5].HeaderText = "Clock Out";
                     dataGridView1.Columns[6].HeaderText = "Date";
-                    dataGridView1.Columns[7].HeaderText = "Month";
-                    dataGridView1.Columns[8].HeaderText = "Year";
+                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[8].HeaderText = "Month";
+                    dataGridView1.Columns[9].HeaderText = "Year";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.White;
                     resultLabel.Text = result + " rows returned";
@@ -382,7 +388,7 @@ namespace EMS
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
                     command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                    "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                     "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid WHERE Employee.department LIKE '" + department + "%'";
                     command.ExecuteNonQuery();
                     command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
@@ -401,8 +407,9 @@ namespace EMS
                     dataGridView1.Columns[4].HeaderText = "Clock In";
                     dataGridView1.Columns[5].HeaderText = "Clock Out";
                     dataGridView1.Columns[6].HeaderText = "Date";
-                    dataGridView1.Columns[7].HeaderText = "Month";
-                    dataGridView1.Columns[8].HeaderText = "Year";
+                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[8].HeaderText = "Month";
+                    dataGridView1.Columns[9].HeaderText = "Year";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.White;
                     resultLabel.Text = result + " rows returned";
@@ -421,11 +428,11 @@ namespace EMS
             try
             {
                 var csv = new System.Text.StringBuilder();
-                var header = string.Format("{0},{1},{2},{3},{4},{5},{6},{7}, {8}", "Employee ID", "Name", "Position", "Department", "Clock In", "Clock Out", "Date", "Month", "Year");
+                var header = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", "Employee ID", "Name", "Position", "Department", "Clock In", "Clock Out", "Date", "Status", "Month", "Year");
                 csv.AppendLine(header);
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7}, {8}", row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value, row.Cells[4].Value, row.Cells[5].Value, row.Cells[6].Value, row.Cells[7].Value, row.Cells[8].Value);
+                    var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value, row.Cells[4].Value, row.Cells[5].Value, row.Cells[6].Value, row.Cells[7].Value, row.Cells[8].Value, row.Cells[9].Value);
                     csv.AppendLine(newLine);
                 }
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -469,7 +476,7 @@ namespace EMS
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
                 command.CommandText = "SELECT Employee.employeeid, Employee.name, Employee.position, Employee.department, " +
-                "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.month, Attendance.year FROM Employee " +
+                "Attendance.clockin, Attendance.clockout, Attendance.date, Attendance.status, Attendance.month, Attendance.year FROM Employee " +
                 "INNER JOIN Attendance ON Employee.employeeid = Attendance.employeeid WHERE Attendance.month ='" + month + "' AND year ='" + year + "'";
                 command.ExecuteNonQuery();
                 command2.CommandText = "SELECT COUNT(*) FROM Employee INNER JOIN Attendance ON Employee.employeeid " +
@@ -488,8 +495,9 @@ namespace EMS
                 dataGridView1.Columns[4].HeaderText = "Clock In";
                 dataGridView1.Columns[5].HeaderText = "Clock Out";
                 dataGridView1.Columns[6].HeaderText = "Date";
-                dataGridView1.Columns[7].HeaderText = "Month";
-                dataGridView1.Columns[8].HeaderText = "Year";
+                dataGridView1.Columns[7].HeaderText = "Status";
+                dataGridView1.Columns[8].HeaderText = "Month";
+                dataGridView1.Columns[9].HeaderText = "Year";
                 dataGridView1.DataMember = dataTable.TableName;
                 resultLabel.ForeColor = Color.White;
                 resultLabel.Text = result + " rows returned";
