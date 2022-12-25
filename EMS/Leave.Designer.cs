@@ -334,7 +334,6 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(1971, 48);
             this.statusLabel.TabIndex = 38;
-            this.statusLabel.Text = "sss";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // wordcountLabel

@@ -64,6 +64,8 @@
             this.rejectButton = new System.Windows.Forms.Button();
             this.status2Label = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.wordcountLabel = new System.Windows.Forms.Label();
+            this.status3Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -396,6 +398,7 @@
             this.remarksTextBox.Name = "remarksTextBox";
             this.remarksTextBox.Size = new System.Drawing.Size(1352, 197);
             this.remarksTextBox.TabIndex = 61;
+            this.remarksTextBox.TextChanged += new System.EventHandler(this.remarksTextBox_TextChanged);
             // 
             // approveButton
             // 
@@ -404,7 +407,7 @@
             this.approveButton.ForeColor = System.Drawing.Color.MediumBlue;
             this.approveButton.Image = global::EMS.Properties.Resources.approve;
             this.approveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.approveButton.Location = new System.Drawing.Point(914, 1278);
+            this.approveButton.Location = new System.Drawing.Point(914, 1327);
             this.approveButton.Name = "approveButton";
             this.approveButton.Size = new System.Drawing.Size(225, 89);
             this.approveButton.TabIndex = 63;
@@ -420,7 +423,7 @@
             this.rejectButton.ForeColor = System.Drawing.Color.MediumBlue;
             this.rejectButton.Image = global::EMS.Properties.Resources.reject;
             this.rejectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rejectButton.Location = new System.Drawing.Point(1178, 1278);
+            this.rejectButton.Location = new System.Drawing.Point(1178, 1327);
             this.rejectButton.Name = "rejectButton";
             this.rejectButton.Size = new System.Drawing.Size(200, 89);
             this.rejectButton.TabIndex = 64;
@@ -437,8 +440,29 @@
             this.status2Label.Name = "status2Label";
             this.status2Label.Size = new System.Drawing.Size(1352, 48);
             this.status2Label.TabIndex = 65;
-            this.status2Label.Text = "dfg";
             this.status2Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // wordcountLabel
+            // 
+            this.wordcountLabel.AutoSize = true;
+            this.wordcountLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.wordcountLabel.ForeColor = System.Drawing.Color.White;
+            this.wordcountLabel.Location = new System.Drawing.Point(933, 967);
+            this.wordcountLabel.Name = "wordcountLabel";
+            this.wordcountLabel.Size = new System.Drawing.Size(445, 48);
+            this.wordcountLabel.TabIndex = 66;
+            this.wordcountLabel.Text = "100 characters remaining";
+            // 
+            // status3Label
+            // 
+            this.status3Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.status3Label.ForeColor = System.Drawing.Color.White;
+            this.status3Label.Location = new System.Drawing.Point(27, 1249);
+            this.status3Label.Name = "status3Label";
+            this.status3Label.Size = new System.Drawing.Size(1351, 48);
+            this.status3Label.TabIndex = 67;
+            this.status3Label.Text = "sdf";
+            this.status3Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AdminLeave
             // 
@@ -446,6 +470,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkBlue;
             this.ClientSize = new System.Drawing.Size(2820, 1500);
+            this.Controls.Add(this.status3Label);
+            this.Controls.Add(this.wordcountLabel);
             this.Controls.Add(this.status2Label);
             this.Controls.Add(this.rejectButton);
             this.Controls.Add(this.approveButton);
@@ -531,5 +557,7 @@
         private Button rejectButton;
         private Label status2Label;
         private FolderBrowserDialog folderBrowserDialog1;
+        private Label wordcountLabel;
+        private Label status3Label;
     }
 }

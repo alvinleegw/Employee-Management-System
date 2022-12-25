@@ -207,107 +207,136 @@ namespace EMS
 
         private async void approveButton_Click(object sender, EventArgs e)
         {
-            employeeid = employeeidTextBox.Text;
-            startdate = startdateTextBox.Text;
-            enddate = enddateTextBox.Text;
-            remarks = remarksTextBox.Text;
-            string dateapprovereject = DateTime.Now.ToString("d");
-            try
+            if (remarksTextBox.Text.Length > 100)
             {
-                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "UPDATE LEAVEREQUEST SET dateapprovereject ='" + dateapprovereject + "', status ='"
-                + "APPROVED', remarks ='" + remarks + "' WHERE employeeid ='" + employeeid + "' AND startdate = '" + startdate
-                + "' AND enddate ='" + enddate + "'";
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    status2Label.Text = "Approved Leave Request";
-                    statusTextBox.Text = "APPROVED";
-                    approveButton.Visible = false;
-                    rejectButton.Visible = false;
-                    dateapproverejectTextBox.Text = dateapprovereject;
-                }
-                MySqlCommand command2 = connection.CreateCommand();
-                command2.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
-                command2.ExecuteNonQuery();
-                DataTable dataTable = new DataTable();
-                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
-                {
-                    dataAdapter.Fill(dataTable);
-                }
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].HeaderText = "Employee ID";
-                dataGridView1.Columns[1].HeaderText = "Leave Type";
-                dataGridView1.Columns[2].HeaderText = "Description";
-                dataGridView1.Columns[3].HeaderText = "Date Applied";
-                dataGridView1.Columns[4].HeaderText = "Start Date";
-                dataGridView1.Columns[5].HeaderText = "End Date";
-                dataGridView1.Columns[6].HeaderText = "Date Approved/Rejected";
-                dataGridView1.Columns[7].HeaderText = "Status";
-                dataGridView1.Columns[8].HeaderText = "Remarks";
-                dataGridView1.Columns[9].HeaderText = "Month";
-                dataGridView1.Columns[10].HeaderText = "Year";
-                dataGridView1.DataMember = dataTable.TableName;
-                connection.Close();
+                status3Label.Text = "Maximum Characters for Remarks is 100 Characters";
             }
-            catch (Exception ex)
+            else
             {
-                status2Label.Text = ex.Message;
+                employeeid = employeeidTextBox.Text;
+                startdate = startdateTextBox.Text;
+                enddate = enddateTextBox.Text;
+                remarks = remarksTextBox.Text;
+                string dateapprovereject = DateTime.Now.ToString("d");
+                try
+                {
+                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                    connection = new MySqlConnection(connectionString);
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = "UPDATE LEAVEREQUEST SET dateapprovereject ='" + dateapprovereject + "', status ='"
+                    + "APPROVED', remarks ='" + remarks + "' WHERE employeeid ='" + employeeid + "' AND startdate = '" + startdate
+                    + "' AND enddate ='" + enddate + "'";
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        status2Label.Text = "Approved Leave Request";
+                        statusTextBox.Text = "APPROVED";
+                        approveButton.Visible = false;
+                        rejectButton.Visible = false;
+                        dateapproverejectTextBox.Text = dateapprovereject;
+                    }
+                    MySqlCommand command2 = connection.CreateCommand();
+                    command2.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
+                    command2.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.Columns[0].HeaderText = "Employee ID";
+                    dataGridView1.Columns[1].HeaderText = "Leave Type";
+                    dataGridView1.Columns[2].HeaderText = "Description";
+                    dataGridView1.Columns[3].HeaderText = "Date Applied";
+                    dataGridView1.Columns[4].HeaderText = "Start Date";
+                    dataGridView1.Columns[5].HeaderText = "End Date";
+                    dataGridView1.Columns[6].HeaderText = "Date Approved/Rejected";
+                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[8].HeaderText = "Remarks";
+                    dataGridView1.Columns[9].HeaderText = "Month";
+                    dataGridView1.Columns[10].HeaderText = "Year";
+                    dataGridView1.DataMember = dataTable.TableName;
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    status2Label.Text = ex.Message;
+                }
             }
         }
 
         private void rejectButton_Click(object sender, EventArgs e)
         {
-            employeeid = employeeidTextBox.Text;
-            startdate = startdateTextBox.Text;
-            enddate = enddateTextBox.Text;
-            remarks = remarksTextBox.Text;
-            string dateapprovereject = DateTime.Now.ToString("d");
-            try
+            if (remarksTextBox.Text.Length > 100)
             {
-                connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "UPDATE LEAVEREQUEST SET dateapprovereject ='" + dateapprovereject + "', status ='"
-                + "REJECTED', remarks ='" + remarks + "' WHERE employeeid ='" + employeeid + "' AND startdate = '" + startdate
-                + "' AND enddate ='" + enddate + "'";
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    status2Label.Text = "Rejected Leave Request";
-                    statusTextBox.Text = "REJECTED";
-                    approveButton.Visible = false;
-                    rejectButton.Visible = false;
-                    dateapproverejectTextBox.Text = dateapprovereject;
-                }
-                MySqlCommand command2 = connection.CreateCommand();
-                command2.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
-                command2.ExecuteNonQuery();
-                DataTable dataTable = new DataTable();
-                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
-                {
-                    dataAdapter.Fill(dataTable);
-                }
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].HeaderText = "Employee ID";
-                dataGridView1.Columns[1].HeaderText = "Leave Type";
-                dataGridView1.Columns[2].HeaderText = "Description";
-                dataGridView1.Columns[3].HeaderText = "Date Applied";
-                dataGridView1.Columns[4].HeaderText = "Start Date";
-                dataGridView1.Columns[5].HeaderText = "End Date";
-                dataGridView1.Columns[6].HeaderText = "Date Approved/Rejected";
-                dataGridView1.Columns[7].HeaderText = "Status";
-                dataGridView1.Columns[8].HeaderText = "Remarks";
-                dataGridView1.Columns[9].HeaderText = "Month";
-                dataGridView1.Columns[10].HeaderText = "Year";
-                dataGridView1.DataMember = dataTable.TableName;
-                connection.Close();
+                status3Label.Text = "Maximum Characters for Remarks is 100 Characters";
             }
-            catch (Exception ex)
+            else
             {
-                status2Label.Text = ex.Message;
+                employeeid = employeeidTextBox.Text;
+                startdate = startdateTextBox.Text;
+                enddate = enddateTextBox.Text;
+                remarks = remarksTextBox.Text;
+                string dateapprovereject = DateTime.Now.ToString("d");
+                try
+                {
+                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                    connection = new MySqlConnection(connectionString);
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = "UPDATE LEAVEREQUEST SET dateapprovereject ='" + dateapprovereject + "', status ='"
+                    + "REJECTED', remarks ='" + remarks + "' WHERE employeeid ='" + employeeid + "' AND startdate = '" + startdate
+                    + "' AND enddate ='" + enddate + "'";
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        status2Label.Text = "Rejected Leave Request";
+                        statusTextBox.Text = "REJECTED";
+                        approveButton.Visible = false;
+                        rejectButton.Visible = false;
+                        dateapproverejectTextBox.Text = dateapprovereject;
+                    }
+                    MySqlCommand command2 = connection.CreateCommand();
+                    command2.CommandText = "SELECT employeeid, leavetype, description, dateapplied, startdate, enddate, dateapprovereject, status, remarks, month, year FROM LEAVEREQUEST";
+                    command2.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.Columns[0].HeaderText = "Employee ID";
+                    dataGridView1.Columns[1].HeaderText = "Leave Type";
+                    dataGridView1.Columns[2].HeaderText = "Description";
+                    dataGridView1.Columns[3].HeaderText = "Date Applied";
+                    dataGridView1.Columns[4].HeaderText = "Start Date";
+                    dataGridView1.Columns[5].HeaderText = "End Date";
+                    dataGridView1.Columns[6].HeaderText = "Date Approved/Rejected";
+                    dataGridView1.Columns[7].HeaderText = "Status";
+                    dataGridView1.Columns[8].HeaderText = "Remarks";
+                    dataGridView1.Columns[9].HeaderText = "Month";
+                    dataGridView1.Columns[10].HeaderText = "Year";
+                    dataGridView1.DataMember = dataTable.TableName;
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    status2Label.Text = ex.Message;
+                }
+            }
+        }
+
+        private void remarksTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int length = remarksTextBox.Text.Length;
+            if (length <= 100)
+            {
+                wordcountLabel.Text = (100 - length).ToString() + " characters remaining";
+                status3Label.Text = String.Empty;
+            }
+            else if (length > 100)
+            {
+                wordcountLabel.Text = "0 characters remaining";
+                status3Label.Text = "Maximum Characters for Remarks is 100 Characters";
             }
         }
     }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EMS
 {
@@ -139,16 +140,21 @@ namespace EMS
         private void descriptionTextBox_TextChanged(object sender, EventArgs e)
         {
             int length = descriptionTextBox.Text.Length;
-            if (length <= 100)
+            if (statusLabel.Text.Contains("Leave Application Submitted Sucessfully Please Check Apply Status Later"))
+            {
+                wordcountLabel.Text = "100 characters remaining";
+            }
+            else if (length <= 100)
             {
                 wordcountLabel.Text = (100 - length).ToString() + " characters remaining";
+                statusLabel.Text = String.Empty;
             }
-            else
+            else if (length > 100)
             {
+                wordcountLabel.Text = "0 characters remaining";
                 statusLabel.ForeColor = Color.Red;
                 statusLabel.Text = "Maximum Characters for Description is 100 Characters";
             }
-
         }
 
         private async void submitButton_Click_1(object sender, EventArgs e)
@@ -174,6 +180,11 @@ namespace EMS
             {
                 statusLabel.ForeColor = Color.Red;
                 statusLabel.Text = "Starting Date Should Not Exceeds Ending Date";
+            }
+            else if (descriptionTextBox.Text.Length > 100)
+            {
+                statusLabel.ForeColor = Color.Red;
+                statusLabel.Text = "Maximum Characters for Description is 100 Characters";
             }
             else
             {
