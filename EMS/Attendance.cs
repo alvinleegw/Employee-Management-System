@@ -31,6 +31,7 @@ namespace EMS
         public static string clockin;
         public static string clockout;
         public static double workinghours;
+        public static string status;
         public static int counter;
         public static string date;
         public static string month;
@@ -63,9 +64,15 @@ namespace EMS
                     MySqlCommand command2 = connection.CreateCommand();
                     command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
                     employeeid = command.ExecuteScalar().ToString();
-                    command2.CommandText = "SELECT counter FROM ATTENDANCE WHERE employeeid = '" + employeeid + "' AND date = '" +
+                    command2.CommandText = "SELECT status, counter FROM ATTENDANCE WHERE employeeid = '" + employeeid + "' AND date = '" +
                     date + "'";
-                    counter = (int)command2.ExecuteScalar();
+                    MySqlDataReader reader = command2.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        status = reader["status"].ToString();
+                        counter = (int)reader["counter"];
+                    }
+                    reader.Close();
                     connection.Close();
                 }
                 catch (NullReferenceException e)
@@ -79,7 +86,14 @@ namespace EMS
                     statusLabel.ForeColor = Color.MistyRose;
                     statusLabel.Text = ex.Message;
                 }
-                if (counter == 0 || counter == null)
+                if (status == "LEAVE")
+                {
+                    statusLabel.ForeColor = Color.MistyRose;
+                    statusLabel.Text = "You Are On Leave Today";
+                    clockinButton.Enabled = false;
+                    clockoutButton.Enabled = false;
+                }
+                else if (counter == 0 || counter == null)
                 {
                     statusLabel.ForeColor = Color.SpringGreen;
                     statusLabel.Text = "Please Scan Employee Badge to Clock In / Out";

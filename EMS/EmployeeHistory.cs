@@ -25,6 +25,8 @@ namespace EMS
         {
             InitializeComponent();
             username = EmployeeDashboard.username;
+            dateTimePicker1.Visible = false;
+            dateTimePicker2.Visible = false;
             try
             {
                 string result;
@@ -33,14 +35,11 @@ namespace EMS
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
-                MySqlCommand command3 = connection.CreateCommand();
                 command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
                 employeeid = command.ExecuteScalar().ToString();
-                command2.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE employeeid = '" 
+                command2.CommandText = "SELECT clockin, clockout, workinghours, date, status FROM ATTENDANCE WHERE employeeid = '" 
                 + employeeid + "'";
                 command2.ExecuteNonQuery();
-                command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid = '" + employeeid + "'";
-                result = command3.ExecuteScalar().ToString();
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
                 {
@@ -51,9 +50,8 @@ namespace EMS
                 dataGridView1.Columns[1].HeaderText = "Clock Out";
                 dataGridView1.Columns[2].HeaderText = "Working Hours";
                 dataGridView1.Columns[3].HeaderText = "Date";
+                dataGridView1.Columns[4].HeaderText = "Status";
                 dataGridView1.DataMember = dataTable.TableName;
-                resultLabel.ForeColor = Color.Black;
-                resultLabel.Text = result + " rows returned";
                 connection.Close();
             }
             catch (Exception ex)
@@ -105,7 +103,7 @@ namespace EMS
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
-                command.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE date = '"
+                command.CommandText = "SELECT clockin, clockout, workinghours, date, status FROM ATTENDANCE WHERE date = '"
                 + date + "' AND employeeid = '" + employeeid + "'";
                 command.ExecuteNonQuery();
                 command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE date = '"
@@ -121,6 +119,7 @@ namespace EMS
                 dataGridView1.Columns[1].HeaderText = "Clock Out";
                 dataGridView1.Columns[2].HeaderText = "Working Hours";
                 dataGridView1.Columns[3].HeaderText = "Date";
+                dataGridView1.Columns[4].HeaderText = "Status";
                 dataGridView1.DataMember = dataTable.TableName;
                 resultLabel.ForeColor = Color.Black;
                 resultLabel.Text = result.ToString() + " rows returned";
@@ -149,7 +148,7 @@ namespace EMS
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     MySqlCommand command2 = connection.CreateCommand();
-                    command.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE date = '"
+                    command.CommandText = "SELECT clockin, clockout, workinghours, date, status FROM ATTENDANCE WHERE date = '"
                     + date + "' AND employeeid = '" + employeeid + "'";
                     command.ExecuteNonQuery();
                     command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE date = '"
@@ -165,6 +164,7 @@ namespace EMS
                     dataGridView1.Columns[1].HeaderText = "Clock Out";
                     dataGridView1.Columns[2].HeaderText = "Working Hours";
                     dataGridView1.Columns[3].HeaderText = "Date";
+                    dataGridView1.Columns[4].HeaderText = "Status";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.Black;
                     resultLabel.Text = result.ToString() + " rows returned";
@@ -198,7 +198,7 @@ namespace EMS
                     MySqlCommand command3 = connection.CreateCommand();
                     command.CommandText = "SELECT employeeid FROM EMPLOYEE WHERE username='" + username + "'";
                     employeeid = command.ExecuteScalar().ToString();
-                    command2.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE employeeid = '"
+                    command2.CommandText = "SELECT clockin, clockout, workinghours, date, status FROM ATTENDANCE WHERE employeeid = '"
                     + employeeid + "'";
                     command2.ExecuteNonQuery();
                     command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid = '" + employeeid + "'";
@@ -213,6 +213,7 @@ namespace EMS
                     dataGridView1.Columns[1].HeaderText = "Clock Out";
                     dataGridView1.Columns[2].HeaderText = "Working Hours";
                     dataGridView1.Columns[3].HeaderText = "Date";
+                    dataGridView1.Columns[4].HeaderText = "Status";
                     dataGridView1.DataMember = dataTable.TableName;
                     resultLabel.ForeColor = Color.Black;
                     resultLabel.Text = result + " rows returned";
@@ -239,7 +240,7 @@ namespace EMS
                 connection.Open();
                 MySqlCommand command = connection.CreateCommand();
                 MySqlCommand command2 = connection.CreateCommand();
-                command.CommandText = "SELECT clockin, clockout, workinghours, date FROM ATTENDANCE WHERE employeeid ='"
+                command.CommandText = "SELECT clockin, clockout, workinghours, date, status FROM ATTENDANCE WHERE employeeid ='"
                     + employeeid + "' AND month ='" + month + "' AND year ='" + year + "'";
                 command.ExecuteNonQuery();
                 command2.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
@@ -255,6 +256,7 @@ namespace EMS
                 dataGridView1.Columns[1].HeaderText = "Clock Out";
                 dataGridView1.Columns[2].HeaderText = "Working Hours";
                 dataGridView1.Columns[3].HeaderText = "Date";
+                dataGridView1.Columns[4].HeaderText = "Status";
                 dataGridView1.DataMember = dataTable.TableName;
                 resultLabel.ForeColor = Color.Black;
                 resultLabel.Text = result + " rows returned";

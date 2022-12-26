@@ -7,7 +7,7 @@ USE EMS;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2022 at 01:40 AM
+-- Generation Time: Dec 26, 2022 at 08:20 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -88,9 +88,10 @@ INSERT INTO `archive` (`employeeid`, `portrait`, `name`, `ic`, `dateofbirth`, `a
 
 CREATE TABLE `attendance` (
   `attendanceid` int(10) NOT NULL,
-  `clockin` varchar(5) NOT NULL,
+  `clockin` varchar(5) DEFAULT NULL,
   `clockout` varchar(5) DEFAULT NULL,
   `workinghours` decimal(3,2) DEFAULT NULL,
+  `status` varchar(5) DEFAULT NULL,
   `counter` int(1) DEFAULT 0,
   `date` varchar(10) NOT NULL,
   `month` varchar(2) NOT NULL,
@@ -102,16 +103,16 @@ CREATE TABLE `attendance` (
 -- Dumping data for table `attendance`
 --
 
-INSERT INTO `attendance` (`attendanceid`, `clockin`, `clockout`, `workinghours`, `counter`, `date`, `month`, `year`, `employeeid`) VALUES
-(1, '07:30', '16:30', '8.00', 2, '12/16/2022', '12', '2022', 'IT001');
+INSERT INTO `attendance` (`attendanceid`, `clockin`, `clockout`, `workinghours`, `status`, `counter`, `date`, `month`, `year`, `employeeid`) VALUES
+(1, '07:30', '16:30', '8.00', NULL, 2, '12/16/2022', '12', '2022', 'IT001');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departmentinfo`
+-- Table structure for table `department`
 --
 
-CREATE TABLE `departmentinfo` (
+CREATE TABLE `department` (
   `departmentcode` varchar(2) NOT NULL,
   `departmentname` varchar(30) NOT NULL,
   `counter` int(3) NOT NULL DEFAULT 1,
@@ -119,10 +120,10 @@ CREATE TABLE `departmentinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `departmentinfo`
+-- Dumping data for table `department`
 --
 
-INSERT INTO `departmentinfo` (`departmentcode`, `departmentname`, `counter`, `adminid`) VALUES
+INSERT INTO `department` (`departmentcode`, `departmentname`, `counter`, `adminid`) VALUES
 ('EN', 'ENGINEERING', 2, 1),
 ('IT', 'IT', 3, 1);
 
@@ -168,6 +169,29 @@ INSERT INTO `employee` (`employeeid`, `username`, `password`, `portrait`, `name`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leaverequest`
+--
+
+CREATE TABLE `leaverequest` (
+  `leaveid` int(10) NOT NULL,
+  `leavetype` varchar(20) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `documentname` varchar(25) DEFAULT NULL,
+  `document` mediumblob DEFAULT NULL,
+  `startdate` varchar(10) NOT NULL,
+  `enddate` varchar(10) NOT NULL,
+  `dateapplied` varchar(10) NOT NULL,
+  `dateapprovereject` varchar(10) DEFAULT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'PENDING',
+  `remarks` varchar(100) DEFAULT NULL,
+  `month` varchar(2) NOT NULL,
+  `year` varchar(4) NOT NULL,
+  `employeeid` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payslip`
 --
 
@@ -176,6 +200,7 @@ CREATE TABLE `payslip` (
   `payslipid` varchar(16) DEFAULT NULL,
   `totalworkinghours` decimal(5,2) NOT NULL,
   `totalworkingdays` int(2) NOT NULL,
+  `totalleavedays` int(2) NOT NULL,
   `salary` decimal(8,2) NOT NULL,
   `dateissued` varchar(10) NOT NULL,
   `month` varchar(2) NOT NULL,
@@ -186,20 +211,20 @@ CREATE TABLE `payslip` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `positioninfo`
+-- Table structure for table `position`
 --
 
-CREATE TABLE `positioninfo` (
+CREATE TABLE `position` (
   `positionname` varchar(30) NOT NULL,
   `adminid` int(1) NOT NULL DEFAULT 1,
   `departmentcode` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `positioninfo`
+-- Dumping data for table `position`
 --
 
-INSERT INTO `positioninfo` (`positionname`, `adminid`, `departmentcode`) VALUES
+INSERT INTO `position` (`positionname`, `adminid`, `departmentcode`) VALUES
 ('DESIGN MANAGER', 1, 'IT'),
 ('MANUFACTURING ENGINEERING', 1, 'EN'),
 ('PENETRATION TESTER', 1, 'IT'),
@@ -233,9 +258,9 @@ ALTER TABLE `attendance`
   ADD KEY `employeeid` (`employeeid`);
 
 --
--- Indexes for table `departmentinfo`
+-- Indexes for table `department`
 --
-ALTER TABLE `departmentinfo`
+ALTER TABLE `department`
   ADD PRIMARY KEY (`departmentcode`),
   ADD KEY `adminid` (`adminid`);
 
@@ -251,6 +276,13 @@ ALTER TABLE `employee`
   ADD KEY `adminid` (`adminid`);
 
 --
+-- Indexes for table `leaverequest`
+--
+ALTER TABLE `leaverequest`
+  ADD PRIMARY KEY (`leaveid`),
+  ADD KEY `employeeid` (`employeeid`);
+
+--
 -- Indexes for table `payslip`
 --
 ALTER TABLE `payslip`
@@ -259,9 +291,9 @@ ALTER TABLE `payslip`
   ADD KEY `employeeid` (`employeeid`);
 
 --
--- Indexes for table `positioninfo`
+-- Indexes for table `position`
 --
-ALTER TABLE `positioninfo`
+ALTER TABLE `position`
   ADD PRIMARY KEY (`positionname`),
   ADD KEY `adminid` (`adminid`),
   ADD KEY `departmentname` (`departmentcode`);
@@ -275,6 +307,12 @@ ALTER TABLE `positioninfo`
 --
 ALTER TABLE `attendance`
   MODIFY `attendanceid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `leaverequest`
+--
+ALTER TABLE `leaverequest`
+  MODIFY `leaveid` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payslip`
@@ -299,10 +337,10 @@ ALTER TABLE `attendance`
   ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
 
 --
--- Constraints for table `departmentinfo`
+-- Constraints for table `department`
 --
-ALTER TABLE `departmentinfo`
-  ADD CONSTRAINT `departmentinfo_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`);
+ALTER TABLE `department`
+  ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`);
 
 --
 -- Constraints for table `employee`
@@ -311,17 +349,23 @@ ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `leaverequest`
+--
+ALTER TABLE `leaverequest`
+  ADD CONSTRAINT `leaverequest_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `payslip`
 --
 ALTER TABLE `payslip`
   ADD CONSTRAINT `payslip_ibfk_1` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE CASCADE;
 
 --
--- Constraints for table `positioninfo`
+-- Constraints for table `position`
 --
-ALTER TABLE `positioninfo`
-  ADD CONSTRAINT `positioninfo_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`),
-  ADD CONSTRAINT `positioninfo_ibfk_2` FOREIGN KEY (`departmentcode`) REFERENCES `departmentinfo` (`departmentcode`) ON DELETE CASCADE;
+ALTER TABLE `position`
+  ADD CONSTRAINT `position_ibfk_1` FOREIGN KEY (`adminid`) REFERENCES `admin` (`adminid`),
+  ADD CONSTRAINT `position_ibfk_2` FOREIGN KEY (`departmentcode`) REFERENCES `department` (`departmentcode`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

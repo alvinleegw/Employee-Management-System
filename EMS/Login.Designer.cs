@@ -184,7 +184,7 @@
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(228, 38);
             this.versionLabel.TabIndex = 12;
-            this.versionLabel.Text = "EMS Version 5.0";
+            this.versionLabel.Text = "EMS Version 6.0";
             // 
             // pictureBox1
             // 

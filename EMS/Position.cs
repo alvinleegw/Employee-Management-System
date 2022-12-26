@@ -137,7 +137,7 @@ namespace EMS
             else if (!checkname)
             {
                 statusLabel.ForeColor = Color.MistyRose;
-                statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters ()-./&& Only";
+                statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &&()-./ Only";
             }
             else
             {
@@ -209,44 +209,57 @@ namespace EMS
             }
             else
             {
-                try
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this position? You have to update, archive or delete employees in this position if you wish to proceed.", "Delete Position Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
                 {
-                    position = positionTextBox.Text;
-                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                    connection = new MySqlConnection(connectionString);
-                    connection.Open();
-                    MySqlCommand command = connection.CreateCommand();
-                    MySqlCommand command2 = connection.CreateCommand();
-                    MySqlCommand command3 = connection.CreateCommand();
-                    command.CommandText = "SELECT departmentcode FROM DEPARTMENT WHERE departmentname ='" + departmentname + "'";
-                    departmentcode = command.ExecuteScalar().ToString();
-                    command2.CommandText = "DELETE FROM POSITION WHERE positionname = '" + position + "' AND departmentcode = '" + departmentcode + "'";
-                    if (command2.ExecuteNonQuery() == 1)
+                    try
                     {
-                        positionTextBox.Text = String.Empty;
-                        statusLabel.ForeColor = Color.LightGreen;
-                        statusLabel.Text = "Position Successfully Deleted";
+                        position = positionTextBox.Text;
+                        connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                        connection = new MySqlConnection(connectionString);
+                        connection.Open();
+                        MySqlCommand command = connection.CreateCommand();
+                        command.CommandText = "SELECT COUNT(*) FROM EMPLOYEE WHERE position ='" + position + "'";
+                        if (Convert.ToInt32(command.ExecuteScalar()) > 0)
+                        {
+                            MessageBox.Show("Records with this position exists. Please update, delete or archive those records first.", "Records Exists", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            MySqlCommand command2 = connection.CreateCommand();
+                            MySqlCommand command3 = connection.CreateCommand();
+                            MySqlCommand command4 = connection.CreateCommand();
+                            command2.CommandText = "SELECT departmentcode FROM DEPARTMENT WHERE departmentname ='" + departmentname + "'";
+                            departmentcode = command2.ExecuteScalar().ToString();
+                            command3.CommandText = "DELETE FROM POSITION WHERE positionname = '" + position + "' AND departmentcode = '" + departmentcode + "'";
+                            if (command3.ExecuteNonQuery() == 1)
+                            {
+                                positionTextBox.Text = String.Empty;
+                                statusLabel.ForeColor = Color.LightGreen;
+                                statusLabel.Text = "Position Successfully Deleted";
+                            }
+                            command4.CommandText = "SELECT Position.positionname, Department.departmentname FROM POSITION INNER JOIN DEPARTMENT ON " +
+                            "Position.departmentcode = Department.departmentcode WHERE Position.departmentcode ='" + departmentcode + "'";
+                            DataTable dataTable = new DataTable();
+                            using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command4))
+                            {
+                                dataAdapter.Fill(dataTable);
+                            }
+                            dataGridView1.DataSource = dataTable;
+                            dataGridView1.Columns[0].HeaderText = "Position";
+                            dataGridView1.Columns[1].HeaderText = "Department";
+                            dataGridView1.DataMember = dataTable.TableName;
+                            positionTextBox.Text = String.Empty;
+                            await Task.Delay(1500);
+                            statusLabel.Text = String.Empty;
+                        }
+                        connection.Close();
                     }
-                    command3.CommandText = "SELECT Position.positionname, Department.departmentname FROM POSITION INNER JOIN DEPARTMENT ON " +
-                    "Position.departmentcode = Department.departmentcode WHERE Position.departmentcode ='" + departmentcode + "'";
-                    DataTable dataTable = new DataTable();
-                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command3))
+                    catch (Exception ex)
                     {
-                        dataAdapter.Fill(dataTable);
+                        statusLabel.ForeColor = Color.MistyRose;
+                        statusLabel.Text = ex.Message;
                     }
-                    dataGridView1.DataSource = dataTable;
-                    dataGridView1.Columns[0].HeaderText = "Position";
-                    dataGridView1.Columns[1].HeaderText = "Department";
-                    dataGridView1.DataMember = dataTable.TableName;
-                    positionTextBox.Text = String.Empty;
-                    await Task.Delay(1500);
-                    statusLabel.Text = String.Empty;
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    statusLabel.ForeColor = Color.MistyRose;
-                    statusLabel.Text = ex.Message;
                 }
             }
         }
@@ -272,7 +285,7 @@ namespace EMS
                 else if (!checkname)
                 {
                     statusLabel.ForeColor = Color.MistyRose;
-                    statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters ()-./&& Only";
+                    statusLabel.Text = "Position Name Must Be Alphabets And Certain Special Characters &&()-./ Only";
                 }
                 else
                 {

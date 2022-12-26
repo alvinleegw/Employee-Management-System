@@ -53,6 +53,7 @@
             this.totalworkinghoursLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.totalleavedaysLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,13 +148,13 @@
             // 
             // totalsalaryLabel
             // 
-            this.totalsalaryLabel.AutoSize = true;
-            this.totalsalaryLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalsalaryLabel.Location = new System.Drawing.Point(1464, 576);
+            this.totalsalaryLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.totalsalaryLabel.Location = new System.Drawing.Point(2, 673);
             this.totalsalaryLabel.Name = "totalsalaryLabel";
-            this.totalsalaryLabel.Size = new System.Drawing.Size(242, 54);
+            this.totalsalaryLabel.Size = new System.Drawing.Size(2466, 54);
             this.totalsalaryLabel.TabIndex = 12;
             this.totalsalaryLabel.Text = "Total Salary: ";
+            this.totalsalaryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // monthLabel
             // 
@@ -289,12 +290,23 @@
             this.titleLabel.Text = "Alpha Sigma Company";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // totalleavedaysLabel
+            // 
+            this.totalleavedaysLabel.AutoSize = true;
+            this.totalleavedaysLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.totalleavedaysLabel.Location = new System.Drawing.Point(1464, 576);
+            this.totalleavedaysLabel.Name = "totalleavedaysLabel";
+            this.totalleavedaysLabel.Size = new System.Drawing.Size(397, 54);
+            this.totalleavedaysLabel.TabIndex = 24;
+            this.totalleavedaysLabel.Text = "Total Days On Leave: ";
+            // 
             // Payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2480, 989);
+            this.Controls.Add(this.totalleavedaysLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.totalworkinghoursLabel);
             this.Controls.Add(this.yearLabel);
@@ -355,5 +367,6 @@
         private Label totalworkinghoursLabel;
         private PictureBox pictureBox1;
         private Label titleLabel;
+        private Label totalleavedaysLabel;
     }
 }

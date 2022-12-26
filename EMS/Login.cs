@@ -25,7 +25,7 @@ namespace EMS
             string pass;
             if (username == "" || password == "")
             {
-                statusLabel.Text = "Please enter username and password.";
+                statusLabel.Text = "Please Enter Username And Password";
             }
             else
             {
@@ -54,7 +54,7 @@ namespace EMS
                             signinButton.Enabled = false;
                             resetButton.Enabled = false;
                             await Task.Delay(1500);
-                            statusLabel.Text = "Welcome back admin";
+                            statusLabel.Text = "Welcome Back admin";
                             await Task.Delay(1500);
                             AdminDashboard admindashboard = new AdminDashboard();
                             this.Hide();
@@ -69,7 +69,7 @@ namespace EMS
                     }
                     catch (Exception ex)
                     {
-                        statusLabel.Text = "Error Connecting to Database";
+                        statusLabel.Text = ex.Message;
                     }
                 }
                 else
@@ -89,7 +89,7 @@ namespace EMS
                                 signinButton.Enabled = false;
                                 resetButton.Enabled = false;
                                 await Task.Delay(1500);
-                                statusLabel.Text = "Welcome back " + username;
+                                statusLabel.Text = "Welcome Back " + username;
                                 await Task.Delay(1500);
                                 EmployeeDashboard employeedashboard = new EmployeeDashboard();
                                 this.Hide();
@@ -109,7 +109,7 @@ namespace EMS
                     }
                     catch (Exception ex)
                     {
-                        statusLabel.Text = "Error Connecting to Database";
+                        statusLabel.Text = ex.Message;
                     }
                 }
                 

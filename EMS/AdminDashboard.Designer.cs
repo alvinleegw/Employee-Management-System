@@ -33,6 +33,7 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.leaveButton = new System.Windows.Forms.Button();
             this.payrollButton = new System.Windows.Forms.Button();
             this.archiveButton = new System.Windows.Forms.Button();
             this.changepasswordButton = new System.Windows.Forms.Button();
@@ -49,10 +50,18 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.clockoutLabel = new System.Windows.Forms.Label();
             this.display3Label = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.pendingLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.leaveLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // userLabel
@@ -69,7 +78,7 @@
             // 
             this.closeButton.BackColor = System.Drawing.Color.Tomato;
             this.closeButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closeButton.Location = new System.Drawing.Point(1971, 12);
+            this.closeButton.Location = new System.Drawing.Point(2013, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(78, 69);
             this.closeButton.TabIndex = 2;
@@ -87,6 +96,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.leaveButton);
             this.panel1.Controls.Add(this.payrollButton);
             this.panel1.Controls.Add(this.archiveButton);
             this.panel1.Controls.Add(this.changepasswordButton);
@@ -96,8 +106,23 @@
             this.panel1.Controls.Add(this.userLabel);
             this.panel1.Location = new System.Drawing.Point(-4, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(508, 896);
+            this.panel1.Size = new System.Drawing.Size(508, 1007);
             this.panel1.TabIndex = 4;
+            // 
+            // leaveButton
+            // 
+            this.leaveButton.BackColor = System.Drawing.Color.Firebrick;
+            this.leaveButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.leaveButton.ForeColor = System.Drawing.Color.White;
+            this.leaveButton.Image = global::EMS.Properties.Resources.leave;
+            this.leaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.leaveButton.Location = new System.Drawing.Point(38, 740);
+            this.leaveButton.Name = "leaveButton";
+            this.leaveButton.Size = new System.Drawing.Size(442, 93);
+            this.leaveButton.TabIndex = 11;
+            this.leaveButton.Text = "Leave";
+            this.leaveButton.UseVisualStyleBackColor = false;
+            this.leaveButton.Click += new System.EventHandler(this.leaveButton_Click);
             // 
             // payrollButton
             // 
@@ -125,7 +150,7 @@
             this.archiveButton.Name = "archiveButton";
             this.archiveButton.Size = new System.Drawing.Size(442, 93);
             this.archiveButton.TabIndex = 9;
-            this.archiveButton.Text = "View Archive";
+            this.archiveButton.Text = "Archive";
             this.archiveButton.UseVisualStyleBackColor = false;
             this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
             // 
@@ -156,7 +181,7 @@
             this.historyButton.Name = "historyButton";
             this.historyButton.Size = new System.Drawing.Size(442, 93);
             this.historyButton.TabIndex = 3;
-            this.historyButton.Text = "View History";
+            this.historyButton.Text = "Clocking History";
             this.historyButton.UseVisualStyleBackColor = false;
             this.historyButton.Click += new System.EventHandler(this.historyButton_Click);
             // 
@@ -167,7 +192,7 @@
             this.logoutButton.ForeColor = System.Drawing.Color.White;
             this.logoutButton.Image = global::EMS.Properties.Resources.logout;
             this.logoutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.logoutButton.Location = new System.Drawing.Point(48, 742);
+            this.logoutButton.Location = new System.Drawing.Point(38, 857);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(442, 93);
             this.logoutButton.TabIndex = 2;
@@ -195,7 +220,7 @@
             // 
             this.minimizeButton.BackColor = System.Drawing.Color.Gold;
             this.minimizeButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.minimizeButton.Location = new System.Drawing.Point(1887, 13);
+            this.minimizeButton.Location = new System.Drawing.Point(1929, 13);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(78, 69);
             this.minimizeButton.TabIndex = 6;
@@ -241,7 +266,7 @@
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.clockinLabel);
             this.panel3.Controls.Add(this.display2Label);
-            this.panel3.Location = new System.Drawing.Point(1035, 129);
+            this.panel3.Location = new System.Drawing.Point(1064, 129);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(496, 196);
             this.panel3.TabIndex = 8;
@@ -274,7 +299,7 @@
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.clockoutLabel);
             this.panel4.Controls.Add(this.display3Label);
-            this.panel4.Location = new System.Drawing.Point(1545, 129);
+            this.panel4.Location = new System.Drawing.Point(1595, 129);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(496, 196);
             this.panel4.TabIndex = 8;
@@ -301,12 +326,78 @@
             this.display3Label.TabIndex = 0;
             this.display3Label.Text = "Clock Outs Today";
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.pendingLabel);
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Location = new System.Drawing.Point(527, 371);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(760, 196);
+            this.panel6.TabIndex = 14;
+            // 
+            // pendingLabel
+            // 
+            this.pendingLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.pendingLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.pendingLabel.Location = new System.Drawing.Point(3, 87);
+            this.pendingLabel.Name = "pendingLabel";
+            this.pendingLabel.Size = new System.Drawing.Size(754, 89);
+            this.pendingLabel.TabIndex = 1;
+            this.pendingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label4.Image = global::EMS.Properties.Resources.pending;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label4.Location = new System.Drawing.Point(70, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(617, 65);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Pending Leave Request";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.leaveLabel);
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Location = new System.Drawing.Point(1331, 371);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(760, 196);
+            this.panel5.TabIndex = 15;
+            // 
+            // leaveLabel
+            // 
+            this.leaveLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.leaveLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.leaveLabel.Location = new System.Drawing.Point(3, 87);
+            this.leaveLabel.Name = "leaveLabel";
+            this.leaveLabel.Size = new System.Drawing.Size(754, 89);
+            this.leaveLabel.TabIndex = 1;
+            this.leaveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label2.Image = global::EMS.Properties.Resources.employees;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.Location = new System.Drawing.Point(23, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(691, 65);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Employees On Leave Today";
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(2061, 893);
+            this.ClientSize = new System.Drawing.Size(2143, 1006);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -325,6 +416,8 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -351,5 +444,12 @@
         private Label display3Label;
         private Button archiveButton;
         private Button payrollButton;
+        private Button leaveButton;
+        private Panel panel6;
+        private Label pendingLabel;
+        private Label label4;
+        private Panel panel5;
+        private Label leaveLabel;
+        private Label label2;
     }
 }
