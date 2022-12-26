@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -144,7 +145,7 @@ namespace EMS
                     }
                     MySqlCommand command2 = connection.CreateCommand();
                     command2.CommandText = "SELECT documentname FROM LEAVEREQUEST WHERE employeeid ='" + employeeid + "' AND startdate ='"
-                    + startdate + "' AND enddate ='" + enddate + "'";
+                    + startdate + "' AND enddate ='" + enddate + "' AND status ='" + status + "'";
                     document = command2.ExecuteScalar().ToString();
                     if (document != String.Empty)
                     {

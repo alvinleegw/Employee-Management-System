@@ -163,7 +163,7 @@ namespace EMS
                     remarksTextBox.Text = row.Cells[7].Value.ToString();
                     MySqlCommand command2 = connection.CreateCommand();
                     command2.CommandText = "SELECT documentname FROM LEAVEREQUEST WHERE employeeid ='" + employeeid + "' AND startdate ='"
-                    + startdate + "' AND enddate ='" + enddate + "'";
+                    + startdate + "' AND enddate ='" + enddate + "' AND status ='" + status + "'";
                     document = command2.ExecuteScalar().ToString();
                     if (document != String.Empty)
                     {

@@ -230,11 +230,14 @@
             // browseButton
             // 
             this.browseButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.browseButton.Image = global::EMS.Properties.Resources.browse;
+            this.browseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.browseButton.Location = new System.Drawing.Point(29, 431);
             this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(187, 69);
+            this.browseButton.Size = new System.Drawing.Size(211, 89);
             this.browseButton.TabIndex = 28;
             this.browseButton.Text = "Browse";
+            this.browseButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
@@ -308,22 +311,28 @@
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.submitButton.Image = global::EMS.Properties.Resources.submit;
+            this.submitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.submitButton.Location = new System.Drawing.Point(1348, 668);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(187, 89);
+            this.submitButton.Size = new System.Drawing.Size(217, 89);
             this.submitButton.TabIndex = 36;
             this.submitButton.Text = "Submit";
+            this.submitButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click_1);
             // 
             // resetButton
             // 
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.resetButton.Image = global::EMS.Properties.Resources.reset;
+            this.resetButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.resetButton.Location = new System.Drawing.Point(1348, 781);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(187, 89);
+            this.resetButton.Size = new System.Drawing.Size(217, 89);
             this.resetButton.TabIndex = 37;
             this.resetButton.Text = "Reset";
+            this.resetButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 

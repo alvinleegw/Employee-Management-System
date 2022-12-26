@@ -172,41 +172,54 @@ namespace EMS
             }
             else
             {
-                departmentcode = codeTextBox.Text.ToUpper();
-                departmentname = nameTextBox.Text.ToUpper();
-                try
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this department? You have to update, archive or delete employees in this department if you wish to proceed.", "Delete Department Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
                 {
-                    connectionString = "server=localhost;database=ems;uid=root;pwd=;";
-                    connection = new MySqlConnection(connectionString);
-                    connection.Open();
-                    MySqlCommand command = connection.CreateCommand();
-                    MySqlCommand command2 = connection.CreateCommand();
-                    command.CommandText = "DELETE FROM DEPARTMENT WHERE departmentcode ='" + departmentcode + "' AND departmentname = '" + departmentname + "'";
-                    command2.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENT";
-                    if (command.ExecuteNonQuery() == 1)
+                    departmentcode = codeTextBox.Text.ToUpper();
+                    departmentname = nameTextBox.Text.ToUpper();
+                    try
                     {
-                        codeTextBox.Text = String.Empty;
-                        nameTextBox.Text = String.Empty;
-                        statusLabel.ForeColor = Color.LawnGreen;
-                        statusLabel.Text = "Department Successfully Deleted";
+                        connectionString = "server=localhost;database=ems;uid=root;pwd=;";
+                        connection = new MySqlConnection(connectionString);
+                        connection.Open();
+                        MySqlCommand command = connection.CreateCommand();
+                        command.CommandText = "SELECT COUNT(*) FROM EMPLOYEE WHERE department ='" + departmentname + "'";
+                        if (Convert.ToInt32(command.ExecuteScalar()) > 0)
+                        {
+                            MessageBox.Show("Records with this department exists. Please update, delete or archive those records first.", "Records Exists", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            MySqlCommand command2 = connection.CreateCommand();
+                            MySqlCommand command3 = connection.CreateCommand();
+                            command2.CommandText = "DELETE FROM DEPARTMENT WHERE departmentcode ='" + departmentcode + "' AND departmentname = '" + departmentname + "'";
+                            command3.CommandText = "SELECT departmentcode, departmentname FROM DEPARTMENT";
+                            if (command2.ExecuteNonQuery() == 1)
+                            {
+                                codeTextBox.Text = String.Empty;
+                                nameTextBox.Text = String.Empty;
+                                statusLabel.ForeColor = Color.LawnGreen;
+                                statusLabel.Text = "Department Successfully Deleted";
+                            }
+                            DataTable dataTable = new DataTable();
+                            using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command3))
+                            {
+                                dataAdapter.Fill(dataTable);
+                            }
+                            dataGridView1.DataSource = dataTable;
+                            dataGridView1.Columns[0].HeaderText = "Department Code";
+                            dataGridView1.Columns[1].HeaderText = "Department Name";
+                            dataGridView1.DataMember = dataTable.TableName;
+                            await Task.Delay(1500);
+                            statusLabel.Text = String.Empty;
+                            connection.Close();
+                        }
                     }
-                    DataTable dataTable = new DataTable();
-                    using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command2))
+                    catch (Exception ex)
                     {
-                        dataAdapter.Fill(dataTable);
+                        statusLabel.ForeColor = Color.MistyRose;
+                        statusLabel.Text = ex.Message;
                     }
-                    dataGridView1.DataSource = dataTable;
-                    dataGridView1.Columns[0].HeaderText = "Department Code";
-                    dataGridView1.Columns[1].HeaderText = "Department Name";
-                    dataGridView1.DataMember = dataTable.TableName;
-                    await Task.Delay(1500);
-                    statusLabel.Text = String.Empty;
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    statusLabel.ForeColor = Color.MistyRose;
-                    statusLabel.Text = ex.Message;
                 }
             }
         }

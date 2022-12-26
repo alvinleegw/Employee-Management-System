@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -59,7 +60,7 @@ namespace EMS
                 }
                 command5.CommandText = "SELECT status FROM ATTENDANCE WHERE date ='" + date + "'"
                 + " AND employeeid ='" + employeeid + "'";
-                if (command5.ExecuteScalar() != null)
+                if (command5.ExecuteScalar() != null && command5.ExecuteScalar().ToString() == "LEAVE")
                 {
                     statusLabel.Text = "On Leave";
                 }
@@ -110,7 +111,7 @@ namespace EMS
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 this.Hide();
