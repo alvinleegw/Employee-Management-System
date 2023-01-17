@@ -324,7 +324,7 @@ namespace EMS
                         {
                             command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
                             "' AND month ='" + month + "' AND year ='" + year + "' AND counter = '2' AND status IS NULL";
-                            totalworkingdays = Convert.ToInt32(command2.ExecuteScalar());
+                            totalworkingdays = Convert.ToInt32(command3.ExecuteScalar());
                             command3.CommandText = "SELECT COUNT(*) FROM ATTENDANCE WHERE employeeid ='" + employeeid +
                             "' AND month ='" + month + "' AND year ='" + year + "' AND counter = '2' AND status = 'LEAVE'";
                             totalleavedays = Convert.ToInt32(command3.ExecuteScalar());

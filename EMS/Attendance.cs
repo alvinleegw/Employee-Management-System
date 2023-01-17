@@ -40,6 +40,8 @@ namespace EMS
         public Attendance()
         {
             InitializeComponent();
+            status = String.Empty;
+            counter = 0;
             username = EmployeeDashboard.username;
             DayOfWeek day = DateTime.Now.DayOfWeek;
             TimeSpan start = new TimeSpan(07, 30, 00);

@@ -135,6 +135,7 @@ namespace EMS
         {
             passwordTextBox.Text = String.Empty;
             password2TextBox.Text = String.Empty;
+            statusLabel.Text = String.Empty;
         }
 
         private void passwordTextBox_TextChanged(object sender, EventArgs e)

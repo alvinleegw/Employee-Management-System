@@ -285,9 +285,8 @@
             this.documentnameLabel.ForeColor = System.Drawing.Color.White;
             this.documentnameLabel.Location = new System.Drawing.Point(226, 284);
             this.documentnameLabel.Name = "documentnameLabel";
-            this.documentnameLabel.Size = new System.Drawing.Size(80, 48);
+            this.documentnameLabel.Size = new System.Drawing.Size(0, 48);
             this.documentnameLabel.TabIndex = 80;
-            this.documentnameLabel.Text = "dsd";
             // 
             // status2Label
             // 

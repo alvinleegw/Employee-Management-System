@@ -199,8 +199,6 @@ namespace EMS
             inputusernameLabel.Enabled = true;
             inputTextBox.Enabled = true;
             searchButton.Enabled = true;
-            statusLabel.Text = String.Empty;
-            status2Label.Text = String.Empty;
             inputTextBox.Text = String.Empty;
             inputpasswordLabel.Enabled = false;
             passwordTextBox.Text = String.Empty;
@@ -210,6 +208,8 @@ namespace EMS
             password2TextBox.Enabled = false;
             updateButton.Enabled = false;
             resetButton.Enabled = false;
+            statusLabel.Text = String.Empty;
+            status2Label.Text = String.Empty;
         }
 
         private void passwordTextBox_TextChanged(object sender, EventArgs e)

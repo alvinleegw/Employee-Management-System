@@ -528,7 +528,7 @@ namespace EMS
                     }
                     else
                     {
-                        dob = day.ToString() + "/" + month.ToString() + "/" + year.ToString();
+                        dob = month.ToString() + "/" + day.ToString() + "/" + year.ToString();
                         dobTextBox.Text = dob;
                         ageTextBox.Text = age;
                     }
